@@ -1,0 +1,125 @@
+/* =============================================================================
+   ULTRA-MINIMAL MKDOCS CSS - Material Theme First
+   Only font declarations + PDF font sizes. Material handles everything else.
+   ============================================================================= */
+
+/* =============================================================================
+   FONT DECLARATIONS - For FantasqueSansM Nerd Font Mono
+   ============================================================================= */
+
+@font-face {
+    font-family: 'FantasqueSansM Nerd Font Mono';
+    src: url('../fonts/FantasqueSansMNerdFontMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FantasqueSansM Nerd Font Mono';
+    src: url('../fonts/FantasqueSansMNerdFontMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FantasqueSansM Nerd Font Mono';
+    src: url('../fonts/FantasqueSansMNerdFontMono-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* =============================================================================
+   CODE FONT - Apply custom font to code blocks
+   ============================================================================= */
+
+code, pre code {
+    font-family: 'FantasqueSansM Nerd Font Mono', 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+}
+
+/* =============================================================================
+   PDF FONT SIZES ONLY - Make text larger for PDF readability
+   Everything else (colors, spacing, styling) handled by Material theme
+   ============================================================================= */
+
+@media print {
+    /* Slightly smaller fonts for better page utilization */
+    body {
+        font-size: 15px !important;
+    }
+
+    p {
+        font-size: 15px !important;
+    }
+
+    li {
+        font-size: 15px !important;
+    }
+
+    /* Keep headings large for hierarchy */
+    h1 {
+        font-size: 32px !important;
+    }
+
+    h2 {
+        font-size: 28px !important;
+    }
+
+    h3 {
+        font-size: 24px !important;
+    }
+
+    h4 {
+        font-size: 20px !important;
+    }
+
+    h5 {
+        font-size: 18px !important;
+    }
+
+    h6 {
+        font-size: 17px !important;
+    }
+
+    /* Smaller code fonts to reduce spilling */
+    code {
+        font-size: 13px !important;
+    }
+
+    pre code {
+        font-size: 13px !important;
+    }
+
+    /* Table and blockquote fonts */
+    table {
+        font-size: 13px !important;
+    }
+
+    th {
+        font-size: 14px !important;
+    }
+
+    td {
+        font-size: 13px !important;
+    }
+
+    blockquote {
+        font-size: 15px !important;
+    }
+
+    /* PREVENT CODE BLOCKS FROM SPLITTING ACROSS PAGES */
+    pre, code {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Also prevent blockquotes from awkward breaks */
+    blockquote {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+}
+
+/* =============================================================================
+   That's it! Material theme handles all colors, spacing, borders, backgrounds.
+   This CSS only adds: custom code font + bigger PDF fonts + heading numbering disabled via mkdocs.yml
+   ============================================================================= */

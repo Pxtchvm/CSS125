@@ -1,0 +1,24 @@
+site_name: CSS125
+nav:
+  - Home: index.md
+  - Lexical Analysis: lexical_analysis.md
+  - Lexical Analysis Implementation: lexical_analysis_implementation.md
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+plugins:
+  - to-pdf:
+      cover_subtitle: notes and stuff
+      author: Petcham
+      copyright: Copyright © Petcham 2025
+      ordered_chapter_level: 0
+extra_css:
+  - css/enhanced.css
