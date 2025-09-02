@@ -1,0 +1,1282 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lexical_analysis/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Lexical Analysis Implementation - CSS125</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/enhanced.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lexical-analysis-implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CSS125" class="md-header__button md-logo" aria-label="CSS125" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSS125
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lexical Analysis Implementation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CSS125" class="md-nav__button md-logo" aria-label="CSS125" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSS125
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lexical_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lexical Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lexical Analysis Implementation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lexical Analysis Implementation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recognition-of-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recognition of Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recognition of Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-recognition-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Recognition Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transition-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transition Diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transition Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elements-of-a-transition-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements of a Transition Diagram:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-recognizing-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Recognizing Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-recognizing-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Recognizing Numbers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functions:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Algorithm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbol Table Integration:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-state-automata-fsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finite State Automata (FSA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Finite State Automata (FSA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-binary-strings-ending-with-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Binary strings ending with "01"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions-answered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions Answered
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide Questions Answered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-how-are-tokens-recognized-by-a-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How are tokens recognized by a lexical analyzer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-what-are-the-elements-of-a-transition-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What are the elements of a transition diagram?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-how-are-lexical-analyzers-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. How are lexical analyzers implemented?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsa-activities-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      FSA Activities Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FSA Activities Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-1-fsa-that-accepts-strings-ending-with-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 1: FSA that accepts strings ending with "01"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-2-fsa-that-accepts-strings-with-an-even-number-of-as" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 2: FSA that accepts strings with an even number of a's
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 3: FSA that accepts strings with an odd number of b's
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 4: FSA that accepts strings containing "ab" as a substring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recognition-of-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recognition of Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recognition of Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-recognition-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Recognition Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transition-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transition Diagrams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transition Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elements-of-a-transition-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements of a Transition Diagram:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-recognizing-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Recognizing Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-recognizing-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Recognizing Numbers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Functions:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Algorithm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbol Table Integration:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-state-automata-fsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finite State Automata (FSA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Finite State Automata (FSA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-binary-strings-ending-with-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Binary strings ending with "01"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions-answered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions Answered
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide Questions Answered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-how-are-tokens-recognized-by-a-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. How are tokens recognized by a lexical analyzer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-what-are-the-elements-of-a-transition-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What are the elements of a transition diagram?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-how-are-lexical-analyzers-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. How are lexical analyzers implemented?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsa-activities-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      FSA Activities Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FSA Activities Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activity-1-fsa-that-accepts-strings-ending-with-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 1: FSA that accepts strings ending with "01"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-2-fsa-that-accepts-strings-with-an-even-number-of-as" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 2: FSA that accepts strings with an even number of a's
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 3: FSA that accepts strings with an odd number of b's
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activity 4: FSA that accepts strings containing "ab" as a substring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lexical-analysis-implementation">Lexical Analysis Implementation</h1>
+<h2 id="overview">Overview</h2>
+<p><strong>Lexical Analysis</strong> is the first phase of a compiler that breaks down source code into meaningful tokens. Think of it as reading a sentence and identifying each word, punctuation mark, and symbol.</p>
+<h3 id="key-concepts">Key Concepts:</h3>
+<ul>
+<li><strong>Token</strong>: A meaningful unit (like keywords, identifiers, operators)</li>
+<li><strong>Lexeme</strong>: The actual string that forms a token (e.g., "if", "x", "+")</li>
+<li><strong>Pattern</strong>: Rules that describe how tokens are formed</li>
+</ul>
+<hr />
+<h2 id="recognition-of-tokens">Recognition of Tokens</h2>
+<h3 id="basic-assumptions">Basic Assumptions</h3>
+<ol>
+<li><strong>Reserved words cannot be used as identifiers</strong><ul>
+<li>Example: You can't name a variable "if" or "while"</li>
+</ul>
+</li>
+<li><strong>Whitespace is ignored</strong><ul>
+<li>Spaces, tabs, and newlines don't affect token recognition</li>
+</ul>
+</li>
+</ol>
+<h3 id="token-recognition-process">Token Recognition Process</h3>
+<ol>
+<li>
+<p><strong>Order token patterns by precedence</strong></p>
+<ul>
+<li>Keywords before identifiers</li>
+<li>Longer operators before shorter ones ("&gt;=" before "&gt;")</li>
+</ul>
+</li>
+<li>
+<p><strong>Use two pointers:</strong></p>
+<ul>
+<li><strong>Lexeme-beginning pointer</strong>: Marks start of current token</li>
+<li><strong>Forward pointer</strong>: Scans ahead through input</li>
+</ul>
+</li>
+<li>
+<p><strong>Recognition steps:</strong></p>
+</li>
+</ol>
+<pre><code>Input: &quot;if (x &gt;= 10)&quot;
+
+Step 1: Scan &quot;if&quot; → Recognized as KEYWORD
+Step 2: Skip whitespace
+Step 3: Scan &quot;(&quot; → Recognized as LEFT_PAREN
+Step 4: Skip whitespace
+Step 5: Scan &quot;x&quot; → Recognized as IDENTIFIER
+Step 6: Skip whitespace
+Step 7: Scan &quot;&gt;=&quot; → Recognized as GTE_OPERATOR
+Step 8: Skip whitespace
+Step 9: Scan &quot;10&quot; → Recognized as NUMBER
+Step 10: Scan &quot;)&quot; → Recognized as RIGHT_PAREN
+</code></pre>
+<hr />
+<h2 id="transition-diagrams">Transition Diagrams</h2>
+<p>A <strong>transition diagram</strong> is a visual representation of how a lexical analyzer recognizes tokens.</p>
+<h3 id="elements-of-a-transition-diagram">Elements of a Transition Diagram:</h3>
+<ol>
+<li><strong>States</strong> (circles): Represent current position in recognition</li>
+<li><strong>Edges/Transitions</strong> (arrows): Show movement between states</li>
+<li><strong>Symbols</strong> (labels on arrows): Characters that trigger transitions</li>
+<li><strong>Start state</strong>: Where recognition begins</li>
+<li><strong>Accepting states</strong>: Where valid tokens are recognized</li>
+<li><strong>Determinism</strong>: Each state has at most one transition for each input symbol</li>
+</ol>
+<h3 id="example-recognizing-identifiers">Example: Recognizing Identifiers</h3>
+<pre><code>Input: Letters followed by letters/digits
+
+    letter
+[Start] ──────→ [State1] ──────→ [Accept]
+                   ↑        letter/digit
+                   └─────────────────┘
+</code></pre>
+<h3 id="example-recognizing-numbers">Example: Recognizing Numbers</h3>
+<pre><code>Input: Digits, possibly with decimal point
+
+    digit        digit
+[Start] ──────→ [State1] ──────→ [Accept]
+                   │
+                   │ '.'
+                   ↓        digit
+                 [State2] ──────→ [State3] → [Accept]
+                            ↑
+                            └──── digit
+</code></pre>
+<hr />
+<h2 id="implementation-details">Implementation Details</h2>
+<h3 id="core-functions">Core Functions:</h3>
+<ul>
+<li><strong><code>nextchar()</code></strong>: Reads next character, advances forward pointer</li>
+<li><strong>State management</strong>: Each state has its own code segment</li>
+<li><strong>Backtracking</strong>: When recognition fails, return to beginning</li>
+</ul>
+<h3 id="implementation-algorithm">Implementation Algorithm:</h3>
+<pre><code class="language-pseudocode">function getNextToken():
+    lexeme_begin = forward_pointer
+
+    while (not end_of_input):
+        current_char = nextchar()
+
+        if (valid_transition_exists):
+            move_to_next_state()
+        else:
+            if (current_state_is_accepting):
+                retract_one_character()
+                return create_token(current_lexeme)
+            else:
+                reset_to_beginning()
+                try_next_pattern()
+
+    return END_OF_FILE_TOKEN
+</code></pre>
+<h3 id="symbol-table-integration">Symbol Table Integration:</h3>
+<ul>
+<li><strong>Identifiers</strong> must be stored in symbol table during lexical analysis</li>
+<li><strong>Keywords</strong> can be stored in a hash table for quick lookup</li>
+<li>This reduces the number of states needed in transition diagrams</li>
+</ul>
+<hr />
+<h2 id="finite-state-automata-fsa">Finite State Automata (FSA)</h2>
+<p>An <strong>FSA</strong> is a mathematical model for recognizing patterns in input.</p>
+<h3 id="components">Components:</h3>
+<ol>
+<li><strong>States</strong>: Finite set of conditions</li>
+<li><strong>Alphabet</strong>: Set of input symbols</li>
+<li><strong>Transition function</strong>: Maps (state, symbol) → state</li>
+<li><strong>Start state</strong>: Initial state</li>
+<li><strong>Accepting states</strong>: States that recognize valid input</li>
+</ol>
+<h3 id="example-binary-strings-ending-with-01">Example: Binary strings ending with "01"</h3>
+<pre><code>Input alphabet: {0, 1}
+
+       0        0
+[q0] ────→ [q1] ────→ [q1]
+ │          │
+ │1         │1
+ ↓          ↓
+[q0] ←──── [q2] ──── ((q3))
+      0         1
+</code></pre>
+<ul>
+<li>q0: Start state</li>
+<li>q3: Accepting state (double circle)</li>
+<li>Accepts: "01", "001", "101", "1001", etc.</li>
+</ul>
+<hr />
+<h2 id="guide-questions-answered">Guide Questions Answered</h2>
+<h3 id="1-how-are-tokens-recognized-by-a-lexical-analyzer">1. How are tokens recognized by a lexical analyzer?</h3>
+<p>Tokens are recognized through a <strong>pattern matching process</strong> using:</p>
+<ul>
+<li><strong>Transition diagrams</strong> or <strong>finite state automata</strong> that define valid token patterns</li>
+<li><strong>Two-pointer technique</strong> (lexeme-beginning and forward pointers) to scan input</li>
+<li><strong>Priority-based matching</strong> where patterns are tried in order of precedence</li>
+<li><strong>Backtracking</strong> when invalid patterns are encountered</li>
+</ul>
+<p><strong>Example Process:</strong></p>
+<pre><code>Input: &quot;count = 42&quot;
+
+1. Scan &quot;count&quot; → matches identifier pattern → TOKEN: ID(&quot;count&quot;)
+2. Skip whitespace
+3. Scan &quot;=&quot; → matches assignment operator → TOKEN: ASSIGN
+4. Skip whitespace  
+5. Scan &quot;42&quot; → matches number pattern → TOKEN: NUM(42)
+</code></pre>
+<h3 id="2-what-are-the-elements-of-a-transition-diagram">2. What are the elements of a transition diagram?</h3>
+<p>The key elements are:</p>
+<ol>
+<li><strong>States</strong> (nodes/circles): Represent current position in pattern recognition</li>
+<li><strong>Edges/Transitions</strong> (arrows): Show valid moves between states based on input</li>
+<li><strong>Symbols</strong> (edge labels): Characters or character classes that trigger transitions</li>
+<li><strong>Start state</strong>: Initial state where recognition begins</li>
+<li><strong>Accepting states</strong>: Final states that indicate successful token recognition</li>
+<li><strong>Determinism</strong>: Property ensuring unique transitions (no ambiguity)</li>
+</ol>
+<p><strong>Visual Example:</strong></p>
+<pre><code>Recognizing floating-point numbers:
+
+    digit     digit        '.'       digit
+[Start] → [Integer] → [DecPoint] → [Float]
+           ↑                        ↑
+           └── digit ────────────────┘
+</code></pre>
+<h3 id="3-how-are-lexical-analyzers-implemented">3. How are lexical analyzers implemented?</h3>
+<p>Lexical analyzers are implemented using:</p>
+<p><strong>A. State-driven approach:</strong></p>
+<ul>
+<li>Each state corresponds to a code segment</li>
+<li>Transitions change program state</li>
+<li><code>nextchar()</code> function advances through input</li>
+</ul>
+<p><strong>B. Table-driven approach:</strong></p>
+<ul>
+<li>Transition table maps (current_state, input_symbol) → next_state</li>
+<li>Generic driver reads table and processes input</li>
+</ul>
+<p><strong>C. Key implementation strategies:</strong></p>
+<ul>
+<li><strong>Error handling</strong>: Backtrack when invalid patterns are found</li>
+<li><strong>Symbol table integration</strong>: Store identifiers as they're recognized  </li>
+<li><strong>Keyword handling</strong>: Pre-populate reserved words to distinguish from identifiers</li>
+<li><strong>Buffer management</strong>: Efficiently handle large input files</li>
+</ul>
+<p><strong>Sample Implementation Structure:</strong></p>
+<pre><code class="language-pseudocode">class LexicalAnalyzer:
+    input_buffer
+    forward_pointer
+    lexeme_begin
+    symbol_table
+    keyword_table
+
+    function getToken():
+        skip_whitespace()
+        lexeme_begin = forward_pointer
+
+        # Try each token pattern in priority order
+        if (try_keyword_pattern()):
+            return keyword_token
+        elif (try_identifier_pattern()):
+            return identifier_token
+        elif (try_number_pattern()):
+            return number_token
+        # ... other patterns
+        else:
+            return error_token
+</code></pre>
+<hr />
+<h2 id="fsa-activities-solutions">FSA Activities Solutions</h2>
+<h3 id="activity-1-fsa-that-accepts-strings-ending-with-01">Activity 1: FSA that accepts strings ending with "01"</h3>
+<pre><code>States: {q0, q1, q2, q3}
+Start state: q0
+Accepting state: q3
+Alphabet: {0, 1}
+
+Transitions:
+       0        1
+q0 → q1,    q0 → q0
+q1 → q1,    q1 → q2  
+q2 → q1,    q2 → q0
+q3 → q1,    q3 → q0 (q3 is accepting)
+
+Diagram:
+       0        0
+[q0] ────→ [q1] ────→ [q1]
+ │ ↑        │
+ │ │0       │1
+ │1└──── [q2] ──────→ ((q3))
+ ↓           1
+[q0]
+
+Actually, let me correct this:
+
+       0        0
+[q0] ────→ [q1] ────→ [q1]
+ │          │
+ │1         │1
+ ↓          ↓
+[q0] ←──── [q2] ──── ((q3))
+      0         1
+</code></pre>
+<p><strong>Test cases:</strong>
+- "01" ✓ (accepts)
+- "001" ✓ (accepts) 
+- "101" ✓ (accepts)
+- "10" ✗ (rejects)
+- "11" ✗ (rejects)</p>
+<h3 id="activity-2-fsa-that-accepts-strings-with-an-even-number-of-as">Activity 2: FSA that accepts strings with an even number of a's</h3>
+<pre><code>States: {q0, q1}
+Start state: q0 (also accepting - 0 is even)
+Accepting state: q0
+Alphabet: {a, b}
+
+Transitions:
+q0 → q1 (on 'a'), q0 → q0 (on 'b')
+q1 → q0 (on 'a'), q1 → q1 (on 'b')
+
+Diagram:
+        a
+((q0)) ←→ [q1]
+  ↑         ↑
+  │b        │b  
+  └─────────┘
+</code></pre>
+<p><strong>Test cases:</strong>
+- "" ✓ (0 a's - even)
+- "aa" ✓ (2 a's - even)
+- "bab" ✗ (1 a - odd)
+- "baab" ✓ (2 a's - even)</p>
+<h3 id="activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs">Activity 3: FSA that accepts strings with an odd number of b's</h3>
+<pre><code>States: {q0, q1}
+Start state: q0  
+Accepting state: q1
+Alphabet: {a, b}
+
+Transitions:
+q0 → q0 (on 'a'), q0 → q1 (on 'b')
+q1 → q1 (on 'a'), q1 → q0 (on 'b')
+
+Diagram:
+         b
+[q0] ←→ ((q1))
+ ↑         ↑
+ │a        │a
+ └─────────┘
+</code></pre>
+<p><strong>Test cases:</strong>
+- "b" ✓ (1 b - odd)
+- "bb" ✗ (2 b's - even) 
+- "aba" ✓ (1 b - odd)
+- "abab" ✗ (2 b's - even)</p>
+<h3 id="activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring">Activity 4: FSA that accepts strings containing "ab" as a substring</h3>
+<pre><code>States: {q0, q1, q2}
+Start state: q0
+Accepting state: q2
+Alphabet: {a, b}
+
+Transitions:
+q0 → q1 (on 'a'), q0 → q0 (on 'b')
+q1 → q1 (on 'a'), q1 → q2 (on 'b')  
+q2 → q2 (on 'a'), q2 → q2 (on 'b')
+
+Diagram:
+       a        b
+[q0] ────→ [q1] ────→ ((q2))
+ │ ↑                    ↑
+ │b│a                   │a,b
+ ↓ └────────────────────┘
+[q0]
+</code></pre>
+<p><strong>Test cases:</strong>
+- "ab" ✓ (contains "ab")
+- "aab" ✓ (contains "ab") 
+- "abbb" ✓ (contains "ab")
+- "ba" ✗ (doesn't contain "ab")
+- "a" ✗ (doesn't contain "ab")</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Lexical analysis is the foundation of compilation, transforming raw source code into meaningful tokens through:</p>
+<ul>
+<li><strong>Pattern matching</strong> using FSAs and transition diagrams</li>
+<li><strong>Systematic scanning</strong> with pointer-based techniques  </li>
+<li><strong>Priority-based recognition</strong> to handle conflicts</li>
+<li><strong>Integration with symbol tables</strong> for identifier management</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

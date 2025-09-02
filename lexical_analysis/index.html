@@ -1,0 +1,1728 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../lexical_analysis_implementation/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Lexical Analysis - CSS125</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/enhanced.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lexical-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CSS125" class="md-header__button md-logo" aria-label="CSS125" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSS125
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lexical Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CSS125" class="md-nav__button md-logo" aria-label="CSS125" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSS125
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lexical Analysis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lexical Analysis
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-the-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Role of the Lexical Analyzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Role of the Lexical Analyzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-in-lexical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues in Lexical Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Issues in Lexical Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-separate-parsing-from-tokenization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Separate Parsing from Tokenization?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-patterns-and-lexemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tokens, Patterns, and Lexemes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tokens, Patterns, and Lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Breakdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortran-statement-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fortran Statement Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lexical Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are Lexical Errors?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-recovery-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Recovery Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifications-of-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifications of Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifications of Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Set Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Set Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union-l1-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union (L₁ ∪ L₂)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenation-l1l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation (L₁L₂)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (L*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (L⁺)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Symbols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-in-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples in Action
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operator Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operator Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precedence-order-highest-to-lowest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedence Order (Highest to Lowest)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-showing-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples Showing Precedence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-recognition-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Recognition Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-token-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Token Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions-complete-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions - Complete Answers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide Questions - Complete Answers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-the-role-of-the-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the role of the lexical analyzer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-why-should-parsing-be-separated-from-lexical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Why should parsing be separated from lexical analysis?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What are tokens, patterns, and lexemes and what are the differences between these three?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-what-are-lexical-errors-and-how" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What are lexical errors and how
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-how-is-a-lexical-definition-of-a-language-specified" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How is a lexical definition of a language specified?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lexical_analysis_implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lexical Analysis Implementation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-role-of-the-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Role of the Lexical Analyzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Role of the Lexical Analyzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-in-lexical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues in Lexical Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Issues in Lexical Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-separate-parsing-from-tokenization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Separate Parsing from Tokenization?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-patterns-and-lexemes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tokens, Patterns, and Lexemes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tokens, Patterns, and Lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Breakdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fortran-statement-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fortran Statement Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lexical Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Are Lexical Errors?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-recovery-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Recovery Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifications-of-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specifications of Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifications of Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Set Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="String Set Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union-l1-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union (L₁ ∪ L₂)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concatenation-l1l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concatenation (L₁L₂)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (L*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (L⁺)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regular-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Symbols
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Patterns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-in-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples in Action
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operator Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operator Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precedence-order-highest-to-lowest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedence Order (Highest to Lowest)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-showing-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples Showing Precedence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-recognition-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token Recognition Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-token-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Token Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guide-questions-complete-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guide Questions - Complete Answers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide Questions - Complete Answers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-the-role-of-the-lexical-analyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the role of the lexical analyzer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-why-should-parsing-be-separated-from-lexical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Why should parsing be separated from lexical analysis?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What are tokens, patterns, and lexemes and what are the differences between these three?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-what-are-lexical-errors-and-how" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What are lexical errors and how
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-how-is-a-lexical-definition-of-a-language-specified" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How is a lexical definition of a language specified?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lexical-analysis">Lexical Analysis</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Understand the role of the lexical analyzer in compilation</li>
+<li>Learn about tokens, patterns, and lexemes</li>
+<li>Explore lexical error handling</li>
+<li>Master regular expressions for token specification</li>
+</ul>
+<hr />
+<h2 id="guide-questions">Guide Questions</h2>
+<ol>
+<li><strong>What is the role of the lexical analyzer?</strong></li>
+<li><strong>Why should parsing be separated from lexical analysis?</strong></li>
+<li><strong>What are tokens, patterns, and lexemes and what are the differences between these three?</strong></li>
+<li><strong>What are lexical errors and how are they handled?</strong></li>
+<li><strong>How is a lexical definition of a language specified?</strong></li>
+</ol>
+<hr />
+<h2 id="the-role-of-the-lexical-analyzer">The Role of the Lexical Analyzer</h2>
+<p>The lexical analyzer serves as the <strong>first phase of the compiler</strong> and performs several crucial functions:</p>
+<ul>
+<li><strong>Converts raw text into tokens</strong> - Transforms the source code from a stream of characters into meaningful units</li>
+<li><strong>Strips out whitespace and comments</strong> - Removes unnecessary formatting and documentation that doesn't affect program logic</li>
+<li><strong>Correlates error messages</strong> - Links compiler errors back to specific locations in the source code</li>
+<li><strong>Tracks position information</strong> - Maintains line numbers and column numbers for debugging purposes</li>
+</ul>
+<h3 id="example-flow">Example Flow</h3>
+<pre><code>Source Code: &quot;int x = 42; // this is a variable&quot;
+↓
+Lexical Analyzer
+↓
+Tokens: [INT_KEYWORD, IDENTIFIER(x), ASSIGN_OP, NUMBER(42), SEMICOLON]
+</code></pre>
+<hr />
+<h2 id="issues-in-lexical-analysis">Issues in Lexical Analysis</h2>
+<h3 id="why-separate-parsing-from-tokenization">Why Separate Parsing from Tokenization?</h3>
+<p><strong>1. Simplicity in Design</strong></p>
+<ul>
+<li>Each phase has a single, well-defined responsibility</li>
+<li>Lexical analyzer focuses only on character-level recognition</li>
+<li>Parser focuses only on grammatical structure</li>
+</ul>
+<p><strong>2. Improvement in Efficiency</strong></p>
+<ul>
+<li>Specialized algorithms for each phase</li>
+<li>Better performance through focused optimization</li>
+<li>Reduced complexity in each component</li>
+</ul>
+<p><strong>3. Compiler Portability Enhanced</strong></p>
+<ul>
+<li>Easy to adapt lexical analyzer for different character sets</li>
+<li>Grammar rules remain unchanged across platforms</li>
+<li>Modular design allows independent updates</li>
+</ul>
+<hr />
+<h2 id="tokens-patterns-and-lexemes">Tokens, Patterns, and Lexemes</h2>
+<h3 id="definitions">Definitions</h3>
+<ul>
+<li><strong>Token</strong> - A category or label for lexical units (like a part of speech in grammar)</li>
+<li><strong>Pattern</strong> - The rule or regular expression that defines how to recognize a token</li>
+<li><strong>Lexeme</strong> - The actual text from source code that matches a token's pattern</li>
+</ul>
+<h3 id="example-breakdown">Example Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token</strong></td>
+<td><code>identifier</code></td>
+<td>Category name</td>
+</tr>
+<tr>
+<td><strong>Pattern</strong></td>
+<td><code>/[A-Za-z_][A-Za-z0-9_]*</code></td>
+<td>Rule for recognition</td>
+</tr>
+<tr>
+<td><strong>Lexeme</strong></td>
+<td><code>"nCount"</code></td>
+<td>Actual text found</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fortran-statement-example">Fortran Statement Example</h3>
+<p>For the statement: <code>E = M * C ** 2</code></p>
+<table>
+<thead>
+<tr>
+<th>Lexeme</th>
+<th>Token</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E</code></td>
+<td><code>&lt;id, pointer to symbol-table entry for E&gt;</code></td>
+<td>Variable identifier</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td><code>&lt;assign_op&gt;</code></td>
+<td>Assignment operator</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td><code>&lt;id, pointer to symbol-table entry for M&gt;</code></td>
+<td>Variable identifier</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>&lt;mult_op&gt;</code></td>
+<td>Multiplication operator</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td><code>&lt;id, pointer to symbol-table entry for C&gt;</code></td>
+<td>Variable identifier</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td><code>&lt;exp_op&gt;</code></td>
+<td>Exponentiation operator</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>&lt;number, integer value 2&gt;</code></td>
+<td>Numeric literal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="important-notes">Important Notes</h3>
+<ul>
+<li><strong>Tokens serve as terminal symbols</strong> in a language's grammar</li>
+<li><strong>Reserved strings</strong> are lexemes with specific meaning (keywords like <code>if</code>, <code>while</code>)</li>
+<li><strong>Attributes</strong> provide additional information when multiple lexemes match the same token pattern</li>
+</ul>
+<hr />
+<h2 id="lexical-errors">Lexical Errors</h2>
+<h3 id="what-are-lexical-errors">What Are Lexical Errors?</h3>
+<ul>
+<li>Occur when <strong>no pattern matches</strong> the current sequence of characters</li>
+<li>Few errors are detectable at lexical level alone</li>
+<li>Example: <code>fi(a == f (x))</code> - <code>fi</code> might be a typo for <code>if</code></li>
+</ul>
+<h3 id="error-recovery-strategies">Error Recovery Strategies</h3>
+<p><strong>1. Panic Mode</strong></p>
+<ul>
+<li>Delete characters until a well-formed token can be created</li>
+<li>Simple but may skip over multiple errors</li>
+</ul>
+<p><strong>2. Deletion</strong></p>
+<ul>
+<li>Remove one character from the problematic lexeme</li>
+<li>Try to match again with shortened string</li>
+</ul>
+<p><strong>3. Insertion</strong></p>
+<ul>
+<li>Add a character to the current lexeme</li>
+<li>Attempt to create valid token</li>
+</ul>
+<p><strong>4. Replacement</strong></p>
+<ul>
+<li>Replace one character in the current lexeme</li>
+<li>Most common for typos</li>
+</ul>
+<p><strong>5. Transposition</strong></p>
+<ul>
+<li>Swap adjacent characters</li>
+<li>Handles common typing mistakes</li>
+</ul>
+<hr />
+<h2 id="specifications-of-tokens">Specifications of Tokens</h2>
+<p>Tokens are specified using <strong>regular expressions</strong> - mathematical formulas that describe text patterns.</p>
+<h3 id="basic-concepts">Basic Concepts</h3>
+<p><strong>Alphabet (Σ)</strong></p>
+<ul>
+<li>Finite set of symbols</li>
+<li>Examples: ASCII (128 characters), Extended ASCII (256 characters)</li>
+</ul>
+<p><strong>String</strong></p>
+<ul>
+<li>Finite sequence of symbols from an alphabet</li>
+<li>Each symbol must be from the defined alphabet Σ</li>
+</ul>
+<p><strong>String Length</strong></p>
+<ul>
+<li>Number of symbols in string S</li>
+<li>Denoted by |S|</li>
+<li>Empty string (ε) has length 0</li>
+</ul>
+<p><strong>Language</strong></p>
+<ul>
+<li>Set of strings defined over an alphabet</li>
+<li>If language L is over alphabet Σ, then L ⊆ Σ*</li>
+<li>Σ* = set of all possible strings from symbols in Σ</li>
+</ul>
+<hr />
+<h2 id="string-set-operations">String Set Operations</h2>
+<h3 id="union-l1-l2">Union (L₁ ∪ L₂)</h3>
+<ul>
+<li><strong>Definition</strong>: Set of strings in either L₁ or L₂ (or both)</li>
+<li><strong>Example</strong>: If L₁ = {cat, dog} and L₂ = {bird, cat}, then L₁ ∪ L₂ = {cat, dog, bird}</li>
+</ul>
+<h3 id="concatenation-l1l2">Concatenation (L₁L₂)</h3>
+<ul>
+<li><strong>Definition</strong>: Set of strings formed by concatenating each string in L₁ with each string in L₂</li>
+<li><strong>Example</strong>: If L₁ = {a, b} and L₂ = {c, d}, then L₁L₂ = {ac, ad, bc, bd}</li>
+</ul>
+<h3 id="kleene-closure-l">Kleene Closure (L*)</h3>
+<ul>
+<li><strong>Definition</strong>: Set containing ε and all strings formed by concatenating zero or more strings from L</li>
+<li><strong>Example</strong>: If L = {a, b}, then L* = {ε, a, b, aa, ab, ba, bb, aaa, aab, ...}</li>
+</ul>
+<h3 id="positive-closure-l">Positive Closure (L⁺)</h3>
+<ul>
+<li><strong>Definition</strong>: Set of all strings formed by concatenating one or more strings from L</li>
+<li><strong>Example</strong>: If L = {a, b}, then L⁺ = {a, b, aa, ab, ba, bb, aaa, aab, ...}</li>
+<li><strong>Note</strong>: L⁺ = LL<em> (L concatenated with L</em>)</li>
+</ul>
+<hr />
+<h2 id="regular-expressions">Regular Expressions</h2>
+<p>Regular expressions are patterns that match strings in a language. They use special symbols to describe text patterns.</p>
+<h3 id="basic-symbols">Basic Symbols</h3>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>Literal character 'a'</td>
+<td>Matches exactly 'a'</td>
+</tr>
+<tr>
+<td><code>ε</code></td>
+<td>Empty string</td>
+<td>Matches nothing (zero length)</td>
+</tr>
+<tr>
+<td><code>∅</code></td>
+<td>Empty set</td>
+<td>Matches no strings</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operators">Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>|</code></td>
+<td>Union/OR</td>
+<td>Either pattern</td>
+<td><code>a|b</code> matches 'a' or 'b'</td>
+</tr>
+<tr>
+<td><code>•</code> or concatenation</td>
+<td>Concatenation</td>
+<td>One after another</td>
+<td><code>ab</code> matches 'a' followed by 'b'</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Kleene Star</td>
+<td>Zero or more</td>
+<td><code>a*</code> matches '', 'a', 'aa', 'aaa'...</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Plus</td>
+<td>One or more</td>
+<td><code>a+</code> matches 'a', 'aa', 'aaa'...</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Question</td>
+<td>Zero or one</td>
+<td><code>a?</code> matches '' or 'a'</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Character class</td>
+<td>Any character inside</td>
+<td><code>[abc]</code> matches 'a', 'b', or 'c'</td>
+</tr>
+<tr>
+<td><code>[^]</code></td>
+<td>Negated class</td>
+<td>Any character NOT inside</td>
+<td><code>[^abc]</code> matches any char except 'a', 'b', 'c'</td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-patterns">Common Patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Regular Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identifier</td>
+<td><code>[a-zA-Z_][a-zA-Z0-9_]*</code></td>
+<td>Letter/underscore followed by letters/digits/underscores</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td><code>[0-9]+</code></td>
+<td>One or more digits</td>
+</tr>
+<tr>
+<td>Float</td>
+<td><code>[0-9]+\.[0-9]+</code></td>
+<td>Digits, dot, digits</td>
+</tr>
+<tr>
+<td>Whitespace</td>
+<td><code>[ \t\n\r]+</code></td>
+<td>One or more space characters</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-in-action">Examples in Action</h3>
+<pre><code>Pattern: [0-9]+
+Matches: &quot;42&quot;, &quot;123&quot;, &quot;7&quot;
+Doesn't match: &quot;abc&quot;, &quot;12.5&quot;
+
+Pattern: [a-zA-Z][a-zA-Z0-9]*
+Matches: &quot;x&quot;, &quot;variable1&quot;, &quot;myVar&quot;
+Doesn't match: &quot;123abc&quot;, &quot;_private&quot;
+</code></pre>
+<hr />
+<h2 id="operator-precedence">Operator Precedence</h2>
+<p>When building regular expressions, operators have different precedence levels (like mathematical operations).</p>
+<h3 id="precedence-order-highest-to-lowest">Precedence Order (Highest to Lowest)</h3>
+<ol>
+<li>
+<p><strong>Parentheses <code>()</code></strong> - Highest precedence</p>
+</li>
+<li>
+<p>Used for grouping</p>
+</li>
+<li>
+<p>Example: <code>(a|b)*</code> vs <code>a|b*</code></p>
+</li>
+<li>
+<p><strong>Closure operators <code>*</code>, <code>+</code>, <code>?</code></strong></p>
+</li>
+<li>
+<p>Apply to immediately preceding element</p>
+</li>
+<li>
+<p>Example: <code>ab*</code> means <code>a</code> followed by zero or more <code>b</code>s</p>
+</li>
+<li>
+<p><strong>Concatenation (implicit)</strong></p>
+</li>
+<li>
+<p>Items next to each other are concatenated</p>
+</li>
+<li>
+<p>Example: <code>abc</code> means <code>a</code> then <code>b</code> then <code>c</code></p>
+</li>
+<li>
+<p><strong>Union/OR <code>|</code></strong> - Lowest precedence</p>
+</li>
+<li>Separates alternative patterns</li>
+<li>Example: <code>a|bc</code> means <code>a</code> OR <code>bc</code></li>
+</ol>
+<h3 id="examples-showing-precedence">Examples Showing Precedence</h3>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Interpretation</th>
+<th>Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a|b*</code></td>
+<td><code>a</code> OR (zero or more <code>b</code>s)</td>
+<td>"a", "", "b", "bb", "bbb"...</td>
+</tr>
+<tr>
+<td><code>(a|b)*</code></td>
+<td>Zero or more of (<code>a</code> OR <code>b</code>)</td>
+<td>"", "a", "b", "ab", "ba", "abb"...</td>
+</tr>
+<tr>
+<td><code>ab|c</code></td>
+<td>(<code>ab</code>) OR <code>c</code></td>
+<td>"ab", "c"</td>
+</tr>
+<tr>
+<td><code>a(b|c)</code></td>
+<td><code>a</code> followed by (<code>b</code> OR <code>c</code>)</td>
+<td>"ab", "ac"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="best-practice">Best Practice</h3>
+<ul>
+<li><strong>Use parentheses liberally</strong> to make intentions clear</li>
+<li><strong>When in doubt, add parentheses</strong> to avoid confusion</li>
+<li>Example: <code>(a|b)*(c|d)+</code> is clearer than <code>a|b*c|d+</code></li>
+</ul>
+<hr />
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="token-recognition-process">Token Recognition Process</h3>
+<ol>
+<li><strong>Read characters</strong> from source code</li>
+<li><strong>Apply patterns</strong> using regular expressions</li>
+<li><strong>Match longest possible</strong> lexeme</li>
+<li><strong>Generate token</strong> with attributes</li>
+<li><strong>Handle errors</strong> if no pattern matches</li>
+<li><strong>Repeat</strong> until end of input</li>
+</ol>
+<h3 id="common-token-types">Common Token Types</h3>
+<ul>
+<li><strong>Keywords</strong>: <code>if</code>, <code>while</code>, <code>class</code>, <code>public</code></li>
+<li><strong>Identifiers</strong>: Variable and function names</li>
+<li><strong>Literals</strong>: Numbers, strings, booleans</li>
+<li><strong>Operators</strong>: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
+<li><strong>Delimiters</strong>: <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>;</code>, <code>,</code></li>
+<li><strong>Whitespace</strong>: Spaces, tabs, newlines (usually ignored)</li>
+</ul>
+<hr />
+<h2 id="guide-questions-complete-answers">Guide Questions - Complete Answers</h2>
+<h3 id="1-what-is-the-role-of-the-lexical-analyzer">1. What is the role of the lexical analyzer?</h3>
+<p>The lexical analyzer serves as the <strong>first phase of the compiler</strong> with four main roles:</p>
+<ul>
+<li><strong>Tokenization</strong>: Converts raw source code text into meaningful tokens</li>
+<li><strong>Cleaning</strong>: Strips out whitespace, comments, and other non-essential characters</li>
+<li><strong>Position tracking</strong>: Maintains line and column numbers for error reporting</li>
+<li><strong>Error correlation</strong>: Links compiler messages back to specific source code locations</li>
+</ul>
+<h3 id="2-why-should-parsing-be-separated-from-lexical-analysis">2. Why should parsing be separated from lexical analysis?</h3>
+<p>Separation provides three key benefits:</p>
+<ul>
+<li><strong>Simplicity in design</strong>: Each phase has a single, focused responsibility - lexical analysis handles character recognition, parsing handles grammar structure</li>
+<li><strong>Improved efficiency</strong>: Specialized algorithms can be optimized for each specific task</li>
+<li><strong>Enhanced portability</strong>: The lexical analyzer can be easily adapted for different character sets while grammar rules remain unchanged across platforms</li>
+</ul>
+<h3 id="3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three">3. What are tokens, patterns, and lexemes and what are the differences between these three?</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token</strong></td>
+<td>A category or label for lexical units (like grammatical parts of speech)</td>
+<td><code>identifier</code>, <code>number</code>, <code>operator</code></td>
+</tr>
+<tr>
+<td><strong>Pattern</strong></td>
+<td>The rule or regular expression defining how to recognize a token</td>
+<td><code>/[A-Za-z_][A-Za-z0-9_]*/</code></td>
+</tr>
+<tr>
+<td><strong>Lexeme</strong></td>
+<td>The actual text from source code that matches a token's pattern</td>
+<td><code>"count"</code>, <code>"42"</code>, <code>"+"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key difference</strong>: Tokens are categories, patterns are recognition rules, lexemes are actual text instances.</p>
+<h3 id="4-what-are-lexical-errors-and-how">4. What are lexical errors and how</h3>
+<p>are they handled?</p>
+<p><strong>Lexical errors</strong> occur when no defined pattern matches the current sequence of characters in the source code.</p>
+<p><strong>Five handling strategies</strong>:</p>
+<ol>
+<li><strong>Panic mode</strong>: Delete characters until a valid token can be formed</li>
+<li><strong>Deletion</strong>: Remove one character from the problematic lexeme</li>
+<li><strong>Insertion</strong>: Add a character to create a valid token</li>
+<li><strong>Replacement</strong>: Replace one character (common for typos)</li>
+<li><strong>Transposition</strong>: Swap adjacent characters (handles typing mistakes)</li>
+</ol>
+<h3 id="5-how-is-a-lexical-definition-of-a-language-specified">5. How is a lexical definition of a language specified?</h3>
+<p>Lexical definitions use <strong>regular expressions</strong> built on these foundations:</p>
+<ul>
+<li><strong>Alphabet (Σ)</strong>: Finite set of symbols (e.g., ASCII characters)</li>
+<li><strong>Strings</strong>: Finite sequences of symbols from the alphabet</li>
+<li><strong>Languages</strong>: Sets of strings defined over an alphabet</li>
+<li><strong>Regular expressions</strong>: Mathematical patterns using operators like <code>*</code> (zero or more), <code>+</code> (one or more), <code>|</code> (union), and <code>[]</code> (character classes)</li>
+</ul>
+<p><strong>Example specification</strong>:</p>
+<pre><code>identifier: [a-zA-Z_][a-zA-Z0-9_]*
+number: [0-9]+
+whitespace: [ \t\n\r]+
+</code></pre>
+<hr />
+<p><em>Remember: The lexical analyzer is your first line of defense in compilation - it transforms messy text into clean, categorized tokens that the parser can work with!</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
