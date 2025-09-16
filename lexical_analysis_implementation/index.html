@@ -12,6 +12,8 @@
         <link rel="prev" href="../lexical_analysis/">
       
       
+        <link rel="next" href="../syntax_analysis/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
@@ -195,7 +197,7 @@
   
   
   <span class="md-ellipsis">
-    Home
+    Introduction to Principles of Programming Languages
     
   </span>
   
@@ -284,19 +286,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-is-lexical-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      What is Lexical Analysis?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+    <nav class="md-nav" aria-label="What is Lexical Analysis?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-concepts" class="md-nav__link">
+  <a href="#real-world-analogy" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts:
+      Real-World Analogy
     </span>
   </a>
   
@@ -335,6 +337,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#detailed-example-of-token-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Example of Token Recognition
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -351,27 +362,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#what-are-transition-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are Transition Diagrams?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#elements-of-a-transition-diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      Elements of a Transition Diagram:
+      Elements of a Transition Diagram
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-recognizing-identifiers" class="md-nav__link">
+  <a href="#example-transition-diagram-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Recognizing Identifiers
+      Example Transition Diagram Analysis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-recognizing-numbers" class="md-nav__link">
+  <a href="#real-world-application-identifier-recognition" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Recognizing Numbers
+      Real-World Application: Identifier Recognition
     </span>
   </a>
   
@@ -393,27 +413,126 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-functions" class="md-nav__link">
+  <a href="#code-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Functions:
+      Code Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-state-based-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. State-Based Processing
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementation-algorithm" class="md-nav__link">
+  <a href="#2-state-transitions" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation Algorithm:
+      2. State Transitions
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#symbol-table-integration" class="md-nav__link">
+  <a href="#3-character-processing-function" class="md-nav__link">
     <span class="md-ellipsis">
-      Symbol Table Integration:
+      3. Character Processing Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pointer Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-critical-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Critical Pointers:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Rules:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-implementation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Implementation Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-and-symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifiers and Symbol Table Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifiers and Symbol Table Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifier-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifier-vs-keyword-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier vs Keyword Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-table-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbol Table Operations
     </span>
   </a>
   
@@ -435,60 +554,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#definition-and-components" class="md-nav__link">
     <span class="md-ellipsis">
-      Components:
+      Definition and Components
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-binary-strings-ending-with-01" class="md-nav__link">
+  <a href="#mathematical-notation" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Binary strings ending with "01"
+      Mathematical Notation
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guide-questions-answered" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#practical-fsa-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Guide Questions Answered
+      Practical FSA Examples
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Guide Questions Answered">
+    <nav class="md-nav" aria-label="Practical FSA Examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-how-are-tokens-recognized-by-a-lexical-analyzer" class="md-nav__link">
+  <a href="#fsa-1-strings-ending-with-01" class="md-nav__link">
     <span class="md-ellipsis">
-      1. How are tokens recognized by a lexical analyzer?
+      FSA 1: Strings ending with "01"
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-what-are-the-elements-of-a-transition-diagram" class="md-nav__link">
+  <a href="#fsa-2-even-number-of-as" class="md-nav__link">
     <span class="md-ellipsis">
-      2. What are the elements of a transition diagram?
+      FSA 2: Even number of 'a's
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-how-are-lexical-analyzers-implemented" class="md-nav__link">
+  <a href="#fsa-3-contains-ab-as-substring" class="md-nav__link">
     <span class="md-ellipsis">
-      3. How are lexical analyzers implemented?
+      FSA 3: Contains "ab" as substring
     </span>
   </a>
   
@@ -498,48 +612,44 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#fsa-activities-solutions" class="md-nav__link">
+  <a href="#practical-examples-and-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      FSA Activities Solutions
+      Practical Examples and Applications
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="FSA Activities Solutions">
+    <nav class="md-nav" aria-label="Practical Examples and Applications">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#activity-1-fsa-that-accepts-strings-ending-with-01" class="md-nav__link">
+  <a href="#real-compiler-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 1: FSA that accepts strings ending with "01"
+      Real Compiler Application
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#activity-2-fsa-that-accepts-strings-with-an-even-number-of-as" class="md-nav__link">
+  <a href="#modern-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 2: FSA that accepts strings with an even number of a's
+      Modern Applications
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs" class="md-nav__link">
+  <a href="#performance-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 3: FSA that accepts strings with an odd number of b's
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring" class="md-nav__link">
-    <span class="md-ellipsis">
-      Activity 4: FSA that accepts strings containing "ab" as a substring
+      Performance Considerations
     </span>
   </a>
   
@@ -551,11 +661,62 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#key-concepts-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary
+      Key Concepts Summary
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-implementation-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Implementation Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-pitfalls-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Review Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -563,6 +724,28 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntax_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syntax Analysis
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -594,19 +777,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#what-is-lexical-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      What is Lexical Analysis?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+    <nav class="md-nav" aria-label="What is Lexical Analysis?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-concepts" class="md-nav__link">
+  <a href="#real-world-analogy" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts:
+      Real-World Analogy
     </span>
   </a>
   
@@ -645,6 +828,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#detailed-example-of-token-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Example of Token Recognition
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -661,27 +853,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#what-are-transition-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are Transition Diagrams?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#elements-of-a-transition-diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      Elements of a Transition Diagram:
+      Elements of a Transition Diagram
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-recognizing-identifiers" class="md-nav__link">
+  <a href="#example-transition-diagram-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Recognizing Identifiers
+      Example Transition Diagram Analysis
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-recognizing-numbers" class="md-nav__link">
+  <a href="#real-world-application-identifier-recognition" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Recognizing Numbers
+      Real-World Application: Identifier Recognition
     </span>
   </a>
   
@@ -703,27 +904,126 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-functions" class="md-nav__link">
+  <a href="#code-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Functions:
+      Code Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-state-based-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. State-Based Processing
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementation-algorithm" class="md-nav__link">
+  <a href="#2-state-transitions" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation Algorithm:
+      2. State Transitions
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#symbol-table-integration" class="md-nav__link">
+  <a href="#3-character-processing-function" class="md-nav__link">
     <span class="md-ellipsis">
-      Symbol Table Integration:
+      3. Character Processing Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pointer Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-critical-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Critical Pointers:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Rules:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-implementation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Implementation Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifiers-and-symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifiers and Symbol Table Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifiers and Symbol Table Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifier-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifier-vs-keyword-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier vs Keyword Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-table-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbol Table Operations
     </span>
   </a>
   
@@ -745,60 +1045,55 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#definition-and-components" class="md-nav__link">
     <span class="md-ellipsis">
-      Components:
+      Definition and Components
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-binary-strings-ending-with-01" class="md-nav__link">
+  <a href="#mathematical-notation" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: Binary strings ending with "01"
+      Mathematical Notation
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guide-questions-answered" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#practical-fsa-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Guide Questions Answered
+      Practical FSA Examples
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Guide Questions Answered">
+    <nav class="md-nav" aria-label="Practical FSA Examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-how-are-tokens-recognized-by-a-lexical-analyzer" class="md-nav__link">
+  <a href="#fsa-1-strings-ending-with-01" class="md-nav__link">
     <span class="md-ellipsis">
-      1. How are tokens recognized by a lexical analyzer?
+      FSA 1: Strings ending with "01"
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-what-are-the-elements-of-a-transition-diagram" class="md-nav__link">
+  <a href="#fsa-2-even-number-of-as" class="md-nav__link">
     <span class="md-ellipsis">
-      2. What are the elements of a transition diagram?
+      FSA 2: Even number of 'a's
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-how-are-lexical-analyzers-implemented" class="md-nav__link">
+  <a href="#fsa-3-contains-ab-as-substring" class="md-nav__link">
     <span class="md-ellipsis">
-      3. How are lexical analyzers implemented?
+      FSA 3: Contains "ab" as substring
     </span>
   </a>
   
@@ -808,48 +1103,44 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#fsa-activities-solutions" class="md-nav__link">
+  <a href="#practical-examples-and-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      FSA Activities Solutions
+      Practical Examples and Applications
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="FSA Activities Solutions">
+    <nav class="md-nav" aria-label="Practical Examples and Applications">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#activity-1-fsa-that-accepts-strings-ending-with-01" class="md-nav__link">
+  <a href="#real-compiler-application" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 1: FSA that accepts strings ending with "01"
+      Real Compiler Application
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#activity-2-fsa-that-accepts-strings-with-an-even-number-of-as" class="md-nav__link">
+  <a href="#modern-applications" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 2: FSA that accepts strings with an even number of a's
+      Modern Applications
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs" class="md-nav__link">
+  <a href="#performance-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      Activity 3: FSA that accepts strings with an odd number of b's
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring" class="md-nav__link">
-    <span class="md-ellipsis">
-      Activity 4: FSA that accepts strings containing "ab" as a substring
+      Performance Considerations
     </span>
   </a>
   
@@ -861,11 +1152,62 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#key-concepts-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary
+      Key Concepts Summary
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Terms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-implementation-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Implementation Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-pitfalls-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Review Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -886,350 +1228,518 @@
 
 
 <h1 id="lexical-analysis-implementation">Lexical Analysis Implementation</h1>
-<h2 id="overview">Overview</h2>
-<p><strong>Lexical Analysis</strong> is the first phase of a compiler that breaks down source code into meaningful tokens. Think of it as reading a sentence and identifying each word, punctuation mark, and symbol.</p>
-<h3 id="key-concepts">Key Concepts:</h3>
+<hr />
+<h2 id="what-is-lexical-analysis">What is Lexical Analysis?</h2>
+<p><strong>Lexical analysis</strong> is the first phase of compilation where the source code is broken down into meaningful units called <strong>tokens</strong>. Think of it like reading a sentence and identifying individual words, punctuation, and their meanings.</p>
+<h3 id="real-world-analogy">Real-World Analogy</h3>
+<p>Imagine you're reading this sentence: <code>int x = 42;</code></p>
 <ul>
-<li><strong>Token</strong>: A meaningful unit (like keywords, identifiers, operators)</li>
-<li><strong>Lexeme</strong>: The actual string that forms a token (e.g., "if", "x", "+")</li>
-<li><strong>Pattern</strong>: Rules that describe how tokens are formed</li>
+<li>A human recognizes: "int" (keyword), "x" (identifier), "=" (operator), "42" (number), ";" (delimiter)</li>
+<li>A lexical analyzer does the same thing for programming languages</li>
 </ul>
 <hr />
 <h2 id="recognition-of-tokens">Recognition of Tokens</h2>
 <h3 id="basic-assumptions">Basic Assumptions</h3>
+<p>The lexical analyzer operates under two fundamental assumptions:</p>
 <ol>
-<li><strong>Reserved words cannot be used as identifiers</strong><ul>
-<li>Example: You can't name a variable "if" or "while"</li>
-</ul>
+<li>
+<p><strong>Reserved words cannot be used as identifiers</strong></p>
 </li>
-<li><strong>Whitespace is ignored</strong><ul>
-<li>Spaces, tabs, and newlines don't affect token recognition</li>
-</ul>
+<li>
+<p>Keywords like <code>int</code>, <code>if</code>, <code>while</code> have special meanings</p>
 </li>
+<li>
+<p>You can't name a variable <code>int</code> in most languages</p>
+</li>
+<li>
+<p><strong>Whitespace is ignored</strong></p>
+</li>
+<li>Spaces, tabs, and newlines are typically discarded</li>
+<li>They serve only to separate tokens, not as meaningful tokens themselves</li>
 </ol>
 <h3 id="token-recognition-process">Token Recognition Process</h3>
+<p>The lexical analyzer follows a systematic 5-step process:</p>
 <ol>
 <li>
-<p><strong>Order token patterns by precedence</strong></p>
-<ul>
-<li>Keywords before identifiers</li>
-<li>Longer operators before shorter ones ("&gt;=" before "&gt;")</li>
-</ul>
+<p><strong>Order all token patterns in terms of precedence</strong></p>
 </li>
 <li>
-<p><strong>Use two pointers:</strong></p>
-<ul>
-<li><strong>Lexeme-beginning pointer</strong>: Marks start of current token</li>
-<li><strong>Forward pointer</strong>: Scans ahead through input</li>
-</ul>
+<p>Keywords come before identifiers (so <code>if</code> isn't mistaken for an identifier)</p>
 </li>
 <li>
-<p><strong>Recognition steps:</strong></p>
+<p>Longer operators before shorter ones (so <code>&lt;=</code> isn't read as <code>&lt;</code> and <code>=</code>)</p>
 </li>
+<li>
+<p><strong>Maintain lexeme-beginning pointer and forward pointer</strong></p>
+</li>
+<li><strong>Lexeme-beginning pointer</strong>: Marks the start of the current token being analyzed</li>
+<li><strong>Forward pointer</strong>: Moves through the input to build the token</li>
+<li>
+<p><strong>Forward pointer moves through a transition diagram</strong></p>
+</li>
+<li>
+<p>Each character is processed according to predefined patterns</p>
+</li>
+<li>
+<p>The pointer advances as it matches expected patterns</p>
+</li>
+<li>
+<p><strong>If valid lexeme is detected, return token</strong></p>
+</li>
+<li>
+<p>When a complete, valid token is recognized, it's returned to the parser</p>
+</li>
+<li>
+<p>Example: Reading <code>123</code> completely forms a NUMBER token</p>
+</li>
+<li>
+<p><strong>If invalid, return forward pointer to initial pointer and try next pattern</strong></p>
+</li>
+<li>If the current pattern fails, backtrack and try the next pattern</li>
+<li>This prevents getting stuck on partial matches</li>
 </ol>
-<pre><code>Input: &quot;if (x &gt;= 10)&quot;
+<h3 id="detailed-example-of-token-recognition">Detailed Example of Token Recognition</h3>
+<p>Consider the input: <code>count = 42;</code></p>
+<pre><code>Input: c o u n t   =   4 2 ;
+       ↑                     (lexeme-beginning pointer)
+       ↑                     (forward pointer)
 
-Step 1: Scan &quot;if&quot; → Recognized as KEYWORD
-Step 2: Skip whitespace
-Step 3: Scan &quot;(&quot; → Recognized as LEFT_PAREN
-Step 4: Skip whitespace
-Step 5: Scan &quot;x&quot; → Recognized as IDENTIFIER
-Step 6: Skip whitespace
-Step 7: Scan &quot;&gt;=&quot; → Recognized as GTE_OPERATOR
-Step 8: Skip whitespace
-Step 9: Scan &quot;10&quot; → Recognized as NUMBER
-Step 10: Scan &quot;)&quot; → Recognized as RIGHT_PAREN
+Step 1: Try keyword patterns first
+- &quot;c&quot; → doesn't match any keyword, continue
+- &quot;co&quot; → doesn't match any keyword, continue
+- &quot;cou&quot; → doesn't match any keyword, continue
+- &quot;coun&quot; → doesn't match any keyword, continue
+- &quot;count&quot; → doesn't match any keyword, try identifier pattern
+
+Step 2: Try identifier pattern
+- &quot;count&quot; → matches identifier pattern (letter followed by letters/digits)
+- Return IDENTIFIER token with value &quot;count&quot;
+
+Step 3: Skip whitespace, move to &quot;=&quot;
+- &quot;=&quot; → matches assignment operator pattern
+- Return ASSIGN_OP token
+
+Step 4: Skip whitespace, move to &quot;42&quot;
+- &quot;4&quot; → start number pattern
+- &quot;42&quot; → complete number
+- Return NUMBER token with value 42
+
+Step 5: Process &quot;;&quot;
+- &quot;;&quot; → matches semicolon pattern
+- Return SEMICOLON token
 </code></pre>
 <hr />
 <h2 id="transition-diagrams">Transition Diagrams</h2>
-<p>A <strong>transition diagram</strong> is a visual representation of how a lexical analyzer recognizes tokens.</p>
-<h3 id="elements-of-a-transition-diagram">Elements of a Transition Diagram:</h3>
+<h3 id="what-are-transition-diagrams">What are Transition Diagrams?</h3>
+<p><strong>Transition diagrams</strong> are visual representations of how a lexical analyzer moves between different states while processing input characters. They're like flowcharts for token recognition.</p>
+<h3 id="elements-of-a-transition-diagram">Elements of a Transition Diagram</h3>
 <ol>
-<li><strong>States</strong> (circles): Represent current position in recognition</li>
-<li><strong>Edges/Transitions</strong> (arrows): Show movement between states</li>
-<li><strong>Symbols</strong> (labels on arrows): Characters that trigger transitions</li>
-<li><strong>Start state</strong>: Where recognition begins</li>
-<li><strong>Accepting states</strong>: Where valid tokens are recognized</li>
-<li><strong>Determinism</strong>: Each state has at most one transition for each input symbol</li>
+<li>
+<p><strong>States</strong> (represented as circles)</p>
+</li>
+<li>
+<p>Each state represents a stage in token recognition</p>
+</li>
+<li><strong>Start state</strong>: Where processing begins (marked with an arrow)</li>
+<li><strong>Accept states</strong>: Final states where tokens are recognized (double circles)</li>
+<li>
+<p><strong>Intermediate states</strong>: Processing states between start and accept</p>
+</li>
+<li>
+<p><strong>Edges or Transitions</strong> (arrows between states)</p>
+</li>
+<li>
+<p>Show how to move from one state to another</p>
+</li>
+<li>
+<p>Labeled with conditions for the transition</p>
+</li>
+<li>
+<p><strong>Symbols</strong> (labels on edges)</p>
+</li>
+<li>
+<p>Specific characters or character classes that trigger transitions</p>
+</li>
+<li>
+<p>Examples: <code>'a'</code>, <code>digit</code>, <code>letter</code>, <code>other</code></p>
+</li>
+<li>
+<p><strong>Determinism</strong></p>
+</li>
+<li>Each state has exactly one transition for each input symbol</li>
+<li>No ambiguity about which path to take</li>
 </ol>
-<h3 id="example-recognizing-identifiers">Example: Recognizing Identifiers</h3>
-<pre><code>Input: Letters followed by letters/digits
-
-    letter
-[Start] ──────→ [State1] ──────→ [Accept]
-                   ↑        letter/digit
-                   └─────────────────┘
+<h3 id="example-transition-diagram-analysis">Example Transition Diagram Analysis</h3>
+<p>From the PDF's diagram with states A, B, C:</p>
+<pre><code>    b      b         b
+   ↗ ↘    ↗ ↘       ↗ ↘
+→ A ─a─→ B ─a─→ ((C))
+       ↖─a─↙
 </code></pre>
-<h3 id="example-recognizing-numbers">Example: Recognizing Numbers</h3>
-<pre><code>Input: Digits, possibly with decimal point
-
-    digit        digit
-[Start] ──────→ [State1] ──────→ [Accept]
-                   │
-                   │ '.'
-                   ↓        digit
-                 [State2] ──────→ [State3] → [Accept]
-                            ↑
-                            └──── digit
+<p><strong>What this diagram recognizes:</strong></p>
+<ul>
+<li>Strings that end with 'a' (state C is accepting)</li>
+<li>'b' characters keep you in intermediate states</li>
+<li>Only 'a' can lead to acceptance</li>
+</ul>
+<p><strong>Trace Examples:</strong></p>
+<ul>
+<li>Input "ba": A→A→B (not accepted, no final 'a')</li>
+<li>Input "bba": A→A→A→B (accepted, ends in 'a')</li>
+<li>Input "abba": A→B→A→A→B (accepted)</li>
+</ul>
+<h3 id="real-world-application-identifier-recognition">Real-World Application: Identifier Recognition</h3>
+<pre><code>     letter        letter|digit
+   ┌────────┐    ┌──────────────┐
+→ S0 ─────→ S1 ←──┘             │
+            ││                   │
+            └─→ ((ACCEPT)) ←─────┘
 </code></pre>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>Start in S0</li>
+<li>First character must be a letter → go to S1</li>
+<li>Subsequent characters can be letters or digits → stay in S1</li>
+<li>When no more valid characters, accept as IDENTIFIER</li>
+</ol>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>variable</code> → IDENTIFIER</li>
+<li><code>count123</code> → IDENTIFIER</li>
+<li><code>123abc</code> → fails (starts with digit)</li>
+</ul>
 <hr />
 <h2 id="implementation-details">Implementation Details</h2>
-<h3 id="core-functions">Core Functions:</h3>
+<h3 id="code-structure">Code Structure</h3>
+<p>Lexical analyzers are typically implemented with these key components:</p>
+<h4 id="1-state-based-processing">1. State-Based Processing</h4>
 <ul>
-<li><strong><code>nextchar()</code></strong>: Reads next character, advances forward pointer</li>
-<li><strong>State management</strong>: Each state has its own code segment</li>
-<li><strong>Backtracking</strong>: When recognition fails, return to beginning</li>
+<li><strong>Each state has a code segment</strong></li>
+<li>Different code executes depending on current state</li>
+<li>State-specific logic for character processing</li>
 </ul>
-<h3 id="implementation-algorithm">Implementation Algorithm:</h3>
-<pre><code class="language-pseudocode">function getNextToken():
-    lexeme_begin = forward_pointer
-
-    while (not end_of_input):
-        current_char = nextchar()
-
-        if (valid_transition_exists):
-            move_to_next_state()
-        else:
-            if (current_state_is_accepting):
-                retract_one_character()
-                return create_token(current_lexeme)
-            else:
-                reset_to_beginning()
-                try_next_pattern()
-
-    return END_OF_FILE_TOKEN
+<pre><code class="language-pseudocode">switch(currentState) {
+    case START:
+        // Handle initial character
+        break;
+    case IN_NUMBER:
+        // Process digits
+        break;
+    case IN_IDENTIFIER:
+        // Process letters/digits
+        break;
+}
 </code></pre>
-<h3 id="symbol-table-integration">Symbol Table Integration:</h3>
+<h4 id="2-state-transitions">2. State Transitions</h4>
 <ul>
-<li><strong>Identifiers</strong> must be stored in symbol table during lexical analysis</li>
-<li><strong>Keywords</strong> can be stored in a hash table for quick lookup</li>
-<li>This reduces the number of states needed in transition diagrams</li>
+<li><strong>Each edge may change the state</strong></li>
+<li>Transitions based on input characters</li>
+<li>Updates to current processing state</li>
 </ul>
+<h4 id="3-character-processing-function">3. Character Processing Function</h4>
+<ul>
+<li><strong>Use <code>nextchar()</code> function</strong> to:</li>
+<li>Read next character from input buffer</li>
+<li>Advance the forward pointer</li>
+<li>Return the character for processing</li>
+</ul>
+<pre><code class="language-pseudocode">function nextchar() {
+    char c = buffer[forwardPointer];
+    forwardPointer++;
+    return c;
+}
+</code></pre>
+<h3 id="pointer-management">Pointer Management</h3>
+<h4 id="two-critical-pointers">Two Critical Pointers:</h4>
+<ol>
+<li><strong>Lexeme-beginning pointer</strong>: Marks start of current token</li>
+<li><strong>Forward pointer</strong>: Scans ahead to build tokens</li>
+</ol>
+<h4 id="error-handling-rules">Error Handling Rules:</h4>
+<p><strong>Case 1: Invalid token encountered</strong></p>
+<ul>
+<li><strong>Action</strong>: Return forward pointer to lexeme-beginning pointer</li>
+<li><strong>Next step</strong>: Try next transition diagram/pattern</li>
+<li><strong>Purpose</strong>: Backtrack when current pattern fails</li>
+</ul>
+<p><strong>Case 2: Valid token completed</strong></p>
+<ul>
+<li><strong>Action</strong>: Retract forward pointer by one character</li>
+<li><strong>Next step</strong>: Save current lexeme as token</li>
+<li><strong>Purpose</strong>: Don't consume character that belongs to next token</li>
+</ul>
+<h3 id="detailed-implementation-example">Detailed Implementation Example</h3>
+<pre><code class="language-pseudocode">function getNextToken() {
+    skipWhitespace();
+    lexemeStart = forwardPointer;
+
+    // Try each token pattern in order of precedence
+    for each pattern in tokenPatterns {
+        resetPointer(forwardPointer, lexemeStart);
+
+        if (tryPattern(pattern)) {
+            token = createToken(pattern, getLexeme());
+            return token;
+        }
+    }
+
+    // No pattern matched
+    error(&quot;Invalid token at position &quot; + lexemeStart);
+}
+
+function tryPattern(pattern) {
+    state = pattern.startState;
+
+    while (hasMoreInput()) {
+        char c = nextchar();
+
+        if (hasTransition(state, c)) {
+            state = getNextState(state, c);
+        } else {
+            if (isAcceptState(state)) {
+                retractPointer();  // Don't consume last character
+                return true;       // Valid token found
+            } else {
+                return false;      // Invalid token
+            }
+        }
+    }
+
+    return isAcceptState(state);
+}
+</code></pre>
+<hr />
+<h2 id="identifiers-and-symbol-table-integration">Identifiers and Symbol Table Integration</h2>
+<h3 id="identifier-processing">Identifier Processing</h3>
+<p><strong>Key Requirements:</strong></p>
+<ol>
+<li>
+<p><strong>Identifiers must be installed into the symbol table</strong></p>
+</li>
+<li>
+<p>Symbol table stores all identifiers and their attributes</p>
+</li>
+<li>
+<p>Used later by semantic analyzer and code generator</p>
+</li>
+<li>
+<p><strong>Keyword optimization strategy</strong></p>
+</li>
+<li><strong>Store all keywords in a special collection</strong> (hash table/array)</li>
+<li><strong>Benefits</strong>: Reduces states needed in transition diagram</li>
+<li><strong>Process</strong>: First recognize as identifier, then check if it's a keyword</li>
+</ol>
+<h3 id="identifier-vs-keyword-resolution">Identifier vs Keyword Resolution</h3>
+<pre><code class="language-pseudocode">function processIdentifier(lexeme) {
+    if (isKeyword(lexeme)) {
+        return createKeywordToken(lexeme);
+    } else {
+        symbolTableEntry = installIdentifier(lexeme);
+        return createIdentifierToken(symbolTableEntry);
+    }
+}
+
+function isKeyword(lexeme) {
+    return keywordSet.contains(lexeme);
+}
+</code></pre>
+<h3 id="symbol-table-operations">Symbol Table Operations</h3>
+<pre><code class="language-pseudocode">function installIdentifier(name) {
+    if (symbolTable.contains(name)) {
+        return symbolTable.lookup(name);
+    } else {
+        entry = new SymbolTableEntry(name);
+        symbolTable.insert(name, entry);
+        return entry;
+    }
+}
+</code></pre>
 <hr />
 <h2 id="finite-state-automata-fsa">Finite State Automata (FSA)</h2>
-<p>An <strong>FSA</strong> is a mathematical model for recognizing patterns in input.</p>
-<h3 id="components">Components:</h3>
+<h3 id="definition-and-components">Definition and Components</h3>
+<p>A <strong>Finite State Automaton</strong> is a mathematical model used for input processing, consisting of:</p>
 <ol>
-<li><strong>States</strong>: Finite set of conditions</li>
-<li><strong>Alphabet</strong>: Set of input symbols</li>
-<li><strong>Transition function</strong>: Maps (state, symbol) → state</li>
-<li><strong>Start state</strong>: Initial state</li>
-<li><strong>Accepting states</strong>: States that recognize valid input</li>
+<li><strong>Finite set of states</strong> (Q)</li>
+<li>Limited number of distinct processing states</li>
+<li><strong>Input alphabet</strong> (Σ)</li>
+<li>Set of valid input symbols</li>
+<li><strong>Transition function</strong> (δ)</li>
+<li>Rules for moving between states: δ(state, input) → next_state</li>
+<li><strong>Start state</strong> (q₀)</li>
+<li>Initial state where processing begins</li>
+<li><strong>Set of accepting states</strong> (F)</li>
+<li>States where input is accepted as valid</li>
 </ol>
-<h3 id="example-binary-strings-ending-with-01">Example: Binary strings ending with "01"</h3>
-<pre><code>Input alphabet: {0, 1}
-
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │          │
- │1         │1
- ↓          ↓
-[q0] ←──── [q2] ──── ((q3))
-      0         1
-</code></pre>
+<h3 id="mathematical-notation">Mathematical Notation</h3>
+<p><strong>FSA Definition</strong>: M = (Q, Σ, δ, q₀, F)</p>
+<p>Where:</p>
 <ul>
-<li>q0: Start state</li>
-<li>q3: Accepting state (double circle)</li>
-<li>Accepts: "01", "001", "101", "1001", etc.</li>
+<li>Q = {q₀, q₁, q₂, ...} (states)</li>
+<li>Σ = {'a', 'b', '0', '1', ...} (alphabet)</li>
+<li>δ: Q × Σ → Q (transition function)</li>
+<li>q₀ ∈ Q (start state)</li>
+<li>F ⊆ Q (accepting states)</li>
+</ul>
+<h3 id="practical-fsa-examples">Practical FSA Examples</h3>
+<h4 id="fsa-1-strings-ending-with-01">FSA 1: Strings ending with "01"</h4>
+<pre><code>      0,1      0        1
+   ┌──────┐  ┌───┐   ┌──────┐
+→ q₀ ←────┘  │   ↓   │      ↓
+   │    1    │  q₁ ──┘    ((q₂))
+   └─────────→  ↑           ↑
+        0       │0,1        │1
+                └───────────┘
+</code></pre>
+<p><strong>States:</strong></p>
+<ul>
+<li>q₀: Start state (no specific pattern matched)</li>
+<li>q₁: Just read '0' (potential start of "01")</li>
+<li>q₂: Just read "01" (accepting state)</li>
+</ul>
+<p><strong>Transitions:</strong></p>
+<ul>
+<li>q₀ on '0' → q₁ (start of potential "01")</li>
+<li>q₀ on '1' → q₀ (restart)</li>
+<li>q₁ on '0' → q₁ (still potential start of "01")</li>
+<li>q₁ on '1' → q₂ (complete "01" pattern)</li>
+<li>q₂ on '0' → q₁ (new potential "01")</li>
+<li>q₂ on '1' → q₀ (restart completely)</li>
+</ul>
+<p><strong>Example Traces:</strong></p>
+<ul>
+<li>"101": q₀→q₀→q₁→q₂ ✓ (accepted)</li>
+<li>"1001": q₀→q₀→q₁→q₁→q₂ ✓ (accepted)</li>
+<li>"010": q₀→q₁→q₂→q₁ ✗ (not accepted)</li>
+</ul>
+<h4 id="fsa-2-even-number-of-as">FSA 2: Even number of 'a's</h4>
+<pre><code>    b       b
+   ↗ ↘     ↗ ↘
+((q₀)) ─a→ q₁
+   ↑       ↓ a
+   └───────┘
+</code></pre>
+<p><strong>States:</strong></p>
+<ul>
+<li>q₀: Even number of 'a's seen (accepting)</li>
+<li>q₁: Odd number of 'a's seen (not accepting)</li>
+</ul>
+<p><strong>Key insight</strong>: Each 'a' toggles between even/odd states</p>
+<h4 id="fsa-3-contains-ab-as-substring">FSA 3: Contains "ab" as substring</h4>
+<pre><code>     a,b      a        b
+   ┌─────┐  ┌───┐   ┌──────┐
+→ q₀ ←──┘   │   ↓   │      ↓
+   │   b    │  q₁ ──┘    ((q₂))
+   └────────→  ↑         ↑ │a,b
+        a      │b        └─┘
+               └─→ q₀
+                 a
+</code></pre>
+<p><strong>States:</strong></p>
+<ul>
+<li>q₀: No relevant progress toward "ab"</li>
+<li>q₁: Just saw 'a' (potential start of "ab")</li>
+<li>q₂: Saw complete "ab" (accepting, stays accepting)</li>
 </ul>
 <hr />
-<h2 id="guide-questions-answered">Guide Questions Answered</h2>
-<h3 id="1-how-are-tokens-recognized-by-a-lexical-analyzer">1. How are tokens recognized by a lexical analyzer?</h3>
-<p>Tokens are recognized through a <strong>pattern matching process</strong> using:</p>
-<ul>
-<li><strong>Transition diagrams</strong> or <strong>finite state automata</strong> that define valid token patterns</li>
-<li><strong>Two-pointer technique</strong> (lexeme-beginning and forward pointers) to scan input</li>
-<li><strong>Priority-based matching</strong> where patterns are tried in order of precedence</li>
-<li><strong>Backtracking</strong> when invalid patterns are encountered</li>
-</ul>
-<p><strong>Example Process:</strong></p>
-<pre><code>Input: &quot;count = 42&quot;
-
-1. Scan &quot;count&quot; → matches identifier pattern → TOKEN: ID(&quot;count&quot;)
-2. Skip whitespace
-3. Scan &quot;=&quot; → matches assignment operator → TOKEN: ASSIGN
-4. Skip whitespace  
-5. Scan &quot;42&quot; → matches number pattern → TOKEN: NUM(42)
+<h2 id="practical-examples-and-applications">Practical Examples and Applications</h2>
+<h3 id="real-compiler-application">Real Compiler Application</h3>
+<p>Consider analyzing this C code snippet:</p>
+<pre><code class="language-c">int main() {
+    int count = 0;
+    return count + 1;
+}
 </code></pre>
-<h3 id="2-what-are-the-elements-of-a-transition-diagram">2. What are the elements of a transition diagram?</h3>
-<p>The key elements are:</p>
+<p><strong>Lexical Analysis Output:</strong></p>
+<pre><code>Token Type    | Lexeme  | Line | Column
+KEYWORD       | int     | 1    | 1
+IDENTIFIER    | main    | 1    | 5
+L_PAREN       | (       | 1    | 9
+R_PAREN       | )       | 1    | 10
+L_BRACE       | {       | 1    | 12
+KEYWORD       | int     | 2    | 5
+IDENTIFIER    | count   | 2    | 9
+ASSIGN_OP     | =       | 2    | 15
+NUMBER        | 0       | 2    | 17
+SEMICOLON     | ;       | 2    | 18
+KEYWORD       | return  | 3    | 5
+IDENTIFIER    | count   | 3    | 12
+PLUS_OP       | +       | 3    | 18
+NUMBER        | 1       | 3    | 20
+SEMICOLON     | ;       | 3    | 21
+R_BRACE       | }       | 4    | 1
+</code></pre>
+<h3 id="modern-applications">Modern Applications</h3>
+<p><strong>1. Integrated Development Environments (IDEs)</strong></p>
+<ul>
+<li><strong>Syntax highlighting</strong>: Lexical analysis identifies keywords, strings, comments</li>
+<li><strong>Auto-completion</strong>: Recognizes partial identifiers</li>
+<li><strong>Error detection</strong>: Highlights invalid tokens in real-time</li>
+</ul>
+<p><strong>2. Code Formatters and Linters</strong></p>
+<ul>
+<li><strong>Prettier/ESLint</strong>: Use lexical analysis to understand code structure</li>
+<li><strong>Style enforcement</strong>: Identify and fix spacing, naming conventions</li>
+</ul>
+<p><strong>3. Programming Language Tools</strong></p>
+<ul>
+<li><strong>Interpreters</strong>: Python, JavaScript interpreters use lexical analysis</li>
+<li><strong>Compilers</strong>: GCC, Clang start with lexical analysis</li>
+<li><strong>Transpilers</strong>: TypeScript→JavaScript, CoffeeScript→JavaScript</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<p><strong>Why FSAs are Efficient:</strong></p>
+<ul>
+<li><strong>Linear time complexity</strong>: O(n) where n is input length</li>
+<li><strong>Constant memory</strong>: Fixed number of states regardless of input size</li>
+<li><strong>Predictable behavior</strong>: Deterministic transitions</li>
+</ul>
+<p><strong>Real-world Performance:</strong></p>
+<ul>
+<li>Modern compilers can tokenize millions of lines per second</li>
+<li>Lexical analysis typically represents &lt;5% of total compilation time</li>
+</ul>
+<hr />
+<h2 id="key-concepts-summary">Key Concepts Summary</h2>
+<h3 id="essential-terms">Essential Terms</h3>
+<p><strong>Token</strong>: Meaningful unit of source code (keyword, identifier, operator, etc.)</p>
+<p><strong>Lexeme</strong>: Actual string of characters that forms a token</p>
+<p><strong>Pattern</strong>: Rule describing how tokens are formed</p>
+<p><strong>Symbol Table</strong>: Data structure storing identifiers and their attributes</p>
+<p><strong>Transition Diagram</strong>: Visual representation of token recognition logic</p>
+<p><strong>FSA</strong>: Mathematical model for pattern recognition with states and transitions</p>
+<h3 id="critical-implementation-points">Critical Implementation Points</h3>
 <ol>
-<li><strong>States</strong> (nodes/circles): Represent current position in pattern recognition</li>
-<li><strong>Edges/Transitions</strong> (arrows): Show valid moves between states based on input</li>
-<li><strong>Symbols</strong> (edge labels): Characters or character classes that trigger transitions</li>
-<li><strong>Start state</strong>: Initial state where recognition begins</li>
-<li><strong>Accepting states</strong>: Final states that indicate successful token recognition</li>
-<li><strong>Determinism</strong>: Property ensuring unique transitions (no ambiguity)</li>
+<li><strong>Precedence matters</strong>: Keywords before identifiers, longer operators before shorter</li>
+<li><strong>Backtracking is essential</strong>: Must be able to undo failed pattern attempts</li>
+<li><strong>Pointer management is crucial</strong>: Careful tracking of lexeme boundaries</li>
+<li><strong>Error recovery</strong>: Graceful handling of invalid input</li>
 </ol>
-<p><strong>Visual Example:</strong></p>
-<pre><code>Recognizing floating-point numbers:
-
-    digit     digit        '.'       digit
-[Start] → [Integer] → [DecPoint] → [Float]
-           ↑                        ↑
-           └── digit ────────────────┘
-</code></pre>
-<h3 id="3-how-are-lexical-analyzers-implemented">3. How are lexical analyzers implemented?</h3>
-<p>Lexical analyzers are implemented using:</p>
-<p><strong>A. State-driven approach:</strong></p>
-<ul>
-<li>Each state corresponds to a code segment</li>
-<li>Transitions change program state</li>
-<li><code>nextchar()</code> function advances through input</li>
-</ul>
-<p><strong>B. Table-driven approach:</strong></p>
-<ul>
-<li>Transition table maps (current_state, input_symbol) → next_state</li>
-<li>Generic driver reads table and processes input</li>
-</ul>
-<p><strong>C. Key implementation strategies:</strong></p>
-<ul>
-<li><strong>Error handling</strong>: Backtrack when invalid patterns are found</li>
-<li><strong>Symbol table integration</strong>: Store identifiers as they're recognized  </li>
-<li><strong>Keyword handling</strong>: Pre-populate reserved words to distinguish from identifiers</li>
-<li><strong>Buffer management</strong>: Efficiently handle large input files</li>
-</ul>
-<p><strong>Sample Implementation Structure:</strong></p>
-<pre><code class="language-pseudocode">class LexicalAnalyzer:
-    input_buffer
-    forward_pointer
-    lexeme_begin
-    symbol_table
-    keyword_table
-
-    function getToken():
-        skip_whitespace()
-        lexeme_begin = forward_pointer
-
-        # Try each token pattern in priority order
-        if (try_keyword_pattern()):
-            return keyword_token
-        elif (try_identifier_pattern()):
-            return identifier_token
-        elif (try_number_pattern()):
-            return number_token
-        # ... other patterns
-        else:
-            return error_token
-</code></pre>
-<hr />
-<h2 id="fsa-activities-solutions">FSA Activities Solutions</h2>
-<h3 id="activity-1-fsa-that-accepts-strings-ending-with-01">Activity 1: FSA that accepts strings ending with "01"</h3>
-<pre><code>States: {q0, q1, q2, q3}
-Start state: q0
-Accepting state: q3
-Alphabet: {0, 1}
-
-Transitions:
-       0        1
-q0 → q1,    q0 → q0
-q1 → q1,    q1 → q2  
-q2 → q1,    q2 → q0
-q3 → q1,    q3 → q0 (q3 is accepting)
-
-Diagram:
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │ ↑        │
- │ │0       │1
- │1└──── [q2] ──────→ ((q3))
- ↓           1
-[q0]
-
-Actually, let me correct this:
-
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │          │
- │1         │1
- ↓          ↓
-[q0] ←──── [q2] ──── ((q3))
-      0         1
-</code></pre>
-<p><strong>Test cases:</strong>
-- "01" ✓ (accepts)
-- "001" ✓ (accepts) 
-- "101" ✓ (accepts)
-- "10" ✗ (rejects)
-- "11" ✗ (rejects)</p>
-<h3 id="activity-2-fsa-that-accepts-strings-with-an-even-number-of-as">Activity 2: FSA that accepts strings with an even number of a's</h3>
-<pre><code>States: {q0, q1}
-Start state: q0 (also accepting - 0 is even)
-Accepting state: q0
-Alphabet: {a, b}
-
-Transitions:
-q0 → q1 (on 'a'), q0 → q0 (on 'b')
-q1 → q0 (on 'a'), q1 → q1 (on 'b')
-
-Diagram:
-        a
-((q0)) ←→ [q1]
-  ↑         ↑
-  │b        │b  
-  └─────────┘
-</code></pre>
-<p><strong>Test cases:</strong>
-- "" ✓ (0 a's - even)
-- "aa" ✓ (2 a's - even)
-- "bab" ✗ (1 a - odd)
-- "baab" ✓ (2 a's - even)</p>
-<h3 id="activity-3-fsa-that-accepts-strings-with-an-odd-number-of-bs">Activity 3: FSA that accepts strings with an odd number of b's</h3>
-<pre><code>States: {q0, q1}
-Start state: q0  
-Accepting state: q1
-Alphabet: {a, b}
-
-Transitions:
-q0 → q0 (on 'a'), q0 → q1 (on 'b')
-q1 → q1 (on 'a'), q1 → q0 (on 'b')
-
-Diagram:
-         b
-[q0] ←→ ((q1))
- ↑         ↑
- │a        │a
- └─────────┘
-</code></pre>
-<p><strong>Test cases:</strong>
-- "b" ✓ (1 b - odd)
-- "bb" ✗ (2 b's - even) 
-- "aba" ✓ (1 b - odd)
-- "abab" ✗ (2 b's - even)</p>
-<h3 id="activity-4-fsa-that-accepts-strings-containing-ab-as-a-substring">Activity 4: FSA that accepts strings containing "ab" as a substring</h3>
-<pre><code>States: {q0, q1, q2}
-Start state: q0
-Accepting state: q2
-Alphabet: {a, b}
-
-Transitions:
-q0 → q1 (on 'a'), q0 → q0 (on 'b')
-q1 → q1 (on 'a'), q1 → q2 (on 'b')  
-q2 → q2 (on 'a'), q2 → q2 (on 'b')
-
-Diagram:
-       a        b
-[q0] ────→ [q1] ────→ ((q2))
- │ ↑                    ↑
- │b│a                   │a,b
- ↓ └────────────────────┘
-[q0]
-</code></pre>
-<p><strong>Test cases:</strong>
-- "ab" ✓ (contains "ab")
-- "aab" ✓ (contains "ab") 
-- "abbb" ✓ (contains "ab")
-- "ba" ✗ (doesn't contain "ab")
-- "a" ✗ (doesn't contain "ab")</p>
-<hr />
-<h2 id="summary">Summary</h2>
-<p>Lexical analysis is the foundation of compilation, transforming raw source code into meaningful tokens through:</p>
-<ul>
-<li><strong>Pattern matching</strong> using FSAs and transition diagrams</li>
-<li><strong>Systematic scanning</strong> with pointer-based techniques  </li>
-<li><strong>Priority-based recognition</strong> to handle conflicts</li>
-<li><strong>Integration with symbol tables</strong> for identifier management</li>
-</ul>
+<h3 id="common-pitfalls-and-solutions">Common Pitfalls and Solutions</h3>
+<p><strong>Problem</strong>: Keyword vs Identifier confusion
+<strong>Solution</strong>: Check keyword table after identifier pattern matches</p>
+<p><strong>Problem</strong>: Operator precedence issues (<code>&lt;=</code> vs <code>&lt;</code> + <code>=</code>)<br />
+<strong>Solution</strong>: Order patterns by length/specificity</p>
+<p><strong>Problem</strong>: Whitespace handling
+<strong>Solution</strong>: Explicit whitespace-skipping functions</p>
+<p><strong>Problem</strong>: End-of-file handling
+<strong>Solution</strong>: Special EOF handling in all states</p>
+<h3 id="study-tips">Study Tips</h3>
+<ol>
+<li><strong>Practice drawing transition diagrams</strong> for different patterns</li>
+<li><strong>Trace through examples</strong> step by step with pointers</li>
+<li><strong>Understand the relationship</strong> between FSAs and implementation code</li>
+<li><strong>Focus on error cases</strong> - what happens when patterns don't match?</li>
+<li><strong>Connect to real tools</strong> - examine output from actual lexical analyzers</li>
+</ol>
+<h3 id="review-questions">Review Questions</h3>
+<ol>
+<li>How does the lexical analyzer handle the sequence <code>&lt;=</code> vs <code>&lt; =</code>?</li>
+<li>What happens when an identifier matches a keyword?</li>
+<li>Why is backtracking necessary in lexical analysis?</li>
+<li>How do accepting states work in transition diagrams?</li>
+<li>What's the difference between a lexeme and a token?</li>
+</ol>
+<p>This comprehensive understanding of lexical analysis forms the foundation for all subsequent compiler phases and is essential for anyone working with programming language tools or building parsers and interpreters.</p>
 
 
 

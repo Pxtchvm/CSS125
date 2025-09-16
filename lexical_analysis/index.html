@@ -197,7 +197,7 @@
   
   
   <span class="md-ellipsis">
-    Home
+    Introduction to Principles of Programming Languages
     
   </span>
   
@@ -264,37 +264,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#learning-objectives" class="md-nav__link">
+  <a href="#1-introduction-to-lexical-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Learning Objectives
+      1. Introduction to Lexical Analysis
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guide-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guide Questions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-role-of-the-lexical-analyzer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Role of the Lexical Analyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Role of the Lexical Analyzer">
+    <nav class="md-nav" aria-label="1. Introduction to Lexical Analysis">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-flow" class="md-nav__link">
+  <a href="#real-world-analogy" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Flow
+      Real-World Analogy
     </span>
   </a>
   
@@ -306,19 +288,61 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#issues-in-lexical-analysis" class="md-nav__link">
+  <a href="#2-the-role-of-the-lexical-analyzer" class="md-nav__link">
     <span class="md-ellipsis">
-      Issues in Lexical Analysis
+      2. The Role of the Lexical Analyzer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Issues in Lexical Analysis">
+    <nav class="md-nav" aria-label="2. The Role of the Lexical Analyzer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-separate-parsing-from-tokenization" class="md-nav__link">
+  <a href="#primary-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Separate Parsing from Tokenization?
+      Primary Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-converting-raw-text-into-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Converting Raw Text into Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-stripping-out-whitespace-and-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Stripping Out Whitespace and Comments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-error-message-correlation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Error Message Correlation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-with-other-compiler-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction with Other Compiler Phases
     </span>
   </a>
   
@@ -330,46 +354,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tokens-patterns-and-lexemes" class="md-nav__link">
+  <a href="#3-why-separate-lexical-analysis-from-parsing" class="md-nav__link">
     <span class="md-ellipsis">
-      Tokens, Patterns, and Lexemes
+      3. Why Separate Lexical Analysis from Parsing?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tokens, Patterns, and Lexemes">
+    <nav class="md-nav" aria-label="3. Why Separate Lexical Analysis from Parsing?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
+  <a href="#31-simplicity-in-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Definitions
+      3.1 Simplicity in Design
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-breakdown" class="md-nav__link">
+  <a href="#32-improvement-in-efficiency" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Breakdown
+      3.2 Improvement in Efficiency
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fortran-statement-example" class="md-nav__link">
+  <a href="#33-enhanced-compiler-portability" class="md-nav__link">
     <span class="md-ellipsis">
-      Fortran Statement Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#important-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Important Notes
+      3.3 Enhanced Compiler Portability
     </span>
   </a>
   
@@ -381,28 +396,136 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lexical-errors" class="md-nav__link">
+  <a href="#4-tokens-patterns-and-lexemes" class="md-nav__link">
     <span class="md-ellipsis">
-      Lexical Errors
+      4. Tokens, Patterns, and Lexemes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lexical Errors">
+    <nav class="md-nav" aria-label="4. Tokens, Patterns, and Lexemes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-are-lexical-errors" class="md-nav__link">
+  <a href="#41-definitions-and-relationships" class="md-nav__link">
     <span class="md-ellipsis">
-      What Are Lexical Errors?
+      4.1 Definitions and Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Definitions and Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#error-recovery-strategies" class="md-nav__link">
+  <a href="#pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Error Recovery Strategies
+      Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lexeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexeme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-detailed-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Detailed Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Detailed Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-number-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Number Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-keywords-vs-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Keywords vs Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-handling-multiple-pattern-matches-with-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Handling Multiple Pattern Matches with Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Handling Multiple Pattern Matches with Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-attribute-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token-Attribute Pairs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-world-application-symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Application: Symbol Table Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-reserved-strings-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Reserved Strings (Keywords)
     </span>
   </a>
   
@@ -414,19 +537,94 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specifications-of-tokens" class="md-nav__link">
+  <a href="#5-lexical-errors-and-error-handling" class="md-nav__link">
     <span class="md-ellipsis">
-      Specifications of Tokens
+      5. Lexical Errors and Error Handling
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Specifications of Tokens">
+    <nav class="md-nav" aria-label="5. Lexical Errors and Error Handling">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-concepts" class="md-nav__link">
+  <a href="#51-nature-of-lexical-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Concepts
+      5.1 Nature of Lexical Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-examples-of-lexical-vs-non-lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Examples of Lexical vs Non-Lexical Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Examples of Lexical vs Non-Lexical Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lexical-errors-detected-by-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Errors (Detected by Lexer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-lexical-errors-not-detected-by-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Lexical Errors (Not Detected by Lexer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-error-recovery-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Error Recovery Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Error Recovery Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-panic-mode-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.1 Panic Mode Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-character-level-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2 Character-Level Corrections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-real-world-error-handling-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 Real-World Error Handling Example
     </span>
   </a>
   
@@ -438,23 +636,75 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#string-set-operations" class="md-nav__link">
+  <a href="#6-token-specifications-and-regular-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      String Set Operations
+      6. Token Specifications and Regular Expressions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="String Set Operations">
+    <nav class="md-nav" aria-label="6. Token Specifications and Regular Expressions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#union-l1-l2" class="md-nav__link">
+  <a href="#61-formal-foundations" class="md-nav__link">
     <span class="md-ellipsis">
-      Union (L₁ ∪ L₂)
+      6.1 Formal Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Formal Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphabet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphabet (Σ)
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length-of-string-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Length of String |S|
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-string-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 String Set Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 String Set Operations">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#concatenation-l1l2" class="md-nav__link">
@@ -466,18 +716,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kleene-closure-l" class="md-nav__link">
+  <a href="#union-l1-l2" class="md-nav__link">
     <span class="md-ellipsis">
-      Kleene Closure (L*)
+      Union (L₁ ∪ L₂)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#positive-closure-l" class="md-nav__link">
+  <a href="#string-power-ln" class="md-nav__link">
     <span class="md-ellipsis">
-      Positive Closure (L⁺)
+      String Power (L^n)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (Σ*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (Σ+)
     </span>
   </a>
   
@@ -487,48 +755,21 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#63-regular-expression-definitions" class="md-nav__link">
     <span class="md-ellipsis">
-      Regular Expressions
+      6.3 Regular Expression Definitions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Regular Expressions">
+    <nav class="md-nav" aria-label="6.3 Regular Expression Definitions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-symbols" class="md-nav__link">
+  <a href="#basic-regular-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Symbols
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operators" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operators
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#common-patterns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Patterns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples-in-action" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples in Action
+      Basic Regular Expressions
     </span>
   </a>
   
@@ -538,39 +779,66 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#operator-precedence" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#64-practical-token-patterns" class="md-nav__link">
     <span class="md-ellipsis">
-      Operator Precedence
+      6.4 Practical Token Patterns
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Operator Precedence">
+    <nav class="md-nav" aria-label="6.4 Practical Token Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#precedence-order-highest-to-lowest" class="md-nav__link">
+  <a href="#identifiers" class="md-nav__link">
     <span class="md-ellipsis">
-      Precedence Order (Highest to Lowest)
+      Identifiers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples-showing-precedence" class="md-nav__link">
+  <a href="#integer-literals" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples Showing Precedence
+      Integer Literals
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#best-practice" class="md-nav__link">
+  <a href="#floating-point-literals" class="md-nav__link">
     <span class="md-ellipsis">
-      Best Practice
+      Floating Point Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments-c-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments (C-style)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitespace
     </span>
   </a>
   
@@ -580,30 +848,63 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
+  <a href="#7-string-set-operations" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick Reference
+      7. String Set Operations
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quick Reference">
+    <nav class="md-nav" aria-label="7. String Set Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#token-recognition-process" class="md-nav__link">
+  <a href="#71-concatenation-in-detail" class="md-nav__link">
     <span class="md-ellipsis">
-      Token Recognition Process
+      7.1 Concatenation in Detail
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#common-token-types" class="md-nav__link">
+  <a href="#72-union-in-language-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Token Types
+      7.2 Union in Language Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-kleene-and-positive-closure-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Kleene and Positive Closure Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Kleene and Positive Closure Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure-zero-or-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (*) - Zero or More
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure-one-or-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (+) - One or More
     </span>
   </a>
   
@@ -613,57 +914,437 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#guide-questions-complete-answers" class="md-nav__link">
+  <a href="#8-regular-expression-operator-precedence" class="md-nav__link">
     <span class="md-ellipsis">
-      Guide Questions - Complete Answers
+      8. Regular Expression Operator Precedence
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Guide Questions - Complete Answers">
+    <nav class="md-nav" aria-label="8. Regular Expression Operator Precedence">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-what-is-the-role-of-the-lexical-analyzer" class="md-nav__link">
+  <a href="#81-precedence-rules-highest-to-lowest" class="md-nav__link">
     <span class="md-ellipsis">
-      1. What is the role of the lexical analyzer?
+      8.1 Precedence Rules (Highest to Lowest)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 Precedence Rules (Highest to Lowest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-kleene-star-highest-precedence-left-associative" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Kleene Star (*) - Highest Precedence, Left-Associative
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-why-should-parsing-be-separated-from-lexical-analysis" class="md-nav__link">
+  <a href="#2-concatenation-middle-precedence-left-associative" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Why should parsing be separated from lexical analysis?
+      2. Concatenation - Middle Precedence, Left-Associative
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three" class="md-nav__link">
+  <a href="#3-union-lowest-precedence-left-associative" class="md-nav__link">
     <span class="md-ellipsis">
-      3. What are tokens, patterns, and lexemes and what are the differences between these three?
+      3. Union (|) - Lowest Precedence, Left-Associative
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-complex-examples-with-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Complex Examples with Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 Complex Examples with Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-identifier-or-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Identifier or Keyword
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-what-are-lexical-errors-and-how" class="md-nav__link">
+  <a href="#example-2-optional-exponent-in-numbers" class="md-nav__link">
     <span class="md-ellipsis">
-      4. What are lexical errors and how
+      Example 2: Optional Exponent in Numbers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-how-is-a-lexical-definition-of-a-language-specified" class="md-nav__link">
+  <a href="#example-3-c-style-comments" class="md-nav__link">
     <span class="md-ellipsis">
-      5. How is a lexical definition of a language specified?
+      Example 3: C-style Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-using-parentheses-to-override-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 Using Parentheses to Override Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 Using Parentheses to Override Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#without-parentheses-following-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without Parentheses (Following Precedence)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-parentheses-explicit-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Parentheses (Explicit Grouping)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-real-world-pattern-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4 Real-World Pattern Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 Real-World Pattern Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-address-pattern-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Address Pattern (Simplified)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-pattern-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL Pattern (Simplified)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-real-world-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Real-World Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Real-World Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-programming-language-compilers" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Programming Language Compilers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.1 Programming Language Compilers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cc-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      C/C++ Compiler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Interpreter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-text-editors-and-ides" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Text Editors and IDEs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2 Text Editors and IDEs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax Highlighting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Completion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-search-engines-and-text-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 Search Engines and Text Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 Search Engines and Text Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-query-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Query Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-file-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log File Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-data-validation-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.4 Data Validation and Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 Data Validation and Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-number-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phone Number Parsing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-configuration-file-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.5 Configuration File Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 Configuration File Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Parser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96-web-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.6 Web Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 Web Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Parsing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-template-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML Template Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97-database-query-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.7 Database Query Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.7 Database Query Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Parser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-concepts-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Concepts to Remember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Tips
     </span>
   </a>
   
@@ -704,6 +1385,28 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntax_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syntax Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -731,37 +1434,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#learning-objectives" class="md-nav__link">
+  <a href="#1-introduction-to-lexical-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Learning Objectives
+      1. Introduction to Lexical Analysis
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guide-questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guide Questions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-role-of-the-lexical-analyzer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Role of the Lexical Analyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The Role of the Lexical Analyzer">
+    <nav class="md-nav" aria-label="1. Introduction to Lexical Analysis">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-flow" class="md-nav__link">
+  <a href="#real-world-analogy" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Flow
+      Real-World Analogy
     </span>
   </a>
   
@@ -773,19 +1458,61 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#issues-in-lexical-analysis" class="md-nav__link">
+  <a href="#2-the-role-of-the-lexical-analyzer" class="md-nav__link">
     <span class="md-ellipsis">
-      Issues in Lexical Analysis
+      2. The Role of the Lexical Analyzer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Issues in Lexical Analysis">
+    <nav class="md-nav" aria-label="2. The Role of the Lexical Analyzer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-separate-parsing-from-tokenization" class="md-nav__link">
+  <a href="#primary-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Separate Parsing from Tokenization?
+      Primary Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-converting-raw-text-into-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Converting Raw Text into Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-stripping-out-whitespace-and-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Stripping Out Whitespace and Comments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-error-message-correlation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Error Message Correlation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-with-other-compiler-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction with Other Compiler Phases
     </span>
   </a>
   
@@ -797,46 +1524,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tokens-patterns-and-lexemes" class="md-nav__link">
+  <a href="#3-why-separate-lexical-analysis-from-parsing" class="md-nav__link">
     <span class="md-ellipsis">
-      Tokens, Patterns, and Lexemes
+      3. Why Separate Lexical Analysis from Parsing?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tokens, Patterns, and Lexemes">
+    <nav class="md-nav" aria-label="3. Why Separate Lexical Analysis from Parsing?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
+  <a href="#31-simplicity-in-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Definitions
+      3.1 Simplicity in Design
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-breakdown" class="md-nav__link">
+  <a href="#32-improvement-in-efficiency" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Breakdown
+      3.2 Improvement in Efficiency
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fortran-statement-example" class="md-nav__link">
+  <a href="#33-enhanced-compiler-portability" class="md-nav__link">
     <span class="md-ellipsis">
-      Fortran Statement Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#important-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Important Notes
+      3.3 Enhanced Compiler Portability
     </span>
   </a>
   
@@ -848,28 +1566,136 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lexical-errors" class="md-nav__link">
+  <a href="#4-tokens-patterns-and-lexemes" class="md-nav__link">
     <span class="md-ellipsis">
-      Lexical Errors
+      4. Tokens, Patterns, and Lexemes
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lexical Errors">
+    <nav class="md-nav" aria-label="4. Tokens, Patterns, and Lexemes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-are-lexical-errors" class="md-nav__link">
+  <a href="#41-definitions-and-relationships" class="md-nav__link">
     <span class="md-ellipsis">
-      What Are Lexical Errors?
+      4.1 Definitions and Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Definitions and Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#error-recovery-strategies" class="md-nav__link">
+  <a href="#pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Error Recovery Strategies
+      Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lexeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexeme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-detailed-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Detailed Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Detailed Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-number-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Number Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-keywords-vs-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Keywords vs Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-handling-multiple-pattern-matches-with-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Handling Multiple Pattern Matches with Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Handling Multiple Pattern Matches with Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-attribute-pairs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token-Attribute Pairs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-world-application-symbol-table-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Application: Symbol Table Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-reserved-strings-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Reserved Strings (Keywords)
     </span>
   </a>
   
@@ -881,19 +1707,94 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specifications-of-tokens" class="md-nav__link">
+  <a href="#5-lexical-errors-and-error-handling" class="md-nav__link">
     <span class="md-ellipsis">
-      Specifications of Tokens
+      5. Lexical Errors and Error Handling
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Specifications of Tokens">
+    <nav class="md-nav" aria-label="5. Lexical Errors and Error Handling">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-concepts" class="md-nav__link">
+  <a href="#51-nature-of-lexical-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Concepts
+      5.1 Nature of Lexical Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-examples-of-lexical-vs-non-lexical-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Examples of Lexical vs Non-Lexical Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Examples of Lexical vs Non-Lexical Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lexical-errors-detected-by-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lexical Errors (Detected by Lexer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-lexical-errors-not-detected-by-lexer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Lexical Errors (Not Detected by Lexer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-error-recovery-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Error Recovery Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Error Recovery Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-panic-mode-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.1 Panic Mode Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-character-level-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3.2 Character-Level Corrections
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-real-world-error-handling-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 Real-World Error Handling Example
     </span>
   </a>
   
@@ -905,23 +1806,75 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#string-set-operations" class="md-nav__link">
+  <a href="#6-token-specifications-and-regular-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      String Set Operations
+      6. Token Specifications and Regular Expressions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="String Set Operations">
+    <nav class="md-nav" aria-label="6. Token Specifications and Regular Expressions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#union-l1-l2" class="md-nav__link">
+  <a href="#61-formal-foundations" class="md-nav__link">
     <span class="md-ellipsis">
-      Union (L₁ ∪ L₂)
+      6.1 Formal Foundations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Formal Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphabet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphabet (Σ)
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length-of-string-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Length of String |S|
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-string-set-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 String Set Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 String Set Operations">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#concatenation-l1l2" class="md-nav__link">
@@ -933,18 +1886,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kleene-closure-l" class="md-nav__link">
+  <a href="#union-l1-l2" class="md-nav__link">
     <span class="md-ellipsis">
-      Kleene Closure (L*)
+      Union (L₁ ∪ L₂)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#positive-closure-l" class="md-nav__link">
+  <a href="#string-power-ln" class="md-nav__link">
     <span class="md-ellipsis">
-      Positive Closure (L⁺)
+      String Power (L^n)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (Σ*)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (Σ+)
     </span>
   </a>
   
@@ -954,48 +1925,21 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#63-regular-expression-definitions" class="md-nav__link">
     <span class="md-ellipsis">
-      Regular Expressions
+      6.3 Regular Expression Definitions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Regular Expressions">
+    <nav class="md-nav" aria-label="6.3 Regular Expression Definitions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#basic-symbols" class="md-nav__link">
+  <a href="#basic-regular-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      Basic Symbols
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operators" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operators
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#common-patterns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Patterns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples-in-action" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples in Action
+      Basic Regular Expressions
     </span>
   </a>
   
@@ -1005,39 +1949,66 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#operator-precedence" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#64-practical-token-patterns" class="md-nav__link">
     <span class="md-ellipsis">
-      Operator Precedence
+      6.4 Practical Token Patterns
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Operator Precedence">
+    <nav class="md-nav" aria-label="6.4 Practical Token Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#precedence-order-highest-to-lowest" class="md-nav__link">
+  <a href="#identifiers" class="md-nav__link">
     <span class="md-ellipsis">
-      Precedence Order (Highest to Lowest)
+      Identifiers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#examples-showing-precedence" class="md-nav__link">
+  <a href="#integer-literals" class="md-nav__link">
     <span class="md-ellipsis">
-      Examples Showing Precedence
+      Integer Literals
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#best-practice" class="md-nav__link">
+  <a href="#floating-point-literals" class="md-nav__link">
     <span class="md-ellipsis">
-      Best Practice
+      Floating Point Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      String Literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments-c-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments (C-style)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitespace
     </span>
   </a>
   
@@ -1047,30 +2018,63 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
+  <a href="#7-string-set-operations" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick Reference
+      7. String Set Operations
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quick Reference">
+    <nav class="md-nav" aria-label="7. String Set Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#token-recognition-process" class="md-nav__link">
+  <a href="#71-concatenation-in-detail" class="md-nav__link">
     <span class="md-ellipsis">
-      Token Recognition Process
+      7.1 Concatenation in Detail
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#common-token-types" class="md-nav__link">
+  <a href="#72-union-in-language-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Token Types
+      7.2 Union in Language Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-kleene-and-positive-closure-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 Kleene and Positive Closure Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Kleene and Positive Closure Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kleene-closure-zero-or-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene Closure (*) - Zero or More
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positive-closure-one-or-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Positive Closure (+) - One or More
     </span>
   </a>
   
@@ -1080,57 +2084,437 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#guide-questions-complete-answers" class="md-nav__link">
+  <a href="#8-regular-expression-operator-precedence" class="md-nav__link">
     <span class="md-ellipsis">
-      Guide Questions - Complete Answers
+      8. Regular Expression Operator Precedence
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Guide Questions - Complete Answers">
+    <nav class="md-nav" aria-label="8. Regular Expression Operator Precedence">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-what-is-the-role-of-the-lexical-analyzer" class="md-nav__link">
+  <a href="#81-precedence-rules-highest-to-lowest" class="md-nav__link">
     <span class="md-ellipsis">
-      1. What is the role of the lexical analyzer?
+      8.1 Precedence Rules (Highest to Lowest)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 Precedence Rules (Highest to Lowest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-kleene-star-highest-precedence-left-associative" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Kleene Star (*) - Highest Precedence, Left-Associative
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-why-should-parsing-be-separated-from-lexical-analysis" class="md-nav__link">
+  <a href="#2-concatenation-middle-precedence-left-associative" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Why should parsing be separated from lexical analysis?
+      2. Concatenation - Middle Precedence, Left-Associative
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three" class="md-nav__link">
+  <a href="#3-union-lowest-precedence-left-associative" class="md-nav__link">
     <span class="md-ellipsis">
-      3. What are tokens, patterns, and lexemes and what are the differences between these three?
+      3. Union (|) - Lowest Precedence, Left-Associative
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-complex-examples-with-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Complex Examples with Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 Complex Examples with Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-identifier-or-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Identifier or Keyword
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-what-are-lexical-errors-and-how" class="md-nav__link">
+  <a href="#example-2-optional-exponent-in-numbers" class="md-nav__link">
     <span class="md-ellipsis">
-      4. What are lexical errors and how
+      Example 2: Optional Exponent in Numbers
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-how-is-a-lexical-definition-of-a-language-specified" class="md-nav__link">
+  <a href="#example-3-c-style-comments" class="md-nav__link">
     <span class="md-ellipsis">
-      5. How is a lexical definition of a language specified?
+      Example 3: C-style Comments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-using-parentheses-to-override-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 Using Parentheses to Override Precedence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 Using Parentheses to Override Precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#without-parentheses-following-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without Parentheses (Following Precedence)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-parentheses-explicit-grouping" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Parentheses (Explicit Grouping)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-real-world-pattern-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4 Real-World Pattern Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 Real-World Pattern Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-address-pattern-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Address Pattern (Simplified)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-pattern-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL Pattern (Simplified)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-real-world-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Real-World Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Real-World Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-programming-language-compilers" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Programming Language Compilers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.1 Programming Language Compilers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cc-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      C/C++ Compiler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Interpreter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-text-editors-and-ides" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Text Editors and IDEs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.2 Text Editors and IDEs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syntax Highlighting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Completion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-search-engines-and-text-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 Search Engines and Text Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.3 Search Engines and Text Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-query-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Query Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-file-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log File Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-data-validation-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.4 Data Validation and Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.4 Data Validation and Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-number-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phone Number Parsing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-configuration-file-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.5 Configuration File Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.5 Configuration File Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Parser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#96-web-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.6 Web Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.6 Web Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS Parsing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html-template-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML Template Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97-database-query-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.7 Database Query Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.7 Database Query Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql-parser" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Parser
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Key Takeaways
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Key Takeaways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-concepts-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Concepts to Remember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Tips
     </span>
   </a>
   
@@ -1158,524 +2542,657 @@
 
 
 <h1 id="lexical-analysis">Lexical Analysis</h1>
-<h2 id="learning-objectives">Learning Objectives</h2>
+<hr />
+<h2 id="1-introduction-to-lexical-analysis">1. Introduction to Lexical Analysis</h2>
+<p><strong>Lexical Analysis</strong> is the first phase of compilation that converts raw source code into a stream of tokens. Think of it as the "word recognition" phase - just like how you recognize individual words when reading a sentence, the lexical analyzer recognizes individual meaningful units in source code.</p>
+<h3 id="real-world-analogy">Real-World Analogy</h3>
+<p>Consider reading this sentence: "The quick brown fox jumps over the lazy dog."</p>
+<p>Your brain automatically:</p>
 <ul>
-<li>Understand the role of the lexical analyzer in compilation</li>
-<li>Learn about tokens, patterns, and lexemes</li>
-<li>Explore lexical error handling</li>
-<li>Master regular expressions for token specification</li>
+<li>Recognizes individual words</li>
+<li>Ignores spaces between words</li>
+<li>Identifies punctuation</li>
+<li>Groups characters into meaningful units</li>
+</ul>
+<p>Similarly, a lexical analyzer takes source code like <code>int count = 42;</code> and recognizes:</p>
+<ul>
+<li><code>int</code> as a keyword</li>
+<li><code>count</code> as an identifier</li>
+<li><code>=</code> as an assignment operator</li>
+<li><code>42</code> as a number literal</li>
+<li><code>;</code> as a semicolon</li>
 </ul>
 <hr />
-<h2 id="guide-questions">Guide Questions</h2>
+<h2 id="2-the-role-of-the-lexical-analyzer">2. The Role of the Lexical Analyzer</h2>
+<p>The lexical analyzer (also called a "lexer" or "scanner") has several critical responsibilities:</p>
+<h3 id="primary-functions">Primary Functions</h3>
+<h4 id="21-converting-raw-text-into-tokens">2.1 Converting Raw Text into Tokens</h4>
+<p><strong>What it does:</strong> Transforms the continuous stream of characters in source code into discrete, meaningful units called tokens.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-c">int x = 5 + 3;
+</code></pre>
+<p>Becomes the token stream:</p>
+<pre><code>[KEYWORD: int] [IDENTIFIER: x] [ASSIGN_OP: =] [NUMBER: 5] [PLUS_OP: +] [NUMBER: 3] [SEMICOLON: ;]
+</code></pre>
+<h4 id="22-stripping-out-whitespace-and-comments">2.2 Stripping Out Whitespace and Comments</h4>
+<p><strong>What it does:</strong> Removes unnecessary characters that don't affect program semantics.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-c">int    x    =    5;    // This assigns 5 to x
+/* Multi-line comment
+   explaining the code */
+int y = 10;
+</code></pre>
+<p>Becomes:</p>
+<pre><code>[KEYWORD: int] [IDENTIFIER: x] [ASSIGN_OP: =] [NUMBER: 5] [SEMICOLON: ;]
+[KEYWORD: int] [IDENTIFIER: y] [ASSIGN_OP: =] [NUMBER: 10] [SEMICOLON: ;]
+</code></pre>
+<h4 id="23-error-message-correlation">2.3 Error Message Correlation</h4>
+<p><strong>What it does:</strong> Tracks line numbers and column positions to help correlate compiler error messages with the original source code.</p>
+<p><strong>Example:</strong> If there's a syntax error, instead of just saying "syntax error," the compiler can say:</p>
+<pre><code>Error on line 15, column 8: Expected ';' after expression
+</code></pre>
+<h3 id="interaction-with-other-compiler-phases">Interaction with Other Compiler Phases</h3>
+<p>The lexical analyzer works as a "token supplier" for the parser:</p>
+<pre><code>Source Code → [Lexical Analyzer] → Token Stream → [Parser] → Parse Tree
+                     ↕
+                Symbol Table
+</code></pre>
+<p><strong>Real-World Example:</strong> Think of an assembly line where:</p>
+<ul>
+<li>Raw materials (source code) come in</li>
+<li>First station (lexical analyzer) sorts materials into standard parts (tokens)</li>
+<li>Second station (parser) assembles parts into subcomponents (expressions, statements)</li>
+<li>Later stations build the final product (executable code)</li>
+</ul>
+<hr />
+<h2 id="3-why-separate-lexical-analysis-from-parsing">3. Why Separate Lexical Analysis from Parsing?</h2>
+<p>Separating lexical analysis from parsing might seem like extra work, but it provides crucial benefits:</p>
+<h3 id="31-simplicity-in-design">3.1 Simplicity in Design</h3>
+<p><strong>Benefit:</strong> Each phase handles one specific task well.</p>
+<p><strong>Real-World Analogy:</strong> Consider building a house:</p>
+<ul>
+<li>You don't simultaneously dig the foundation, frame walls, and install plumbing</li>
+<li>Each phase has specialists who focus on their expertise</li>
+<li>Similarly, lexical analysis focuses on character-level patterns, while parsing focuses on structural relationships</li>
+</ul>
+<p><strong>Technical Example:</strong>
+Without separation, a parser would need to handle:</p>
+<pre><code class="language-c">while   (   x    &lt;    10   )   {
+</code></pre>
+<p>As individual characters: <code>w</code>, <code>h</code>, <code>i</code>, <code>l</code>, <code>e</code>, <code></code>, <code>(</code>, <code></code>, <code>x</code>, ...</p>
+<p>With separation, the parser receives clean tokens:
+<code>[WHILE] [LPAREN] [ID: x] [LESS] [NUM: 10] [RPAREN] [LBRACE]</code></p>
+<h3 id="32-improvement-in-efficiency">3.2 Improvement in Efficiency</h3>
+<p><strong>Benefit:</strong> Specialized algorithms for each task perform better than general-purpose solutions.</p>
+<p><strong>Character Processing:</strong> Lexical analysis uses efficient character-scanning techniques (like finite automata) optimized for linear text processing.</p>
+<p><strong>Structure Processing:</strong> Parsing uses context-free grammar techniques optimized for handling nested structures.</p>
+<p><strong>Performance Example:</strong></p>
+<ul>
+<li>Lexical analysis: O(n) where n = number of characters</li>
+<li>If combined with parsing: O(n²) or worse due to backtracking</li>
+</ul>
+<h3 id="33-enhanced-compiler-portability">3.3 Enhanced Compiler Portability</h3>
+<p><strong>Benefit:</strong> Only the lexical analyzer needs to change when porting to different character encodings or platforms.</p>
+<p><strong>Practical Example:</strong></p>
+<ul>
+<li>Moving from ASCII to Unicode: Only lexical analyzer changes</li>
+<li>Different comment styles (// vs #): Only lexical analyzer changes</li>
+<li>Different platforms (Windows vs Unix line endings): Only lexical analyzer changes</li>
+</ul>
+<hr />
+<h2 id="4-tokens-patterns-and-lexemes">4. Tokens, Patterns, and Lexemes</h2>
+<p>These three concepts are fundamental to understanding lexical analysis:</p>
+<h3 id="41-definitions-and-relationships">4.1 Definitions and Relationships</h3>
+<h4 id="token">Token</h4>
+<p><strong>Definition:</strong> A category or class of lexical units. The "type" of a piece of text.</p>
+<p><strong>Think of it as:</strong> The grammatical category (like "noun," "verb," "adjective" in English)</p>
+<h4 id="pattern">Pattern</h4>
+<p><strong>Definition:</strong> The rule or regular expression that describes what text can belong to a token.</p>
+<p><strong>Think of it as:</strong> The spelling rules that define the category</p>
+<h4 id="lexeme">Lexeme</h4>
+<p><strong>Definition:</strong> The actual sequence of characters in the source code that matches a pattern.</p>
+<p><strong>Think of it as:</strong> The specific word instance</p>
+<h3 id="42-detailed-examples">4.2 Detailed Examples</h3>
+<h4 id="example-1-identifiers">Example 1: Identifiers</h4>
+<pre><code>Token: IDENTIFIER
+Pattern: [A-Za-z_][A-Za-z0-9_]*
+Lexemes: &quot;count&quot;, &quot;userName&quot;, &quot;_temp&quot;, &quot;MAX_SIZE&quot;
+</code></pre>
+<p><strong>Real-World Context:</strong></p>
+<pre><code class="language-c">int userAge = 25;        // &quot;userAge&quot; is a lexeme of token IDENTIFIER
+char firstName[50];      // &quot;firstName&quot; is a lexeme of token IDENTIFIER
+int _private = 0;        // &quot;_private&quot; is a lexeme of token IDENTIFIER
+</code></pre>
+<h4 id="example-2-number-literals">Example 2: Number Literals</h4>
+<pre><code>Token: INTEGER_LITERAL
+Pattern: [0-9]+
+Lexemes: &quot;42&quot;, &quot;0&quot;, &quot;999&quot;, &quot;2024&quot;
+</code></pre>
+<pre><code>Token: FLOAT_LITERAL
+Pattern: [0-9]+\.[0-9]+
+Lexemes: &quot;3.14&quot;, &quot;0.5&quot;, &quot;99.99&quot;
+</code></pre>
+<p><strong>Real-World Context:</strong></p>
+<pre><code class="language-c">int year = 2024;         // &quot;2024&quot; is a lexeme of INTEGER_LITERAL
+double pi = 3.14159;     // &quot;3.14159&quot; is a lexeme of FLOAT_LITERAL
+float price = 19.99;     // &quot;19.99&quot; is a lexeme of FLOAT_LITERAL
+</code></pre>
+<h4 id="example-3-keywords-vs-identifiers">Example 3: Keywords vs Identifiers</h4>
+<p>This demonstrates why patterns must be carefully designed:</p>
+<pre><code class="language-c">int if_count = 5;        // &quot;if_count&quot; is IDENTIFIER (not keyword &quot;if&quot;)
+if (x &gt; 0) return;       // &quot;if&quot; is KEYWORD
+</code></pre>
+<p><strong>Pattern Priority:</strong> Keywords typically have higher priority than general identifier patterns.</p>
+<h3 id="43-handling-multiple-pattern-matches-with-attributes">4.3 Handling Multiple Pattern Matches with Attributes</h3>
+<p>When a lexeme could match multiple patterns, we use <strong>attributes</strong> to provide additional information:</p>
+<h4 id="token-attribute-pairs">Token-Attribute Pairs</h4>
+<p>Instead of just tokens, the lexical analyzer produces token-attribute pairs:</p>
+<pre><code>&lt;TOKEN_TYPE, attribute_value&gt;
+</code></pre>
+<p><strong>Example from the PDF:</strong>
+For the Fortran statement: <code>E = M * C ** 2</code></p>
+<p>The token stream becomes:</p>
+<pre><code>&lt;id, pointer to symbol-table entry for E&gt;
+&lt;assign_op, &gt;
+&lt;id, pointer to symbol-table entry for M&gt;
+&lt;mult_op, &gt;
+&lt;id, pointer to symbol-table entry for C&gt;
+&lt;exp_op, &gt;
+&lt;num, integer value 2&gt;
+</code></pre>
+<h4 id="real-world-application-symbol-table-integration">Real-World Application: Symbol Table Integration</h4>
+<pre><code class="language-c">int count = 42;
+int total = count + 10;
+</code></pre>
+<p><strong>Token-Attribute Stream:</strong></p>
+<pre><code>&lt;KEYWORD, &quot;int&quot;&gt;
+&lt;IDENTIFIER, ptr_to_symbol_table[&quot;count&quot;]&gt;
+&lt;ASSIGN, &gt;
+&lt;INTEGER, 42&gt;
+&lt;SEMICOLON, &gt;
+&lt;KEYWORD, &quot;int&quot;&gt;
+&lt;IDENTIFIER, ptr_to_symbol_table[&quot;total&quot;]&gt;
+&lt;ASSIGN, &gt;
+&lt;IDENTIFIER, ptr_to_symbol_table[&quot;count&quot;]&gt;  // Same pointer as before
+&lt;PLUS, &gt;
+&lt;INTEGER, 10&gt;
+&lt;SEMICOLON, &gt;
+</code></pre>
+<h3 id="44-reserved-strings-keywords">4.4 Reserved Strings (Keywords)</h3>
+<p><strong>Definition:</strong> Lexemes that have specific meaning in the programming language and cannot be used as identifiers.</p>
+<p><strong>Examples in C:</strong></p>
+<ul>
+<li><code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, <code>int</code>, <code>char</code>, <code>return</code>, <code>void</code></li>
+</ul>
+<p><strong>Examples in Python:</strong></p>
+<ul>
+<li><code>def</code>, <code>class</code>, <code>import</code>, <code>from</code>, <code>if</code>, <code>elif</code>, <code>else</code></li>
+</ul>
+<p><strong>Implementation Strategy:</strong></p>
 <ol>
-<li><strong>What is the role of the lexical analyzer?</strong></li>
-<li><strong>Why should parsing be separated from lexical analysis?</strong></li>
-<li><strong>What are tokens, patterns, and lexemes and what are the differences between these three?</strong></li>
-<li><strong>What are lexical errors and how are they handled?</strong></li>
-<li><strong>How is a lexical definition of a language specified?</strong></li>
+<li>First check if a word matches a keyword pattern</li>
+<li>If not a keyword, then check if it matches identifier pattern</li>
+<li>Keywords have higher precedence than identifiers</li>
 </ol>
 <hr />
-<h2 id="the-role-of-the-lexical-analyzer">The Role of the Lexical Analyzer</h2>
-<p>The lexical analyzer serves as the <strong>first phase of the compiler</strong> and performs several crucial functions:</p>
-<ul>
-<li><strong>Converts raw text into tokens</strong> - Transforms the source code from a stream of characters into meaningful units</li>
-<li><strong>Strips out whitespace and comments</strong> - Removes unnecessary formatting and documentation that doesn't affect program logic</li>
-<li><strong>Correlates error messages</strong> - Links compiler errors back to specific locations in the source code</li>
-<li><strong>Tracks position information</strong> - Maintains line numbers and column numbers for debugging purposes</li>
-</ul>
-<h3 id="example-flow">Example Flow</h3>
-<pre><code>Source Code: &quot;int x = 42; // this is a variable&quot;
-↓
-Lexical Analyzer
-↓
-Tokens: [INT_KEYWORD, IDENTIFIER(x), ASSIGN_OP, NUMBER(42), SEMICOLON]
+<h2 id="5-lexical-errors-and-error-handling">5. Lexical Errors and Error Handling</h2>
+<h3 id="51-nature-of-lexical-errors">5.1 Nature of Lexical Errors</h3>
+<p><strong>Key Insight:</strong> Few errors are actually detectable at the lexical level alone.</p>
+<p><strong>Why?</strong> The lexical analyzer only sees character patterns, not program logic.</p>
+<h3 id="52-examples-of-lexical-vs-non-lexical-errors">5.2 Examples of Lexical vs Non-Lexical Errors</h3>
+<h4 id="lexical-errors-detected-by-lexer">Lexical Errors (Detected by Lexer)</h4>
+<pre><code class="language-c">int x = 3.14.159;        // Invalid number format
+char c = 'unterminated string
+int count = 999999999999999999999;  // Number too large
 </code></pre>
+<h4 id="non-lexical-errors-not-detected-by-lexer">Non-Lexical Errors (Not Detected by Lexer)</h4>
+<pre><code class="language-c">fi(a == f(x))           // &quot;fi&quot; is valid identifier, just misspelled &quot;if&quot;
+int x = y + z;          // All valid tokens, but 'y' and 'z' might not be declared
+return x + ;            // Valid tokens, but invalid syntax
+</code></pre>
+<h3 id="53-error-recovery-strategies">5.3 Error Recovery Strategies</h3>
+<p>When the lexical analyzer encounters invalid character sequences, it needs to recover and continue processing:</p>
+<h4 id="531-panic-mode-recovery">5.3.1 Panic Mode Recovery</h4>
+<p><strong>Strategy:</strong> Delete characters until a well-formed token can be created.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-c">int x@ = 5;
+</code></pre>
+<p><strong>Recovery:</strong> Delete '@' and continue, treating it as <code>int x = 5;</code></p>
+<h4 id="532-character-level-corrections">5.3.2 Character-Level Corrections</h4>
+<p>The lexer can attempt these corrections:</p>
+<p><strong>Deletion:</strong> Remove an invalid character</p>
+<pre><code class="language-c">in@t x = 5;  →  int x = 5;    // Delete '@'
+</code></pre>
+<p><strong>Insertion:</strong> Add a missing character</p>
+<pre><code class="language-c">int x == 5;  →  int x = 5;    // Assume one '=' was intended
+</code></pre>
+<p><strong>Replacement:</strong> Replace a wrong character</p>
+<pre><code class="language-c">int x -= 5;  →  int x = 5;    // Replace '-' with nothing (or report as compound operator)
+</code></pre>
+<p><strong>Transposition:</strong> Swap adjacent characters</p>
+<pre><code class="language-c">int x = 5;;  →  int x = 5;    // Remove duplicate semicolon
+</code></pre>
+<h3 id="54-real-world-error-handling-example">5.4 Real-World Error Handling Example</h3>
+<p>Consider this malformed code:</p>
+<pre><code class="language-c">int main() {
+    int x = 3.14.159;    // Lexical error: invalid number
+    int y = x +;         // Syntax error: incomplete expression
+    retur x;             // Lexical: &quot;retur&quot; is valid identifier, not &quot;return&quot;
+}
+</code></pre>
+<p><strong>Lexer Response:</strong></p>
+<ol>
+<li>Line 2: Error - invalid floating point number, suggest <code>3.14159</code></li>
+<li>Line 3: Produces tokens <code>int</code>, <code>y</code>, <code>=</code>, <code>x</code>, <code>+</code>, <code>;</code> - parser will catch syntax error</li>
+<li>Line 4: Produces <code>retur</code> as identifier - semantic analyzer will catch undefined identifier</li>
+</ol>
 <hr />
-<h2 id="issues-in-lexical-analysis">Issues in Lexical Analysis</h2>
-<h3 id="why-separate-parsing-from-tokenization">Why Separate Parsing from Tokenization?</h3>
-<p><strong>1. Simplicity in Design</strong></p>
+<h2 id="6-token-specifications-and-regular-expressions">6. Token Specifications and Regular Expressions</h2>
+<h3 id="61-formal-foundations">6.1 Formal Foundations</h3>
+<h4 id="alphabet">Alphabet (Σ)</h4>
+<p><strong>Definition:</strong> A finite set of symbols used to build strings.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li>Each phase has a single, well-defined responsibility</li>
-<li>Lexical analyzer focuses only on character-level recognition</li>
-<li>Parser focuses only on grammatical structure</li>
+<li><strong>ASCII:</strong> 128 characters including letters, digits, punctuation</li>
+<li><strong>Unicode:</strong> Millions of characters from world languages</li>
+<li><strong>Binary:</strong> {0, 1}</li>
+<li><strong>Simple:</strong> {a, b, c}</li>
 </ul>
-<p><strong>2. Improvement in Efficiency</strong></p>
+<h4 id="string">String</h4>
+<p><strong>Definition:</strong> A finite sequence of symbols from an alphabet.</p>
+<p><strong>Examples over alphabet {a, b}:</strong></p>
 <ul>
-<li>Specialized algorithms for each phase</li>
-<li>Better performance through focused optimization</li>
-<li>Reduced complexity in each component</li>
+<li><code>ε</code> (empty string)</li>
+<li><code>a</code></li>
+<li><code>ab</code></li>
+<li><code>abba</code></li>
+<li><code>aaabbbaaaa</code></li>
 </ul>
-<p><strong>3. Compiler Portability Enhanced</strong></p>
+<h4 id="length-of-string-s">Length of String |S|</h4>
+<p><strong>Definition:</strong> Number of symbols in string S.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li>Easy to adapt lexical analyzer for different character sets</li>
-<li>Grammar rules remain unchanged across platforms</li>
-<li>Modular design allows independent updates</li>
+<li><code>|ε| = 0</code></li>
+<li><code>|"hello"| = 5</code></li>
+<li><code>|"C++"| = 3</code></li>
 </ul>
-<hr />
-<h2 id="tokens-patterns-and-lexemes">Tokens, Patterns, and Lexemes</h2>
-<h3 id="definitions">Definitions</h3>
-<ul>
-<li><strong>Token</strong> - A category or label for lexical units (like a part of speech in grammar)</li>
-<li><strong>Pattern</strong> - The rule or regular expression that defines how to recognize a token</li>
-<li><strong>Lexeme</strong> - The actual text from source code that matches a token's pattern</li>
-</ul>
-<h3 id="example-breakdown">Example Breakdown</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Token</strong></td>
-<td><code>identifier</code></td>
-<td>Category name</td>
-</tr>
-<tr>
-<td><strong>Pattern</strong></td>
-<td><code>/[A-Za-z_][A-Za-z0-9_]*</code></td>
-<td>Rule for recognition</td>
-</tr>
-<tr>
-<td><strong>Lexeme</strong></td>
-<td><code>"nCount"</code></td>
-<td>Actual text found</td>
-</tr>
-</tbody>
-</table>
-<h3 id="fortran-statement-example">Fortran Statement Example</h3>
-<p>For the statement: <code>E = M * C ** 2</code></p>
-<table>
-<thead>
-<tr>
-<th>Lexeme</th>
-<th>Token</th>
-<th>Attributes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>E</code></td>
-<td><code>&lt;id, pointer to symbol-table entry for E&gt;</code></td>
-<td>Variable identifier</td>
-</tr>
-<tr>
-<td><code>=</code></td>
-<td><code>&lt;assign_op&gt;</code></td>
-<td>Assignment operator</td>
-</tr>
-<tr>
-<td><code>M</code></td>
-<td><code>&lt;id, pointer to symbol-table entry for M&gt;</code></td>
-<td>Variable identifier</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td><code>&lt;mult_op&gt;</code></td>
-<td>Multiplication operator</td>
-</tr>
-<tr>
-<td><code>C</code></td>
-<td><code>&lt;id, pointer to symbol-table entry for C&gt;</code></td>
-<td>Variable identifier</td>
-</tr>
-<tr>
-<td><code>**</code></td>
-<td><code>&lt;exp_op&gt;</code></td>
-<td>Exponentiation operator</td>
-</tr>
-<tr>
-<td><code>2</code></td>
-<td><code>&lt;number, integer value 2&gt;</code></td>
-<td>Numeric literal</td>
-</tr>
-</tbody>
-</table>
-<h3 id="important-notes">Important Notes</h3>
-<ul>
-<li><strong>Tokens serve as terminal symbols</strong> in a language's grammar</li>
-<li><strong>Reserved strings</strong> are lexemes with specific meaning (keywords like <code>if</code>, <code>while</code>)</li>
-<li><strong>Attributes</strong> provide additional information when multiple lexemes match the same token pattern</li>
-</ul>
-<hr />
-<h2 id="lexical-errors">Lexical Errors</h2>
-<h3 id="what-are-lexical-errors">What Are Lexical Errors?</h3>
-<ul>
-<li>Occur when <strong>no pattern matches</strong> the current sequence of characters</li>
-<li>Few errors are detectable at lexical level alone</li>
-<li>Example: <code>fi(a == f (x))</code> - <code>fi</code> might be a typo for <code>if</code></li>
-</ul>
-<h3 id="error-recovery-strategies">Error Recovery Strategies</h3>
-<p><strong>1. Panic Mode</strong></p>
-<ul>
-<li>Delete characters until a well-formed token can be created</li>
-<li>Simple but may skip over multiple errors</li>
-</ul>
-<p><strong>2. Deletion</strong></p>
-<ul>
-<li>Remove one character from the problematic lexeme</li>
-<li>Try to match again with shortened string</li>
-</ul>
-<p><strong>3. Insertion</strong></p>
-<ul>
-<li>Add a character to the current lexeme</li>
-<li>Attempt to create valid token</li>
-</ul>
-<p><strong>4. Replacement</strong></p>
-<ul>
-<li>Replace one character in the current lexeme</li>
-<li>Most common for typos</li>
-</ul>
-<p><strong>5. Transposition</strong></p>
-<ul>
-<li>Swap adjacent characters</li>
-<li>Handles common typing mistakes</li>
-</ul>
-<hr />
-<h2 id="specifications-of-tokens">Specifications of Tokens</h2>
-<p>Tokens are specified using <strong>regular expressions</strong> - mathematical formulas that describe text patterns.</p>
-<h3 id="basic-concepts">Basic Concepts</h3>
-<p><strong>Alphabet (Σ)</strong></p>
-<ul>
-<li>Finite set of symbols</li>
-<li>Examples: ASCII (128 characters), Extended ASCII (256 characters)</li>
-</ul>
-<p><strong>String</strong></p>
-<ul>
-<li>Finite sequence of symbols from an alphabet</li>
-<li>Each symbol must be from the defined alphabet Σ</li>
-</ul>
-<p><strong>String Length</strong></p>
-<ul>
-<li>Number of symbols in string S</li>
-<li>Denoted by |S|</li>
-<li>Empty string (ε) has length 0</li>
-</ul>
-<p><strong>Language</strong></p>
-<ul>
-<li>Set of strings defined over an alphabet</li>
-<li>If language L is over alphabet Σ, then L ⊆ Σ*</li>
-<li>Σ* = set of all possible strings from symbols in Σ</li>
-</ul>
-<hr />
-<h2 id="string-set-operations">String Set Operations</h2>
-<h3 id="union-l1-l2">Union (L₁ ∪ L₂)</h3>
-<ul>
-<li><strong>Definition</strong>: Set of strings in either L₁ or L₂ (or both)</li>
-<li><strong>Example</strong>: If L₁ = {cat, dog} and L₂ = {bird, cat}, then L₁ ∪ L₂ = {cat, dog, bird}</li>
-</ul>
-<h3 id="concatenation-l1l2">Concatenation (L₁L₂)</h3>
-<ul>
-<li><strong>Definition</strong>: Set of strings formed by concatenating each string in L₁ with each string in L₂</li>
-<li><strong>Example</strong>: If L₁ = {a, b} and L₂ = {c, d}, then L₁L₂ = {ac, ad, bc, bd}</li>
-</ul>
-<h3 id="kleene-closure-l">Kleene Closure (L*)</h3>
-<ul>
-<li><strong>Definition</strong>: Set containing ε and all strings formed by concatenating zero or more strings from L</li>
-<li><strong>Example</strong>: If L = {a, b}, then L* = {ε, a, b, aa, ab, ba, bb, aaa, aab, ...}</li>
-</ul>
-<h3 id="positive-closure-l">Positive Closure (L⁺)</h3>
-<ul>
-<li><strong>Definition</strong>: Set of all strings formed by concatenating one or more strings from L</li>
-<li><strong>Example</strong>: If L = {a, b}, then L⁺ = {a, b, aa, ab, ba, bb, aaa, aab, ...}</li>
-<li><strong>Note</strong>: L⁺ = LL<em> (L concatenated with L</em>)</li>
-</ul>
-<hr />
-<h2 id="regular-expressions">Regular Expressions</h2>
-<p>Regular expressions are patterns that match strings in a language. They use special symbols to describe text patterns.</p>
-<h3 id="basic-symbols">Basic Symbols</h3>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>a</code></td>
-<td>Literal character 'a'</td>
-<td>Matches exactly 'a'</td>
-</tr>
-<tr>
-<td><code>ε</code></td>
-<td>Empty string</td>
-<td>Matches nothing (zero length)</td>
-</tr>
-<tr>
-<td><code>∅</code></td>
-<td>Empty set</td>
-<td>Matches no strings</td>
-</tr>
-</tbody>
-</table>
-<h3 id="operators">Operators</h3>
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Name</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>|</code></td>
-<td>Union/OR</td>
-<td>Either pattern</td>
-<td><code>a|b</code> matches 'a' or 'b'</td>
-</tr>
-<tr>
-<td><code>•</code> or concatenation</td>
-<td>Concatenation</td>
-<td>One after another</td>
-<td><code>ab</code> matches 'a' followed by 'b'</td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td>Kleene Star</td>
-<td>Zero or more</td>
-<td><code>a*</code> matches '', 'a', 'aa', 'aaa'...</td>
-</tr>
-<tr>
-<td><code>+</code></td>
-<td>Plus</td>
-<td>One or more</td>
-<td><code>a+</code> matches 'a', 'aa', 'aaa'...</td>
-</tr>
-<tr>
-<td><code>?</code></td>
-<td>Question</td>
-<td>Zero or one</td>
-<td><code>a?</code> matches '' or 'a'</td>
-</tr>
-<tr>
-<td><code>[]</code></td>
-<td>Character class</td>
-<td>Any character inside</td>
-<td><code>[abc]</code> matches 'a', 'b', or 'c'</td>
-</tr>
-<tr>
-<td><code>[^]</code></td>
-<td>Negated class</td>
-<td>Any character NOT inside</td>
-<td><code>[^abc]</code> matches any char except 'a', 'b', 'c'</td>
-</tr>
-</tbody>
-</table>
-<h3 id="common-patterns">Common Patterns</h3>
-<table>
-<thead>
-<tr>
-<th>Pattern</th>
-<th>Regular Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Identifier</td>
-<td><code>[a-zA-Z_][a-zA-Z0-9_]*</code></td>
-<td>Letter/underscore followed by letters/digits/underscores</td>
-</tr>
-<tr>
-<td>Integer</td>
-<td><code>[0-9]+</code></td>
-<td>One or more digits</td>
-</tr>
-<tr>
-<td>Float</td>
-<td><code>[0-9]+\.[0-9]+</code></td>
-<td>Digits, dot, digits</td>
-</tr>
-<tr>
-<td>Whitespace</td>
-<td><code>[ \t\n\r]+</code></td>
-<td>One or more space characters</td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples-in-action">Examples in Action</h3>
+<h4 id="language">Language</h4>
+<p><strong>Definition:</strong> A set of strings over an alphabet.</p>
+<p><strong>Examples:</strong></p>
+<pre><code>L₁ = {ε, a, aa, aaa, ...}           // All strings of a's (including empty)
+L₂ = {ab, aabb, aaabbb, ...}        // Strings with equal a's followed by equal b's
+L₃ = {&quot;if&quot;, &quot;else&quot;, &quot;while&quot;, ...}   // C keywords
+</code></pre>
+<h3 id="62-string-set-operations">6.2 String Set Operations</h3>
+<h4 id="concatenation-l1l2">Concatenation (L₁L₂)</h4>
+<p><strong>Definition:</strong> Set of all strings xy where x ∈ L₁ and y ∈ L₂</p>
+<p><strong>Example:</strong></p>
+<pre><code>L₁ = {a, ab}
+L₂ = {c, cd}
+L₁L₂ = {ac, acd, abc, abcd}
+</code></pre>
+<p><strong>Programming Example:</strong></p>
+<pre><code>Keywords = {&quot;int&quot;, &quot;char&quot;}
+Identifiers = {&quot;x&quot;, &quot;count&quot;}
+// Concatenation creates sequences like &quot;intx&quot;, &quot;charcount&quot;
+// (Not useful for programming languages, but demonstrates the concept)
+</code></pre>
+<h4 id="union-l1-l2">Union (L₁ ∪ L₂)</h4>
+<p><strong>Definition:</strong> Set of all strings x where x ∈ L₁ OR x ∈ L₂</p>
+<p><strong>Example:</strong></p>
+<pre><code>Keywords = {&quot;int&quot;, &quot;if&quot;, &quot;else&quot;}
+Operators = {&quot;+&quot;, &quot;-&quot;, &quot;*&quot;}
+Tokens = Keywords ∪ Operators = {&quot;int&quot;, &quot;if&quot;, &quot;else&quot;, &quot;+&quot;, &quot;-&quot;, &quot;*&quot;}
+</code></pre>
+<h4 id="string-power-ln">String Power (L^n)</h4>
+<p><strong>Definition:</strong> String concatenated with itself n times.</p>
+<p><strong>Examples:</strong></p>
+<pre><code>&quot;ab&quot;¹ = &quot;ab&quot;
+&quot;ab&quot;² = &quot;abab&quot;
+&quot;ab&quot;³ = &quot;ababab&quot;
+</code></pre>
+<h4 id="kleene-closure">Kleene Closure (Σ*)</h4>
+<p><strong>Definition:</strong> Set of all strings comprised of zero to many symbols from Σ.</p>
+<p><strong>Example with Σ = {a, b}:</strong></p>
+<pre><code>Σ* = {ε, a, b, aa, ab, ba, bb, aaa, aab, aba, abb, baa, bab, bba, bbb, ...}
+</code></pre>
+<p><strong>Programming Application:</strong></p>
+<pre><code>Digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+Digits* = All possible number strings: {ε, 0, 1, ..., 42, 123, 999, ...}
+</code></pre>
+<h4 id="positive-closure">Positive Closure (Σ+)</h4>
+<p><strong>Definition:</strong> Set of all strings comprised of one to many symbols from Σ.</p>
+<p><strong>Difference from Kleene Closure:</strong> Excludes the empty string ε.</p>
+<pre><code>Digits+ = {0, 1, 2, ..., 42, 123, 999, ...}  // No empty string
+</code></pre>
+<h3 id="63-regular-expression-definitions">6.3 Regular Expression Definitions</h3>
+<p>Regular expressions provide a formal way to define token patterns:</p>
+<h4 id="basic-regular-expressions">Basic Regular Expressions</h4>
+<p><strong>ε (Empty String)</strong></p>
+<pre><code>Regular Expression: ε
+Language: {ε}
+Example Use: Optional elements
+</code></pre>
+<p><strong>Single Symbol</strong></p>
+<pre><code>Regular Expression: a (where a ∈ Σ)
+Language: {a}
+Example: The letter 'a' matches only the string &quot;a&quot;
+</code></pre>
+<p><strong>Concatenation (rs)</strong></p>
+<pre><code>Regular Expression: rs
+Language: All strings from concatenating strings matching r with strings matching s
+Example: ab matches only &quot;ab&quot;
+</code></pre>
+<p><strong>Union (r|s)</strong></p>
+<pre><code>Regular Expression: r|s
+Language: All strings matching either r or s
+Example: a|b matches &quot;a&quot; or &quot;b&quot;
+</code></pre>
+<p><strong>Kleene Star (r*)</strong></p>
+<pre><code>Regular Expression: r*
+Language: Zero or more concatenations of strings matching r
+Example: a* matches &quot;&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aaa&quot;, ...
+</code></pre>
+<h3 id="64-practical-token-patterns">6.4 Practical Token Patterns</h3>
+<h4 id="identifiers">Identifiers</h4>
+<pre><code>Pattern: [A-Za-z_][A-Za-z0-9_]*
+Meaning: Letter or underscore, followed by zero or more letters, digits, or underscores
+Examples: userName, _temp, MAX_SIZE, x, y1
+</code></pre>
+<h4 id="integer-literals">Integer Literals</h4>
 <pre><code>Pattern: [0-9]+
-Matches: &quot;42&quot;, &quot;123&quot;, &quot;7&quot;
-Doesn't match: &quot;abc&quot;, &quot;12.5&quot;
+Meaning: One or more digits
+Examples: 0, 42, 999, 2024
+</code></pre>
+<h4 id="floating-point-literals">Floating Point Literals</h4>
+<pre><code>Pattern: [0-9]+\.[0-9]+
+Meaning: Digits, decimal point, more digits
+Examples: 3.14, 0.5, 99.99
+</code></pre>
+<h4 id="string-literals">String Literals</h4>
+<pre><code>Pattern: \&quot;[^\&quot;]*\&quot;
+Meaning: Quote, zero or more non-quote characters, quote
+Examples: &quot;hello&quot;, &quot;C++ Programming&quot;, &quot;&quot;
+</code></pre>
+<h4 id="comments-c-style">Comments (C-style)</h4>
+<pre><code>Single-line: //[^\n]*
+Multi-line: /\*.*?\*/
+</code></pre>
+<h4 id="whitespace">Whitespace</h4>
+<pre><code>Pattern: [ \t\n\r]+
+Meaning: One or more spaces, tabs, newlines, or carriage returns
+</code></pre>
+<hr />
+<h2 id="7-string-set-operations">7. String Set Operations</h2>
+<h3 id="71-concatenation-in-detail">7.1 Concatenation in Detail</h3>
+<p><strong>Formal Definition:</strong> For languages L₁ and L₂:</p>
+<pre><code>L₁L₂ = {xy | x ∈ L₁ ∧ y ∈ L₂}
+</code></pre>
+<p><strong>Programming Language Example:</strong></p>
+<pre><code>PrefixOperators = {&quot;++&quot;, &quot;--&quot;}
+Variables = {&quot;x&quot;, &quot;y&quot;, &quot;count&quot;}
+PreIncrements = PrefixOperators · Variables
+Result = {&quot;++x&quot;, &quot;++y&quot;, &quot;++count&quot;, &quot;--x&quot;, &quot;--y&quot;, &quot;--count&quot;}
+</code></pre>
+<p><strong>Real Code:</strong></p>
+<pre><code class="language-c">++count;        // Matches &quot;++count&quot; from concatenation
+--x;            // Matches &quot;--x&quot; from concatenation
+</code></pre>
+<h3 id="72-union-in-language-design">7.2 Union in Language Design</h3>
+<p><strong>Practical Application:</strong> Defining all valid tokens</p>
+<pre><code>Numbers = {[0-9]+}
+Identifiers = {[A-Za-z][A-Za-z0-9]*}
+Keywords = {&quot;if&quot;, &quot;else&quot;, &quot;while&quot;, &quot;for&quot;}
+Operators = {&quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;/&quot;, &quot;=&quot;}
 
-Pattern: [a-zA-Z][a-zA-Z0-9]*
-Matches: &quot;x&quot;, &quot;variable1&quot;, &quot;myVar&quot;
-Doesn't match: &quot;123abc&quot;, &quot;_private&quot;
+AllTokens = Numbers ∪ Identifiers ∪ Keywords ∪ Operators
+</code></pre>
+<h3 id="73-kleene-and-positive-closure-applications">7.3 Kleene and Positive Closure Applications</h3>
+<h4 id="kleene-closure-zero-or-more">Kleene Closure (*) - Zero or More</h4>
+<p><strong>Use Case:</strong> Optional repeated elements</p>
+<pre><code class="language-c">int x;              // Zero dimensions: int x
+int array[10];      // One dimension: int array[10]
+int matrix[10][20]; // Two dimensions: int matrix[10][20]
+</code></pre>
+<p><strong>Pattern:</strong> <code>[</code> number <code>]</code> can appear zero or more times
+<strong>Regular Expression:</strong> <code>int identifier (\[.*?\])*</code></p>
+<h4 id="positive-closure-one-or-more">Positive Closure (+) - One or More</h4>
+<p><strong>Use Case:</strong> Required repeated elements</p>
+<pre><code class="language-c">// Valid: one or more digits
+123, 42, 7, 999999
+
+// Invalid: empty string not allowed for numbers
+// Pattern: [0-9]+ ensures at least one digit
 </code></pre>
 <hr />
-<h2 id="operator-precedence">Operator Precedence</h2>
-<p>When building regular expressions, operators have different precedence levels (like mathematical operations).</p>
-<h3 id="precedence-order-highest-to-lowest">Precedence Order (Highest to Lowest)</h3>
-<ol>
-<li>
-<p><strong>Parentheses <code>()</code></strong> - Highest precedence</p>
-</li>
-<li>
-<p>Used for grouping</p>
-</li>
-<li>
-<p>Example: <code>(a|b)*</code> vs <code>a|b*</code></p>
-</li>
-<li>
-<p><strong>Closure operators <code>*</code>, <code>+</code>, <code>?</code></strong></p>
-</li>
-<li>
-<p>Apply to immediately preceding element</p>
-</li>
-<li>
-<p>Example: <code>ab*</code> means <code>a</code> followed by zero or more <code>b</code>s</p>
-</li>
-<li>
-<p><strong>Concatenation (implicit)</strong></p>
-</li>
-<li>
-<p>Items next to each other are concatenated</p>
-</li>
-<li>
-<p>Example: <code>abc</code> means <code>a</code> then <code>b</code> then <code>c</code></p>
-</li>
-<li>
-<p><strong>Union/OR <code>|</code></strong> - Lowest precedence</p>
-</li>
-<li>Separates alternative patterns</li>
-<li>Example: <code>a|bc</code> means <code>a</code> OR <code>bc</code></li>
-</ol>
-<h3 id="examples-showing-precedence">Examples Showing Precedence</h3>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Interpretation</th>
-<th>Matches</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>a|b*</code></td>
-<td><code>a</code> OR (zero or more <code>b</code>s)</td>
-<td>"a", "", "b", "bb", "bbb"...</td>
-</tr>
-<tr>
-<td><code>(a|b)*</code></td>
-<td>Zero or more of (<code>a</code> OR <code>b</code>)</td>
-<td>"", "a", "b", "ab", "ba", "abb"...</td>
-</tr>
-<tr>
-<td><code>ab|c</code></td>
-<td>(<code>ab</code>) OR <code>c</code></td>
-<td>"ab", "c"</td>
-</tr>
-<tr>
-<td><code>a(b|c)</code></td>
-<td><code>a</code> followed by (<code>b</code> OR <code>c</code>)</td>
-<td>"ab", "ac"</td>
-</tr>
-</tbody>
-</table>
-<h3 id="best-practice">Best Practice</h3>
-<ul>
-<li><strong>Use parentheses liberally</strong> to make intentions clear</li>
-<li><strong>When in doubt, add parentheses</strong> to avoid confusion</li>
-<li>Example: <code>(a|b)*(c|d)+</code> is clearer than <code>a|b*c|d+</code></li>
-</ul>
-<hr />
-<h2 id="quick-reference">Quick Reference</h2>
-<h3 id="token-recognition-process">Token Recognition Process</h3>
-<ol>
-<li><strong>Read characters</strong> from source code</li>
-<li><strong>Apply patterns</strong> using regular expressions</li>
-<li><strong>Match longest possible</strong> lexeme</li>
-<li><strong>Generate token</strong> with attributes</li>
-<li><strong>Handle errors</strong> if no pattern matches</li>
-<li><strong>Repeat</strong> until end of input</li>
-</ol>
-<h3 id="common-token-types">Common Token Types</h3>
-<ul>
-<li><strong>Keywords</strong>: <code>if</code>, <code>while</code>, <code>class</code>, <code>public</code></li>
-<li><strong>Identifiers</strong>: Variable and function names</li>
-<li><strong>Literals</strong>: Numbers, strings, booleans</li>
-<li><strong>Operators</strong>: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>==</code>, <code>!=</code></li>
-<li><strong>Delimiters</strong>: <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>;</code>, <code>,</code></li>
-<li><strong>Whitespace</strong>: Spaces, tabs, newlines (usually ignored)</li>
-</ul>
-<hr />
-<h2 id="guide-questions-complete-answers">Guide Questions - Complete Answers</h2>
-<h3 id="1-what-is-the-role-of-the-lexical-analyzer">1. What is the role of the lexical analyzer?</h3>
-<p>The lexical analyzer serves as the <strong>first phase of the compiler</strong> with four main roles:</p>
-<ul>
-<li><strong>Tokenization</strong>: Converts raw source code text into meaningful tokens</li>
-<li><strong>Cleaning</strong>: Strips out whitespace, comments, and other non-essential characters</li>
-<li><strong>Position tracking</strong>: Maintains line and column numbers for error reporting</li>
-<li><strong>Error correlation</strong>: Links compiler messages back to specific source code locations</li>
-</ul>
-<h3 id="2-why-should-parsing-be-separated-from-lexical-analysis">2. Why should parsing be separated from lexical analysis?</h3>
-<p>Separation provides three key benefits:</p>
-<ul>
-<li><strong>Simplicity in design</strong>: Each phase has a single, focused responsibility - lexical analysis handles character recognition, parsing handles grammar structure</li>
-<li><strong>Improved efficiency</strong>: Specialized algorithms can be optimized for each specific task</li>
-<li><strong>Enhanced portability</strong>: The lexical analyzer can be easily adapted for different character sets while grammar rules remain unchanged across platforms</li>
-</ul>
-<h3 id="3-what-are-tokens-patterns-and-lexemes-and-what-are-the-differences-between-these-three">3. What are tokens, patterns, and lexemes and what are the differences between these three?</h3>
-<table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>Definition</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Token</strong></td>
-<td>A category or label for lexical units (like grammatical parts of speech)</td>
-<td><code>identifier</code>, <code>number</code>, <code>operator</code></td>
-</tr>
-<tr>
-<td><strong>Pattern</strong></td>
-<td>The rule or regular expression defining how to recognize a token</td>
-<td><code>/[A-Za-z_][A-Za-z0-9_]*/</code></td>
-</tr>
-<tr>
-<td><strong>Lexeme</strong></td>
-<td>The actual text from source code that matches a token's pattern</td>
-<td><code>"count"</code>, <code>"42"</code>, <code>"+"</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Key difference</strong>: Tokens are categories, patterns are recognition rules, lexemes are actual text instances.</p>
-<h3 id="4-what-are-lexical-errors-and-how">4. What are lexical errors and how</h3>
-<p>are they handled?</p>
-<p><strong>Lexical errors</strong> occur when no defined pattern matches the current sequence of characters in the source code.</p>
-<p><strong>Five handling strategies</strong>:</p>
-<ol>
-<li><strong>Panic mode</strong>: Delete characters until a valid token can be formed</li>
-<li><strong>Deletion</strong>: Remove one character from the problematic lexeme</li>
-<li><strong>Insertion</strong>: Add a character to create a valid token</li>
-<li><strong>Replacement</strong>: Replace one character (common for typos)</li>
-<li><strong>Transposition</strong>: Swap adjacent characters (handles typing mistakes)</li>
-</ol>
-<h3 id="5-how-is-a-lexical-definition-of-a-language-specified">5. How is a lexical definition of a language specified?</h3>
-<p>Lexical definitions use <strong>regular expressions</strong> built on these foundations:</p>
-<ul>
-<li><strong>Alphabet (Σ)</strong>: Finite set of symbols (e.g., ASCII characters)</li>
-<li><strong>Strings</strong>: Finite sequences of symbols from the alphabet</li>
-<li><strong>Languages</strong>: Sets of strings defined over an alphabet</li>
-<li><strong>Regular expressions</strong>: Mathematical patterns using operators like <code>*</code> (zero or more), <code>+</code> (one or more), <code>|</code> (union), and <code>[]</code> (character classes)</li>
-</ul>
-<p><strong>Example specification</strong>:</p>
-<pre><code>identifier: [a-zA-Z_][a-zA-Z0-9_]*
-number: [0-9]+
-whitespace: [ \t\n\r]+
+<h2 id="8-regular-expression-operator-precedence">8. Regular Expression Operator Precedence</h2>
+<p>Understanding operator precedence prevents ambiguity in regular expressions:</p>
+<h3 id="81-precedence-rules-highest-to-lowest">8.1 Precedence Rules (Highest to Lowest)</h3>
+<h4 id="1-kleene-star-highest-precedence-left-associative">1. Kleene Star (*) - Highest Precedence, Left-Associative</h4>
+<pre><code>Expression: ab*
+Interpretation: a(b*)     // NOT (ab)*
+Matches: &quot;a&quot;, &quot;ab&quot;, &quot;abb&quot;, &quot;abbb&quot;, ...
+Does NOT match: &quot;&quot;, &quot;ab&quot;, &quot;abab&quot;, &quot;ababab&quot;, ...
+</code></pre>
+<h4 id="2-concatenation-middle-precedence-left-associative">2. Concatenation - Middle Precedence, Left-Associative</h4>
+<pre><code>Expression: abc
+Interpretation: (ab)c = a(bc)    // Left-associative doesn't matter for concatenation
+Matches: Only &quot;abc&quot;
+</code></pre>
+<h4 id="3-union-lowest-precedence-left-associative">3. Union (|) - Lowest Precedence, Left-Associative</h4>
+<pre><code>Expression: a|bc
+Interpretation: a|(bc)     // NOT (a|b)c
+Matches: &quot;a&quot; or &quot;bc&quot;
+Does NOT match: &quot;ac&quot; or &quot;bb&quot;
+</code></pre>
+<h3 id="82-complex-examples-with-precedence">8.2 Complex Examples with Precedence</h3>
+<h4 id="example-1-identifier-or-keyword">Example 1: Identifier or Keyword</h4>
+<pre><code>Expression: if|[A-Za-z][A-Za-z0-9]*
+Interpretation: (if)|([A-Za-z][A-Za-z0-9]*)
+Matches: &quot;if&quot; or any identifier starting with letter
+</code></pre>
+<h4 id="example-2-optional-exponent-in-numbers">Example 2: Optional Exponent in Numbers</h4>
+<pre><code>Expression: [0-9]+\.[0-9]+E[+-]?[0-9]+|[0-9]+
+Interpretation: (([0-9]+\.[0-9]+E[+-]?[0-9]+)|([0-9]+))
+Matches: &quot;3.14E+2&quot;, &quot;1.5E-3&quot;, &quot;42&quot;
+</code></pre>
+<h4 id="example-3-c-style-comments">Example 3: C-style Comments</h4>
+<pre><code>Expression: //[^\n]*|/\*.*?\*/
+Interpretation: (//[^\n]*)|(/\*.*?\*/)
+Matches: Single-line OR multi-line comments
+</code></pre>
+<h3 id="83-using-parentheses-to-override-precedence">8.3 Using Parentheses to Override Precedence</h3>
+<h4 id="without-parentheses-following-precedence">Without Parentheses (Following Precedence)</h4>
+<pre><code>ab|cd*     →     a(b)|(c(d*))     →     &quot;ab&quot; or &quot;c&quot;, &quot;cd&quot;, &quot;cdd&quot;, ...
+</code></pre>
+<h4 id="with-parentheses-explicit-grouping">With Parentheses (Explicit Grouping)</h4>
+<pre><code>(ab|cd)*   →     (ab|cd)*         →     &quot;&quot;, &quot;ab&quot;, &quot;cd&quot;, &quot;abab&quot;, &quot;cdcd&quot;, &quot;abcd&quot;, ...
+</code></pre>
+<h3 id="84-real-world-pattern-examples">8.4 Real-World Pattern Examples</h3>
+<h4 id="email-address-pattern-simplified">Email Address Pattern (Simplified)</h4>
+<pre><code>[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+
+
+Precedence Analysis:
+1. * applied to character classes: [A-Za-z0-9]+, [A-Za-z0-9]+, [A-Za-z]+
+2. Concatenation: combines all parts in sequence
+3. Result: user@domain.com format
+</code></pre>
+<h4 id="url-pattern-simplified">URL Pattern (Simplified)</h4>
+<pre><code>https?://[A-Za-z0-9.-]+/[A-Za-z0-9/]*
+
+Precedence Analysis:
+1. ? applied to 's': http or https
+2. + applied to domain characters
+3. * applied to path characters
+4. Concatenation: combines protocol + :// + domain + / + path
 </code></pre>
 <hr />
-<p><em>Remember: The lexical analyzer is your first line of defense in compilation - it transforms messy text into clean, categorized tokens that the parser can work with!</em></p>
+<h2 id="9-real-world-applications">9. Real-World Applications</h2>
+<h3 id="91-programming-language-compilers">9.1 Programming Language Compilers</h3>
+<p>Every major programming language uses lexical analysis:</p>
+<h4 id="cc-compiler">C/C++ Compiler</h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    int count = 42;
+    printf(&quot;Count: %d\n&quot;, count);
+    return 0;
+}
+</code></pre>
+<p><strong>Lexical Analysis Output:</strong></p>
+<pre><code>[PREPROCESSOR: #include] [ANGLE_BRACKET: &lt;] [IDENTIFIER: stdio.h] [ANGLE_BRACKET: &gt;]
+[KEYWORD: int] [IDENTIFIER: main] [LPAREN: (] [RPAREN: )] [LBRACE: {]
+[KEYWORD: int] [IDENTIFIER: count] [ASSIGN: =] [INTEGER: 42] [SEMICOLON: ;]
+...
+</code></pre>
+<h4 id="python-interpreter">Python Interpreter</h4>
+<pre><code class="language-python">def calculate_area(radius):
+    pi = 3.14159
+    return pi * radius ** 2
+</code></pre>
+<p><strong>Token Stream:</strong></p>
+<pre><code>[KEYWORD: def] [IDENTIFIER: calculate_area] [LPAREN: (] [IDENTIFIER: radius] [RPAREN: :]
+[IDENTIFIER: pi] [ASSIGN: =] [FLOAT: 3.14159]
+[KEYWORD: return] [IDENTIFIER: pi] [MULTIPLY: *] [IDENTIFIER: radius] [POWER: **] [INTEGER: 2]
+</code></pre>
+<h3 id="92-text-editors-and-ides">9.2 Text Editors and IDEs</h3>
+<h4 id="syntax-highlighting">Syntax Highlighting</h4>
+<p>Modern text editors use lexical analysis for syntax highlighting:</p>
+<pre><code class="language-c">// Different colors for different token types:
+int count = 42;  // Blue for keywords, black for identifiers, red for numbers
+</code></pre>
+<p><strong>Implementation:</strong></p>
+<ol>
+<li>Lexical analyzer identifies token types</li>
+<li>Editor applies color schemes based on token types</li>
+<li>Real-time analysis as you type</li>
+</ol>
+<h4 id="code-completion">Code Completion</h4>
+<p>IDEs use lexical analysis to provide intelligent suggestions:</p>
+<pre><code class="language-c">str|              // Typing 'str' triggers completion
+    ↓
+string            // Suggests 'string' keyword
+strlen            // Suggests 'strlen' function
+strcpy            // Suggests 'strcpy' function
+</code></pre>
+<h3 id="93-search-engines-and-text-processing">9.3 Search Engines and Text Processing</h3>
+<h4 id="search-query-processing">Search Query Processing</h4>
+<pre><code>Query: &quot;machine learning&quot; AND python -java
+</code></pre>
+<p><strong>Lexical Analysis:</strong></p>
+<pre><code>[QUOTED_PHRASE: &quot;machine learning&quot;] [AND_OPERATOR: AND] [TERM: python] [EXCLUDE_OPERATOR: -] [TERM: java]
+</code></pre>
+<h4 id="log-file-analysis">Log File Analysis</h4>
+<pre><code>2024-01-15 10:30:42 ERROR: Connection failed to database server 192.168.1.100
+</code></pre>
+<p><strong>Token Extraction:</strong></p>
+<pre><code>[DATE: 2024-01-15] [TIME: 10:30:42] [LEVEL: ERROR] [MESSAGE: Connection failed...] [IP: 192.168.1.100]
+</code></pre>
+<h3 id="94-data-validation-and-processing">9.4 Data Validation and Processing</h3>
+<h4 id="email-validation">Email Validation</h4>
+<pre><code>Pattern: [A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}
+Valid: john.doe@example.com, user123@test.org
+Invalid: @example.com, user@, user@.com
+</code></pre>
+<h4 id="phone-number-parsing">Phone Number Parsing</h4>
+<pre><code>Input: &quot;(555) 123-4567&quot;, &quot;555-123-4567&quot;, &quot;5551234567&quot;
+Pattern: \(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})
+Output: Groups (555, 123, 4567) for all formats
+</code></pre>
+<h3 id="95-configuration-file-processing">9.5 Configuration File Processing</h3>
+<h4 id="json-parser">JSON Parser</h4>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;age&quot;: 30,
+  &quot;active&quot;: true
+}
+</code></pre>
+<p><strong>Lexical Analysis:</strong></p>
+<pre><code>[LBRACE: {] [STRING: &quot;name&quot;] [COLON: :] [STRING: &quot;John Doe&quot;] [COMMA: ,]
+[STRING: &quot;age&quot;] [COLON: :] [NUMBER: 30] [COMMA: ,]
+[STRING: &quot;active&quot;] [COLON: :] [BOOLEAN: true] [RBRACE: }]
+</code></pre>
+<h4 id="configuration-files">Configuration Files</h4>
+<pre><code class="language-ini">[database]
+host=localhost
+port=5432
+username=admin
+</code></pre>
+<p><strong>Token Stream:</strong></p>
+<pre><code>[SECTION: database] [KEY: host] [ASSIGN: =] [VALUE: localhost]
+[KEY: port] [ASSIGN: =] [VALUE: 5432] [KEY: username] [ASSIGN: =] [VALUE: admin]
+</code></pre>
+<h3 id="96-web-development">9.6 Web Development</h3>
+<h4 id="css-parsing">CSS Parsing</h4>
+<pre><code class="language-css">.button {
+  background-color: #ff0000;
+  padding: 10px;
+}
+</code></pre>
+<p><strong>Lexical Analysis:</strong></p>
+<pre><code>[SELECTOR: .button] [LBRACE: {]
+[PROPERTY: background-color] [COLON: :] [COLOR: #ff0000] [SEMICOLON: ;]
+[PROPERTY: padding] [COLON: :] [SIZE: 10px] [SEMICOLON: ;]
+[RBRACE: }]
+</code></pre>
+<h4 id="html-template-processing">HTML Template Processing</h4>
+<pre><code class="language-html">&lt;div class=&quot;{{cssClass}}&quot; data-value=&quot;{{value}}&quot;&gt;{{content}}&lt;/div&gt;
+</code></pre>
+<p><strong>Template Token Extraction:</strong></p>
+<pre><code>[HTML_TAG: &lt;div] [ATTRIBUTE: class] [TEMPLATE_VAR: {{cssClass}}]
+[ATTRIBUTE: data-value] [TEMPLATE_VAR: {{value}}] [HTML_TAG: &gt;]
+[TEMPLATE_VAR: {{content}}] [HTML_TAG: &lt;/div&gt;]
+</code></pre>
+<h3 id="97-database-query-processing">9.7 Database Query Processing</h3>
+<h4 id="sql-parser">SQL Parser</h4>
+<pre><code class="language-sql">SELECT name, age FROM users WHERE age &gt; 21 ORDER BY name;
+</code></pre>
+<p><strong>Lexical Analysis:</strong></p>
+<pre><code>[KEYWORD: SELECT] [IDENTIFIER: name] [COMMA: ,] [IDENTIFIER: age]
+[KEYWORD: FROM] [IDENTIFIER: users] [KEYWORD: WHERE] [IDENTIFIER: age]
+[OPERATOR: &gt;] [NUMBER: 21] [KEYWORD: ORDER] [KEYWORD: BY] [IDENTIFIER: name] [SEMICOLON: ;]
+</code></pre>
+<hr />
+<h2 id="summary-and-key-takeaways">Summary and Key Takeaways</h2>
+<h3 id="essential-concepts-to-remember">Essential Concepts to Remember</h3>
+<ol>
+<li>
+<p><strong>Lexical Analysis is Pattern Recognition:</strong> It converts character sequences into meaningful tokens using pattern matching.</p>
+</li>
+<li>
+<p><strong>Separation of Concerns:</strong> Lexical analysis handles character-level patterns while parsing handles structural patterns.</p>
+</li>
+<li>
+<p><strong>Token-Pattern-Lexeme Relationship:</strong> Tokens are categories, patterns are rules, lexemes are actual text instances.</p>
+</li>
+<li>
+<p><strong>Regular Expressions are Fundamental:</strong> They provide formal notation for specifying token patterns.</p>
+</li>
+<li>
+<p><strong>Error Recovery is Important:</strong> Lexical analyzers must handle invalid input gracefully and continue processing.</p>
+</li>
+<li>
+<p><strong>Real-World Applications are Everywhere:</strong> From compilers to search engines to text editors, lexical analysis is foundational to modern computing.</p>
+</li>
+</ol>
+<h3 id="study-tips">Study Tips</h3>
+<ol>
+<li>
+<p><strong>Practice Pattern Writing:</strong> Create regular expressions for common programming constructs.</p>
+</li>
+<li>
+<p><strong>Trace Through Examples:</strong> Manually tokenize code snippets to understand the process.</p>
+</li>
+<li>
+<p><strong>Understand Precedence:</strong> Master operator precedence in regular expressions to avoid ambiguity.</p>
+</li>
+<li>
+<p><strong>Connect to Real Tools:</strong> Use tools like grep, sed, or regex testers to experiment with patterns.</p>
+</li>
+<li>
+<p><strong>Think About Edge Cases:</strong> Consider how lexical analyzers handle errors, unusual input, and boundary conditions.</p>
+</li>
+</ol>
+<p>The lexical analysis phase, while conceptually straightforward, requires careful attention to detail and thorough understanding of pattern matching principles. Master these concepts, and you'll have a solid foundation for understanding how programming languages and text processing tools work under the hood.</p>
 
 
 
