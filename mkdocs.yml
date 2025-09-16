@@ -1,8 +1,9 @@
 site_name: CSS125
 nav:
-  - Home: index.md
+  - Introduction to Principles of Programming Languages: index.md
   - Lexical Analysis: lexical_analysis.md
   - Lexical Analysis Implementation: lexical_analysis_implementation.md
+  - Syntax Analysis: syntax_analysis.md
 theme:
   name: material
   palette:

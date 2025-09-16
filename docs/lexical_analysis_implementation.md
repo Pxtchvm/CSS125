@@ -1,377 +1,563 @@
 # Lexical Analysis Implementation
 
-## Overview
+---
 
-**Lexical Analysis** is the first phase of a compiler that breaks down source code into meaningful tokens. Think of it as reading a sentence and identifying each word, punctuation mark, and symbol.
+## What is Lexical Analysis?
 
-### Key Concepts:
-- **Token**: A meaningful unit (like keywords, identifiers, operators)
-- **Lexeme**: The actual string that forms a token (e.g., "if", "x", "+")
-- **Pattern**: Rules that describe how tokens are formed
+**Lexical analysis** is the first phase of compilation where the source code is broken down into meaningful units called **tokens**. Think of it like reading a sentence and identifying individual words, punctuation, and their meanings.
+
+### Real-World Analogy
+
+Imagine you're reading this sentence: `int x = 42;`
+
+-   A human recognizes: "int" (keyword), "x" (identifier), "=" (operator), "42" (number), ";" (delimiter)
+-   A lexical analyzer does the same thing for programming languages
 
 ---
 
 ## Recognition of Tokens
 
 ### Basic Assumptions
+
+The lexical analyzer operates under two fundamental assumptions:
+
 1. **Reserved words cannot be used as identifiers**
-    - Example: You can't name a variable "if" or "while"
+
+    - Keywords like `int`, `if`, `while` have special meanings
+    - You can't name a variable `int` in most languages
+
 2. **Whitespace is ignored**
-    - Spaces, tabs, and newlines don't affect token recognition
+
+    - Spaces, tabs, and newlines are typically discarded
+    - They serve only to separate tokens, not as meaningful tokens themselves
 
 ### Token Recognition Process
-1. **Order token patterns by precedence**
-       - Keywords before identifiers
-       - Longer operators before shorter ones (">=" before ">")
 
-2. **Use two pointers:**
-       - **Lexeme-beginning pointer**: Marks start of current token
-       - **Forward pointer**: Scans ahead through input
+The lexical analyzer follows a systematic 5-step process:
 
-3. **Recognition steps:**
+1. **Order all token patterns in terms of precedence**
+
+    - Keywords come before identifiers (so `if` isn't mistaken for an identifier)
+    - Longer operators before shorter ones (so `<=` isn't read as `<` and `=`)
+
+2. **Maintain lexeme-beginning pointer and forward pointer**
+
+    - **Lexeme-beginning pointer**: Marks the start of the current token being analyzed
+    - **Forward pointer**: Moves through the input to build the token
+
+3. **Forward pointer moves through a transition diagram**
+
+    - Each character is processed according to predefined patterns
+    - The pointer advances as it matches expected patterns
+
+4. **If valid lexeme is detected, return token**
+
+    - When a complete, valid token is recognized, it's returned to the parser
+    - Example: Reading `123` completely forms a NUMBER token
+
+5. **If invalid, return forward pointer to initial pointer and try next pattern**
+
+    - If the current pattern fails, backtrack and try the next pattern
+    - This prevents getting stuck on partial matches
+
+### Detailed Example of Token Recognition
+
+Consider the input: `count = 42;`
+
 ```
-Input: "if (x >= 10)"
+Input: c o u n t   =   4 2 ;
+       ↑                     (lexeme-beginning pointer)
+       ↑                     (forward pointer)
 
-Step 1: Scan "if" → Recognized as KEYWORD
-Step 2: Skip whitespace
-Step 3: Scan "(" → Recognized as LEFT_PAREN
-Step 4: Skip whitespace
-Step 5: Scan "x" → Recognized as IDENTIFIER
-Step 6: Skip whitespace
-Step 7: Scan ">=" → Recognized as GTE_OPERATOR
-Step 8: Skip whitespace
-Step 9: Scan "10" → Recognized as NUMBER
-Step 10: Scan ")" → Recognized as RIGHT_PAREN
+Step 1: Try keyword patterns first
+- "c" → doesn't match any keyword, continue
+- "co" → doesn't match any keyword, continue
+- "cou" → doesn't match any keyword, continue
+- "coun" → doesn't match any keyword, continue
+- "count" → doesn't match any keyword, try identifier pattern
+
+Step 2: Try identifier pattern
+- "count" → matches identifier pattern (letter followed by letters/digits)
+- Return IDENTIFIER token with value "count"
+
+Step 3: Skip whitespace, move to "="
+- "=" → matches assignment operator pattern
+- Return ASSIGN_OP token
+
+Step 4: Skip whitespace, move to "42"
+- "4" → start number pattern
+- "42" → complete number
+- Return NUMBER token with value 42
+
+Step 5: Process ";"
+- ";" → matches semicolon pattern
+- Return SEMICOLON token
 ```
 
 ---
 
 ## Transition Diagrams
 
-A **transition diagram** is a visual representation of how a lexical analyzer recognizes tokens.
+### What are Transition Diagrams?
 
-### Elements of a Transition Diagram:
-1. **States** (circles): Represent current position in recognition
-2. **Edges/Transitions** (arrows): Show movement between states
-3. **Symbols** (labels on arrows): Characters that trigger transitions
-4. **Start state**: Where recognition begins
-5. **Accepting states**: Where valid tokens are recognized
-6. **Determinism**: Each state has at most one transition for each input symbol
+**Transition diagrams** are visual representations of how a lexical analyzer moves between different states while processing input characters. They're like flowcharts for token recognition.
 
-### Example: Recognizing Identifiers
+### Elements of a Transition Diagram
+
+1. **States** (represented as circles)
+
+    - Each state represents a stage in token recognition
+    - **Start state**: Where processing begins (marked with an arrow)
+    - **Accept states**: Final states where tokens are recognized (double circles)
+    - **Intermediate states**: Processing states between start and accept
+
+2. **Edges or Transitions** (arrows between states)
+
+    - Show how to move from one state to another
+    - Labeled with conditions for the transition
+
+3. **Symbols** (labels on edges)
+
+    - Specific characters or character classes that trigger transitions
+    - Examples: `'a'`, `digit`, `letter`, `other`
+
+4. **Determinism**
+    - Each state has exactly one transition for each input symbol
+    - No ambiguity about which path to take
+
+### Example Transition Diagram Analysis
+
+From the PDF's diagram with states A, B, C:
+
 ```
-Input: Letters followed by letters/digits
-
-    letter
-[Start] ──────→ [State1] ──────→ [Accept]
-                   ↑        letter/digit
-                   └─────────────────┘
+    b      b         b
+   ↗ ↘    ↗ ↘       ↗ ↘
+→ A ─a─→ B ─a─→ ((C))
+       ↖─a─↙
 ```
 
-### Example: Recognizing Numbers
-```
-Input: Digits, possibly with decimal point
+**What this diagram recognizes:**
 
-    digit        digit
-[Start] ──────→ [State1] ──────→ [Accept]
-                   │
-                   │ '.'
-                   ↓        digit
-                 [State2] ──────→ [State3] → [Accept]
-                            ↑
-                            └──── digit
+-   Strings that end with 'a' (state C is accepting)
+-   'b' characters keep you in intermediate states
+-   Only 'a' can lead to acceptance
+
+**Trace Examples:**
+
+-   Input "ba": A→A→B (not accepted, no final 'a')
+-   Input "bba": A→A→A→B (accepted, ends in 'a')
+-   Input "abba": A→B→A→A→B (accepted)
+
+### Real-World Application: Identifier Recognition
+
 ```
+     letter        letter|digit
+   ┌────────┐    ┌──────────────┐
+→ S0 ─────→ S1 ←──┘             │
+            ││                   │
+            └─→ ((ACCEPT)) ←─────┘
+```
+
+**How it works:**
+
+1. Start in S0
+2. First character must be a letter → go to S1
+3. Subsequent characters can be letters or digits → stay in S1
+4. When no more valid characters, accept as IDENTIFIER
+
+**Examples:**
+
+-   `variable` → IDENTIFIER
+-   `count123` → IDENTIFIER
+-   `123abc` → fails (starts with digit)
 
 ---
 
 ## Implementation Details
 
-### Core Functions:
-- **`nextchar()`**: Reads next character, advances forward pointer
-- **State management**: Each state has its own code segment
-- **Backtracking**: When recognition fails, return to beginning
+### Code Structure
 
-### Implementation Algorithm:
+Lexical analyzers are typically implemented with these key components:
+
+#### 1. State-Based Processing
+
+-   **Each state has a code segment**
+    -   Different code executes depending on current state
+    -   State-specific logic for character processing
+
 ```pseudocode
-function getNextToken():
-    lexeme_begin = forward_pointer
-    
-    while (not end_of_input):
-        current_char = nextchar()
-        
-        if (valid_transition_exists):
-            move_to_next_state()
-        else:
-            if (current_state_is_accepting):
-                retract_one_character()
-                return create_token(current_lexeme)
-            else:
-                reset_to_beginning()
-                try_next_pattern()
-    
-    return END_OF_FILE_TOKEN
+switch(currentState) {
+    case START:
+        // Handle initial character
+        break;
+    case IN_NUMBER:
+        // Process digits
+        break;
+    case IN_IDENTIFIER:
+        // Process letters/digits
+        break;
+}
 ```
 
-### Symbol Table Integration:
-- **Identifiers** must be stored in symbol table during lexical analysis
-- **Keywords** can be stored in a hash table for quick lookup
-- This reduces the number of states needed in transition diagrams
+#### 2. State Transitions
+
+-   **Each edge may change the state**
+    -   Transitions based on input characters
+    -   Updates to current processing state
+
+#### 3. Character Processing Function
+
+-   **Use `nextchar()` function** to:
+    -   Read next character from input buffer
+    -   Advance the forward pointer
+    -   Return the character for processing
+
+```pseudocode
+function nextchar() {
+    char c = buffer[forwardPointer];
+    forwardPointer++;
+    return c;
+}
+```
+
+### Pointer Management
+
+#### Two Critical Pointers:
+
+1. **Lexeme-beginning pointer**: Marks start of current token
+2. **Forward pointer**: Scans ahead to build tokens
+
+#### Error Handling Rules:
+
+**Case 1: Invalid token encountered**
+
+-   **Action**: Return forward pointer to lexeme-beginning pointer
+-   **Next step**: Try next transition diagram/pattern
+-   **Purpose**: Backtrack when current pattern fails
+
+**Case 2: Valid token completed**
+
+-   **Action**: Retract forward pointer by one character
+-   **Next step**: Save current lexeme as token
+-   **Purpose**: Don't consume character that belongs to next token
+
+### Detailed Implementation Example
+
+```pseudocode
+function getNextToken() {
+    skipWhitespace();
+    lexemeStart = forwardPointer;
+
+    // Try each token pattern in order of precedence
+    for each pattern in tokenPatterns {
+        resetPointer(forwardPointer, lexemeStart);
+
+        if (tryPattern(pattern)) {
+            token = createToken(pattern, getLexeme());
+            return token;
+        }
+    }
+
+    // No pattern matched
+    error("Invalid token at position " + lexemeStart);
+}
+
+function tryPattern(pattern) {
+    state = pattern.startState;
+
+    while (hasMoreInput()) {
+        char c = nextchar();
+
+        if (hasTransition(state, c)) {
+            state = getNextState(state, c);
+        } else {
+            if (isAcceptState(state)) {
+                retractPointer();  // Don't consume last character
+                return true;       // Valid token found
+            } else {
+                return false;      // Invalid token
+            }
+        }
+    }
+
+    return isAcceptState(state);
+}
+```
+
+---
+
+## Identifiers and Symbol Table Integration
+
+### Identifier Processing
+
+**Key Requirements:**
+
+1. **Identifiers must be installed into the symbol table**
+
+    - Symbol table stores all identifiers and their attributes
+    - Used later by semantic analyzer and code generator
+
+2. **Keyword optimization strategy**
+
+    - **Store all keywords in a special collection** (hash table/array)
+    - **Benefits**: Reduces states needed in transition diagram
+    - **Process**: First recognize as identifier, then check if it's a keyword
+
+### Identifier vs Keyword Resolution
+
+```pseudocode
+function processIdentifier(lexeme) {
+    if (isKeyword(lexeme)) {
+        return createKeywordToken(lexeme);
+    } else {
+        symbolTableEntry = installIdentifier(lexeme);
+        return createIdentifierToken(symbolTableEntry);
+    }
+}
+
+function isKeyword(lexeme) {
+    return keywordSet.contains(lexeme);
+}
+```
+
+### Symbol Table Operations
+
+```pseudocode
+function installIdentifier(name) {
+    if (symbolTable.contains(name)) {
+        return symbolTable.lookup(name);
+    } else {
+        entry = new SymbolTableEntry(name);
+        symbolTable.insert(name, entry);
+        return entry;
+    }
+}
+```
 
 ---
 
 ## Finite State Automata (FSA)
 
-An **FSA** is a mathematical model for recognizing patterns in input.
+### Definition and Components
 
-### Components:
-1. **States**: Finite set of conditions
-2. **Alphabet**: Set of input symbols
-3. **Transition function**: Maps (state, symbol) → state
-4. **Start state**: Initial state
-5. **Accepting states**: States that recognize valid input
+A **Finite State Automaton** is a mathematical model used for input processing, consisting of:
 
-### Example: Binary strings ending with "01"
+1. **Finite set of states** (Q)
+    - Limited number of distinct processing states
+2. **Input alphabet** (Σ)
+    - Set of valid input symbols
+3. **Transition function** (δ)
+    - Rules for moving between states: δ(state, input) → next_state
+4. **Start state** (q₀)
+    - Initial state where processing begins
+5. **Set of accepting states** (F)
+    - States where input is accepted as valid
+
+### Mathematical Notation
+
+**FSA Definition**: M = (Q, Σ, δ, q₀, F)
+
+Where:
+
+-   Q = {q₀, q₁, q₂, ...} (states)
+-   Σ = {'a', 'b', '0', '1', ...} (alphabet)
+-   δ: Q × Σ → Q (transition function)
+-   q₀ ∈ Q (start state)
+-   F ⊆ Q (accepting states)
+
+### Practical FSA Examples
+
+#### FSA 1: Strings ending with "01"
+
 ```
-Input alphabet: {0, 1}
-
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │          │
- │1         │1
- ↓          ↓
-[q0] ←──── [q2] ──── ((q3))
-      0         1
+      0,1      0        1
+   ┌──────┐  ┌───┐   ┌──────┐
+→ q₀ ←────┘  │   ↓   │      ↓
+   │    1    │  q₁ ──┘    ((q₂))
+   └─────────→  ↑           ↑
+        0       │0,1        │1
+                └───────────┘
 ```
-- q0: Start state
-- q3: Accepting state (double circle)
-- Accepts: "01", "001", "101", "1001", etc.
+
+**States:**
+
+-   q₀: Start state (no specific pattern matched)
+-   q₁: Just read '0' (potential start of "01")
+-   q₂: Just read "01" (accepting state)
+
+**Transitions:**
+
+-   q₀ on '0' → q₁ (start of potential "01")
+-   q₀ on '1' → q₀ (restart)
+-   q₁ on '0' → q₁ (still potential start of "01")
+-   q₁ on '1' → q₂ (complete "01" pattern)
+-   q₂ on '0' → q₁ (new potential "01")
+-   q₂ on '1' → q₀ (restart completely)
+
+**Example Traces:**
+
+-   "101": q₀→q₀→q₁→q₂ ✓ (accepted)
+-   "1001": q₀→q₀→q₁→q₁→q₂ ✓ (accepted)
+-   "010": q₀→q₁→q₂→q₁ ✗ (not accepted)
+
+#### FSA 2: Even number of 'a's
+
+```
+    b       b
+   ↗ ↘     ↗ ↘
+((q₀)) ─a→ q₁
+   ↑       ↓ a
+   └───────┘
+```
+
+**States:**
+
+-   q₀: Even number of 'a's seen (accepting)
+-   q₁: Odd number of 'a's seen (not accepting)
+
+**Key insight**: Each 'a' toggles between even/odd states
+
+#### FSA 3: Contains "ab" as substring
+
+```
+     a,b      a        b
+   ┌─────┐  ┌───┐   ┌──────┐
+→ q₀ ←──┘   │   ↓   │      ↓
+   │   b    │  q₁ ──┘    ((q₂))
+   └────────→  ↑         ↑ │a,b
+        a      │b        └─┘
+               └─→ q₀
+                 a
+```
+
+**States:**
+
+-   q₀: No relevant progress toward "ab"
+-   q₁: Just saw 'a' (potential start of "ab")
+-   q₂: Saw complete "ab" (accepting, stays accepting)
 
 ---
 
-## Guide Questions Answered
+## Practical Examples and Applications
 
-### 1. How are tokens recognized by a lexical analyzer?
+### Real Compiler Application
 
-Tokens are recognized through a **pattern matching process** using:
+Consider analyzing this C code snippet:
 
-- **Transition diagrams** or **finite state automata** that define valid token patterns
-- **Two-pointer technique** (lexeme-beginning and forward pointers) to scan input
-- **Priority-based matching** where patterns are tried in order of precedence
-- **Backtracking** when invalid patterns are encountered
-
-**Example Process:**
-```
-Input: "count = 42"
-
-1. Scan "count" → matches identifier pattern → TOKEN: ID("count")
-2. Skip whitespace
-3. Scan "=" → matches assignment operator → TOKEN: ASSIGN
-4. Skip whitespace  
-5. Scan "42" → matches number pattern → TOKEN: NUM(42)
+```c
+int main() {
+    int count = 0;
+    return count + 1;
+}
 ```
 
-### 2. What are the elements of a transition diagram?
+**Lexical Analysis Output:**
 
-The key elements are:
-
-1. **States** (nodes/circles): Represent current position in pattern recognition
-2. **Edges/Transitions** (arrows): Show valid moves between states based on input
-3. **Symbols** (edge labels): Characters or character classes that trigger transitions
-4. **Start state**: Initial state where recognition begins
-5. **Accepting states**: Final states that indicate successful token recognition
-6. **Determinism**: Property ensuring unique transitions (no ambiguity)
-
-**Visual Example:**
 ```
-Recognizing floating-point numbers:
-
-    digit     digit        '.'       digit
-[Start] → [Integer] → [DecPoint] → [Float]
-           ↑                        ↑
-           └── digit ────────────────┘
+Token Type    | Lexeme  | Line | Column
+KEYWORD       | int     | 1    | 1
+IDENTIFIER    | main    | 1    | 5
+L_PAREN       | (       | 1    | 9
+R_PAREN       | )       | 1    | 10
+L_BRACE       | {       | 1    | 12
+KEYWORD       | int     | 2    | 5
+IDENTIFIER    | count   | 2    | 9
+ASSIGN_OP     | =       | 2    | 15
+NUMBER        | 0       | 2    | 17
+SEMICOLON     | ;       | 2    | 18
+KEYWORD       | return  | 3    | 5
+IDENTIFIER    | count   | 3    | 12
+PLUS_OP       | +       | 3    | 18
+NUMBER        | 1       | 3    | 20
+SEMICOLON     | ;       | 3    | 21
+R_BRACE       | }       | 4    | 1
 ```
 
-### 3. How are lexical analyzers implemented?
+### Modern Applications
 
-Lexical analyzers are implemented using:
+**1. Integrated Development Environments (IDEs)**
 
-**A. State-driven approach:**
+-   **Syntax highlighting**: Lexical analysis identifies keywords, strings, comments
+-   **Auto-completion**: Recognizes partial identifiers
+-   **Error detection**: Highlights invalid tokens in real-time
 
-- Each state corresponds to a code segment
-- Transitions change program state
-- `nextchar()` function advances through input
+**2. Code Formatters and Linters**
 
-**B. Table-driven approach:**
+-   **Prettier/ESLint**: Use lexical analysis to understand code structure
+-   **Style enforcement**: Identify and fix spacing, naming conventions
 
-- Transition table maps (current_state, input_symbol) → next_state
-- Generic driver reads table and processes input
+**3. Programming Language Tools**
 
-**C. Key implementation strategies:**
+-   **Interpreters**: Python, JavaScript interpreters use lexical analysis
+-   **Compilers**: GCC, Clang start with lexical analysis
+-   **Transpilers**: TypeScript→JavaScript, CoffeeScript→JavaScript
 
-- **Error handling**: Backtrack when invalid patterns are found
-- **Symbol table integration**: Store identifiers as they're recognized  
-- **Keyword handling**: Pre-populate reserved words to distinguish from identifiers
-- **Buffer management**: Efficiently handle large input files
+### Performance Considerations
 
-**Sample Implementation Structure:**
-```pseudocode
-class LexicalAnalyzer:
-    input_buffer
-    forward_pointer
-    lexeme_begin
-    symbol_table
-    keyword_table
-    
-    function getToken():
-        skip_whitespace()
-        lexeme_begin = forward_pointer
-        
-        # Try each token pattern in priority order
-        if (try_keyword_pattern()):
-            return keyword_token
-        elif (try_identifier_pattern()):
-            return identifier_token
-        elif (try_number_pattern()):
-            return number_token
-        # ... other patterns
-        else:
-            return error_token
-```
+**Why FSAs are Efficient:**
+
+-   **Linear time complexity**: O(n) where n is input length
+-   **Constant memory**: Fixed number of states regardless of input size
+-   **Predictable behavior**: Deterministic transitions
+
+**Real-world Performance:**
+
+-   Modern compilers can tokenize millions of lines per second
+-   Lexical analysis typically represents <5% of total compilation time
 
 ---
 
-## FSA Activities Solutions
+## Key Concepts Summary
 
-### Activity 1: FSA that accepts strings ending with "01"
+### Essential Terms
 
-```
-States: {q0, q1, q2, q3}
-Start state: q0
-Accepting state: q3
-Alphabet: {0, 1}
+**Token**: Meaningful unit of source code (keyword, identifier, operator, etc.)
 
-Transitions:
-       0        1
-q0 → q1,    q0 → q0
-q1 → q1,    q1 → q2  
-q2 → q1,    q2 → q0
-q3 → q1,    q3 → q0 (q3 is accepting)
+**Lexeme**: Actual string of characters that forms a token
 
-Diagram:
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │ ↑        │
- │ │0       │1
- │1└──── [q2] ──────→ ((q3))
- ↓           1
-[q0]
+**Pattern**: Rule describing how tokens are formed
 
-Actually, let me correct this:
+**Symbol Table**: Data structure storing identifiers and their attributes
 
-       0        0
-[q0] ────→ [q1] ────→ [q1]
- │          │
- │1         │1
- ↓          ↓
-[q0] ←──── [q2] ──── ((q3))
-      0         1
-```
+**Transition Diagram**: Visual representation of token recognition logic
 
-**Test cases:**
-- "01" ✓ (accepts)
-- "001" ✓ (accepts) 
-- "101" ✓ (accepts)
-- "10" ✗ (rejects)
-- "11" ✗ (rejects)
+**FSA**: Mathematical model for pattern recognition with states and transitions
 
-### Activity 2: FSA that accepts strings with an even number of a's
+### Critical Implementation Points
 
-```
-States: {q0, q1}
-Start state: q0 (also accepting - 0 is even)
-Accepting state: q0
-Alphabet: {a, b}
+1. **Precedence matters**: Keywords before identifiers, longer operators before shorter
+2. **Backtracking is essential**: Must be able to undo failed pattern attempts
+3. **Pointer management is crucial**: Careful tracking of lexeme boundaries
+4. **Error recovery**: Graceful handling of invalid input
 
-Transitions:
-q0 → q1 (on 'a'), q0 → q0 (on 'b')
-q1 → q0 (on 'a'), q1 → q1 (on 'b')
+### Common Pitfalls and Solutions
 
-Diagram:
-        a
-((q0)) ←→ [q1]
-  ↑         ↑
-  │b        │b  
-  └─────────┘
-```
+**Problem**: Keyword vs Identifier confusion
+**Solution**: Check keyword table after identifier pattern matches
 
-**Test cases:**
-- "" ✓ (0 a's - even)
-- "aa" ✓ (2 a's - even)
-- "bab" ✗ (1 a - odd)
-- "baab" ✓ (2 a's - even)
+**Problem**: Operator precedence issues (`<=` vs `<` + `=`)  
+**Solution**: Order patterns by length/specificity
 
-### Activity 3: FSA that accepts strings with an odd number of b's
+**Problem**: Whitespace handling
+**Solution**: Explicit whitespace-skipping functions
 
-```
-States: {q0, q1}
-Start state: q0  
-Accepting state: q1
-Alphabet: {a, b}
+**Problem**: End-of-file handling
+**Solution**: Special EOF handling in all states
 
-Transitions:
-q0 → q0 (on 'a'), q0 → q1 (on 'b')
-q1 → q1 (on 'a'), q1 → q0 (on 'b')
+### Study Tips
 
-Diagram:
-         b
-[q0] ←→ ((q1))
- ↑         ↑
- │a        │a
- └─────────┘
-```
+1. **Practice drawing transition diagrams** for different patterns
+2. **Trace through examples** step by step with pointers
+3. **Understand the relationship** between FSAs and implementation code
+4. **Focus on error cases** - what happens when patterns don't match?
+5. **Connect to real tools** - examine output from actual lexical analyzers
 
-**Test cases:**
-- "b" ✓ (1 b - odd)
-- "bb" ✗ (2 b's - even) 
-- "aba" ✓ (1 b - odd)
-- "abab" ✗ (2 b's - even)
+### Review Questions
 
-### Activity 4: FSA that accepts strings containing "ab" as a substring
+1. How does the lexical analyzer handle the sequence `<=` vs `< =`?
+2. What happens when an identifier matches a keyword?
+3. Why is backtracking necessary in lexical analysis?
+4. How do accepting states work in transition diagrams?
+5. What's the difference between a lexeme and a token?
 
-```
-States: {q0, q1, q2}
-Start state: q0
-Accepting state: q2
-Alphabet: {a, b}
-
-Transitions:
-q0 → q1 (on 'a'), q0 → q0 (on 'b')
-q1 → q1 (on 'a'), q1 → q2 (on 'b')  
-q2 → q2 (on 'a'), q2 → q2 (on 'b')
-
-Diagram:
-       a        b
-[q0] ────→ [q1] ────→ ((q2))
- │ ↑                    ↑
- │b│a                   │a,b
- ↓ └────────────────────┘
-[q0]
-```
-
-**Test cases:**
-- "ab" ✓ (contains "ab")
-- "aab" ✓ (contains "ab") 
-- "abbb" ✓ (contains "ab")
-- "ba" ✗ (doesn't contain "ab")
-- "a" ✗ (doesn't contain "ab")
-
----
-
-## Summary
-
-Lexical analysis is the foundation of compilation, transforming raw source code into meaningful tokens through:
-
-- **Pattern matching** using FSAs and transition diagrams
-- **Systematic scanning** with pointer-based techniques  
-- **Priority-based recognition** to handle conflicts
-- **Integration with symbol tables** for identifier management
+This comprehensive understanding of lexical analysis forms the foundation for all subsequent compiler phases and is essential for anyone working with programming language tools or building parsers and interpreters.
