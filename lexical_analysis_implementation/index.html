@@ -1244,59 +1244,57 @@
 <ol>
 <li>
 <p><strong>Reserved words cannot be used as identifiers</strong></p>
-</li>
-<li>
-<p>Keywords like <code>int</code>, <code>if</code>, <code>while</code> have special meanings</p>
-</li>
-<li>
-<p>You can't name a variable <code>int</code> in most languages</p>
+<ul>
+<li>Keywords like <code>int</code>, <code>if</code>, <code>while</code> have special meanings</li>
+<li>You can't name a variable <code>int</code> in most languages</li>
+</ul>
 </li>
 <li>
 <p><strong>Whitespace is ignored</strong></p>
-</li>
+<ul>
 <li>Spaces, tabs, and newlines are typically discarded</li>
 <li>They serve only to separate tokens, not as meaningful tokens themselves</li>
+</ul>
+</li>
 </ol>
 <h3 id="token-recognition-process">Token Recognition Process</h3>
 <p>The lexical analyzer follows a systematic 5-step process:</p>
 <ol>
 <li>
 <p><strong>Order all token patterns in terms of precedence</strong></p>
-</li>
-<li>
-<p>Keywords come before identifiers (so <code>if</code> isn't mistaken for an identifier)</p>
-</li>
-<li>
-<p>Longer operators before shorter ones (so <code>&lt;=</code> isn't read as <code>&lt;</code> and <code>=</code>)</p>
+<ul>
+<li>Keywords come before identifiers (so <code>if</code> isn't mistaken for an identifier)</li>
+<li>Longer operators before shorter ones (so <code>&lt;=</code> isn't read as <code>&lt;</code> and <code>=</code>)</li>
+</ul>
 </li>
 <li>
 <p><strong>Maintain lexeme-beginning pointer and forward pointer</strong></p>
-</li>
+<ul>
 <li><strong>Lexeme-beginning pointer</strong>: Marks the start of the current token being analyzed</li>
 <li><strong>Forward pointer</strong>: Moves through the input to build the token</li>
+</ul>
+</li>
 <li>
 <p><strong>Forward pointer moves through a transition diagram</strong></p>
-</li>
-<li>
-<p>Each character is processed according to predefined patterns</p>
-</li>
-<li>
-<p>The pointer advances as it matches expected patterns</p>
+<ul>
+<li>Each character is processed according to predefined patterns</li>
+<li>The pointer advances as it matches expected patterns</li>
+</ul>
 </li>
 <li>
 <p><strong>If valid lexeme is detected, return token</strong></p>
-</li>
-<li>
-<p>When a complete, valid token is recognized, it's returned to the parser</p>
-</li>
-<li>
-<p>Example: Reading <code>123</code> completely forms a NUMBER token</p>
+<ul>
+<li>When a complete, valid token is recognized, it's returned to the parser</li>
+<li>Example: Reading <code>123</code> completely forms a NUMBER token</li>
+</ul>
 </li>
 <li>
 <p><strong>If invalid, return forward pointer to initial pointer and try next pattern</strong></p>
-</li>
+<ul>
 <li>If the current pattern fails, backtrack and try the next pattern</li>
 <li>This prevents getting stuck on partial matches</li>
+</ul>
+</li>
 </ol>
 <h3 id="detailed-example-of-token-recognition">Detailed Example of Token Recognition</h3>
 <p>Consider the input: <code>count = 42;</code></p>
@@ -1336,38 +1334,34 @@ Step 5: Process &quot;;&quot;
 <ol>
 <li>
 <p><strong>States</strong> (represented as circles)</p>
-</li>
-<li>
-<p>Each state represents a stage in token recognition</p>
-</li>
+<ul>
+<li>Each state represents a stage in token recognition</li>
 <li><strong>Start state</strong>: Where processing begins (marked with an arrow)</li>
 <li><strong>Accept states</strong>: Final states where tokens are recognized (double circles)</li>
-<li>
-<p><strong>Intermediate states</strong>: Processing states between start and accept</p>
+<li><strong>Intermediate states</strong>: Processing states between start and accept</li>
+</ul>
 </li>
 <li>
 <p><strong>Edges or Transitions</strong> (arrows between states)</p>
-</li>
-<li>
-<p>Show how to move from one state to another</p>
-</li>
-<li>
-<p>Labeled with conditions for the transition</p>
+<ul>
+<li>Show how to move from one state to another</li>
+<li>Labeled with conditions for the transition</li>
+</ul>
 </li>
 <li>
 <p><strong>Symbols</strong> (labels on edges)</p>
-</li>
-<li>
-<p>Specific characters or character classes that trigger transitions</p>
-</li>
-<li>
-<p>Examples: <code>'a'</code>, <code>digit</code>, <code>letter</code>, <code>other</code></p>
+<ul>
+<li>Specific characters or character classes that trigger transitions</li>
+<li>Examples: <code>'a'</code>, <code>digit</code>, <code>letter</code>, <code>other</code></li>
+</ul>
 </li>
 <li>
 <p><strong>Determinism</strong></p>
-</li>
+<ul>
 <li>Each state has exactly one transition for each input symbol</li>
 <li>No ambiguity about which path to take</li>
+</ul>
+</li>
 </ol>
 <h3 id="example-transition-diagram-analysis">Example Transition Diagram Analysis</h3>
 <p>From the PDF's diagram with states A, B, C:</p>
@@ -1414,9 +1408,11 @@ Step 5: Process &quot;;&quot;
 <p>Lexical analyzers are typically implemented with these key components:</p>
 <h4 id="1-state-based-processing">1. State-Based Processing</h4>
 <ul>
-<li><strong>Each state has a code segment</strong></li>
+<li><strong>Each state has a code segment</strong><ul>
 <li>Different code executes depending on current state</li>
 <li>State-specific logic for character processing</li>
+</ul>
+</li>
 </ul>
 <pre><code class="language-pseudocode">switch(currentState) {
     case START:
@@ -1432,16 +1428,20 @@ Step 5: Process &quot;;&quot;
 </code></pre>
 <h4 id="2-state-transitions">2. State Transitions</h4>
 <ul>
-<li><strong>Each edge may change the state</strong></li>
+<li><strong>Each edge may change the state</strong><ul>
 <li>Transitions based on input characters</li>
 <li>Updates to current processing state</li>
 </ul>
+</li>
+</ul>
 <h4 id="3-character-processing-function">3. Character Processing Function</h4>
 <ul>
-<li><strong>Use <code>nextchar()</code> function</strong> to:</li>
+<li><strong>Use <code>nextchar()</code> function</strong> to:<ul>
 <li>Read next character from input buffer</li>
 <li>Advance the forward pointer</li>
 <li>Return the character for processing</li>
+</ul>
+</li>
 </ul>
 <pre><code class="language-pseudocode">function nextchar() {
     char c = buffer[forwardPointer];
@@ -1515,19 +1515,19 @@ function tryPattern(pattern) {
 <ol>
 <li>
 <p><strong>Identifiers must be installed into the symbol table</strong></p>
-</li>
-<li>
-<p>Symbol table stores all identifiers and their attributes</p>
-</li>
-<li>
-<p>Used later by semantic analyzer and code generator</p>
+<ul>
+<li>Symbol table stores all identifiers and their attributes</li>
+<li>Used later by semantic analyzer and code generator</li>
+</ul>
 </li>
 <li>
 <p><strong>Keyword optimization strategy</strong></p>
-</li>
+<ul>
 <li><strong>Store all keywords in a special collection</strong> (hash table/array)</li>
 <li><strong>Benefits</strong>: Reduces states needed in transition diagram</li>
 <li><strong>Process</strong>: First recognize as identifier, then check if it's a keyword</li>
+</ul>
+</li>
 </ol>
 <h3 id="identifier-vs-keyword-resolution">Identifier vs Keyword Resolution</h3>
 <pre><code class="language-pseudocode">function processIdentifier(lexeme) {
@@ -1559,16 +1559,26 @@ function isKeyword(lexeme) {
 <h3 id="definition-and-components">Definition and Components</h3>
 <p>A <strong>Finite State Automaton</strong> is a mathematical model used for input processing, consisting of:</p>
 <ol>
-<li><strong>Finite set of states</strong> (Q)</li>
+<li><strong>Finite set of states</strong> (Q)<ul>
 <li>Limited number of distinct processing states</li>
-<li><strong>Input alphabet</strong> (Σ)</li>
+</ul>
+</li>
+<li><strong>Input alphabet</strong> (Σ)<ul>
 <li>Set of valid input symbols</li>
-<li><strong>Transition function</strong> (δ)</li>
+</ul>
+</li>
+<li><strong>Transition function</strong> (δ)<ul>
 <li>Rules for moving between states: δ(state, input) → next_state</li>
-<li><strong>Start state</strong> (q₀)</li>
+</ul>
+</li>
+<li><strong>Start state</strong> (q₀)<ul>
 <li>Initial state where processing begins</li>
-<li><strong>Set of accepting states</strong> (F)</li>
+</ul>
+</li>
+<li><strong>Set of accepting states</strong> (F)<ul>
 <li>States where input is accepted as valid</li>
+</ul>
+</li>
 </ol>
 <h3 id="mathematical-notation">Mathematical Notation</h3>
 <p><strong>FSA Definition</strong>: M = (Q, Σ, δ, q₀, F)</p>

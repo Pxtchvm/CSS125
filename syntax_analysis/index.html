@@ -2353,11 +2353,13 @@ Factor     → NUMBER | '(' Expression ')'
 <li><strong>Start with Expression</strong></li>
 <li><strong>Parse first Term</strong>: Recognizes <code>3</code></li>
 <li><strong>See '+' operator</strong>: Continue with Expression rule</li>
-<li><strong>Parse second Term</strong>: <code>4 * 2</code></li>
+<li><strong>Parse second Term</strong>: <code>4 * 2</code><ul>
 <li>Factor: <code>4</code></li>
 <li>Operator: <code>*</code></li>
 <li>Factor: <code>2</code></li>
 <li>Result: <code>(4 * 2)</code> due to precedence</li>
+</ul>
+</li>
 <li><strong>Final result</strong>: <code>3 + (4 * 2)</code></li>
 </ol>
 <h3 id="example-2-real-compiler-error-messages">Example 2: Real Compiler Error Messages</h3>
@@ -2417,8 +2419,8 @@ WS:     [ \t\r\n]+ -&gt; skip ;
 <h3 id="example-4-modern-ide-error-handling">Example 4: Modern IDE Error Handling</h3>
 <h4 id="visual-studio-code-with-typescript">Visual Studio Code with TypeScript:</h4>
 <pre><code class="language-typescript">function calculateTotal(price: number, tax: number) {
-  return price + tax;
-  console.log(&quot;Calculation done&quot;); // Unreachable code warning
+    return price + tax;
+    console.log(&quot;Calculation done&quot;); // Unreachable code warning
 }
 
 let result = calculateTotal(&quot;100&quot;, 0.08); // Type error
